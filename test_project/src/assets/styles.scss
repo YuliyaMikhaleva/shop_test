@@ -1,0 +1,204 @@
+@import "./variables.scss";
+@font-face {
+  font-family: Roboto_bold;
+  src: url("./fonts/roboto-bold.ttf");
+}
+@font-face {
+  font-family: Roboto_regular;
+  src: url("./fonts/roboto-regular.ttf");
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  color: $textColor;
+  background-color: #F8F8F8;
+}
+
+.header{
+  height: 60px;
+  display: flex;
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1) !important;
+  position: fixed;
+  background-color: white;
+  width: 100%;
+  z-index: 2;
+  &_block{
+    display: block;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 60px;
+    color: $textColor;
+    font-family: "Roboto_bold";
+    &_links{
+      display: flex;
+      &_item{
+        margin: 0 22px 0 22px;
+        font-family: "Roboto_regular";
+        &:hover{
+          border-bottom: 4px solid $redColor;
+          box-sizing: border-box;
+          cursor: pointer;
+        }
+        &:active{
+          border-bottom: 3px solid black;
+          box-sizing: border-box;
+          cursor: pointer;
+        }
+        &:focus{
+          border-bottom: 3px solid black;
+          box-sizing: border-box;
+          cursor: pointer;
+        }
+      }
+    }
+    &_basket{
+      margin: 0 29px 0 0;
+      cursor: pointer;
+      border-bottom: 4px solid transparent;
+      box-sizing: border-box;
+      &:hover{
+        border-bottom: 4px solid $redColor;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+      &_svg{
+        height: 100%;
+        position: relative;
+      }
+      &_ellipse{
+        position: absolute;
+        top: 13px;
+        right: 21px;
+      }
+      &_counter{
+        color: white;
+        font-family: "Roboto_regular";
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 13px;
+        position: absolute;
+        top: 16px;
+        right: 25px;
+      }
+    }
+    &_svg{
+      display: block;
+      height: 100%;
+      margin-left:7px ;
+    }
+
+    &:first-child {
+      background-color: $redColor;
+      color: white;
+      font-size: 20px;
+      line-height: 60px;
+      text-transform: uppercase;
+      font-family: "Roboto_regular";
+      font-weight: 700;
+      padding: 0 33px 0 29px;
+      box-sizing: border-box;
+      display: flex;
+    }
+    &:last-child{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}
+.menu{
+  width: 30%;
+  max-width: 300px;
+  box-shadow: 0 0px 10px 0px rgba(221, 221, 221, 1);
+  //height: 100vh;
+  position: relative;
+  z-index: 1;
+  margin-top: 60px;
+  background-color: white;
+  &_item{
+    background-color: white;
+    display: block;
+    height: 54px;
+    border-bottom: 1px solid #E4E4E4;
+    box-sizing: border-box;
+    font-family: Roboto_regular;
+    line-height: 54px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    &:hover{
+      color: $redColor;
+      cursor: pointer;
+    }
+  }
+}
+
+.main{
+  display: flex;
+  height: 100vh;
+}
+
+.catalog_card{
+  width: 353px;
+  height: 418px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  font-family: Roboto_regular;
+  margin: 0 37px 38px 0;
+  background-color: white;
+
+  &_title{
+    margin: 20px 0 10px 30px;
+    font-weight: 500;
+  }
+  &_price{
+    display: block;
+    margin: 0 0 34px 30px;
+    font-family: Roboto_bold;
+  }
+  &_button{
+    margin: 0 0 26px 30px;
+    background-color: $redColor;
+    color: white;
+    border: 0;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 18px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 20px;
+    &:hover{
+      cursor: pointer;
+      opacity: 0.7;
+    }
+  }
+}
+
+.catalog{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 53px 37px 0 35px;
+  box-sizing: border-box;
+  width: 77%;
+  margin-top: 60px;
+  align-content: flex-start;
+}
+
+.zero_page{
+  margin-top: 60px;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  &_svg{
+    margin-top: 30%;
+
+  }
+  &_txt{
+    display: block;
+    font-family: Roboto_bold;
+    font-size: 24px;
+    margin-top: 26px;
+  }
+}
+
