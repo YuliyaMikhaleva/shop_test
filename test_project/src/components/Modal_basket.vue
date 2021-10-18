@@ -66,12 +66,11 @@
             doOrder: function () {
                 this.showParametrs = false;
                 this.showResultOrder = true;
-                this.$store.commit('clearBasket');
+                this.$store.dispatch('loadOrder');
                 setTimeout(() => {
                     this.showResultOrder = false;
-                }, 5000)
+                }, 2000)
             },
-
         },
     }
 </script>

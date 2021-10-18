@@ -7,7 +7,7 @@
                     <span class="basketItem_txt_price"><span> {{ cartItem.price }} </span> ₽</span>
                     <button @click="deleteFromBasket" class="basketItem_txt_button">Убрать из корзины</button>
                 </div>
-        </div>
+         </div>
 
 
     </div>

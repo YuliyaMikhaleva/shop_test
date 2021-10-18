@@ -32,6 +32,7 @@ export default new Vuex.Store({
     activeLink:'Электроприборы',
     activeCategoryMebel:'Диваны',
     activeCategoryElectro:'Светильники',
+    infoAboutProduct:[]
   },
   getters:{
     getCatalogChairs(state){
@@ -58,6 +59,9 @@ export default new Vuex.Store({
     getCart(state){
         return state.basket//эта функция возвращает корзину из хранилища
     },
+    getInfo(state){
+        return state.infoAboutProduct
+    }
 
   },
   mutations: {
@@ -82,7 +86,11 @@ export default new Vuex.Store({
     },
     clearBasket(state){
         state.basket = []
+    },
+    setInfoAboutProduct(state, payload){
+        state.infoAboutProduct = [...state.infoAboutProduct, ...payload]
     }
+
   },
   actions: {
     loadCatalogChairs({commit}){//передаем объекь для работы со стейтом, и с помощью деструктуризации передаем метод этого объекта - commit - вызывает какие-то мутации
@@ -152,19 +160,15 @@ export default new Vuex.Store({
           commit('addToCart', product)//передаем в коммит good.id, чтобы вызвать мутацию addToCart
           console.log(product);
           console.log('state.basket= ',this.state.basket )
-          // fetch('/api/cart', {
-          //     method: 'POST',
-          //     headers: {
-          //         'Content-Type': 'application/json'
-          //         // 'Content-Type': 'application/x-www-form-urlencoded',
-          //     },
-          //     redirect: 'follow', // manual, *follow, error
-          //     referrerPolicy: 'no-referrer', // no-referrer, *client
-          //     body: JSON.stringify(good)
-          // })
-          //
-          //     .then(commit('addToCart', good))
       },
+    loadOrder({commit}){
+        return fetch('http://test1.web-gu.ru/?action=send_form')
+            .then(response => response.json())
+            .then(data => {
+                console.log('data=', data);
+                commit('clearBasket')
+            });
+    }
   },
   //плагин для сохранения состояния конкретных ключей
   plugins: [
