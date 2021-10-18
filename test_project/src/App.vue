@@ -24,7 +24,9 @@
             this.$store.dispatch('loadCatalogGroups');
             this.$store.dispatch('loadCatalogCategoriesMebel');
             this.$store.dispatch('loadCatalogCategoriesElectro');
-        }
+            this.$store.dispatch('loadToCart');
+            this.$store.dispatch('loadInfoAboutProduct');
+        },
     }
 </script>
 

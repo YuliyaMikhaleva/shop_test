@@ -1,6 +1,8 @@
 <template>
-    <div class="header_block_links_item">
-        <router-link :to="group.name" style="text-decoration: none; color: inherit;">{{ group.name }}</router-link>
+    <div v-bind:class="[this.$store.state.activeLink===group.name ? activeClass: '', otherClass]"
+    @click="changeActiveLink">
+        <router-link :to="group.name" style="text-decoration: none; color: inherit;"
+                     >{{ group.name }}</router-link>
     </div>
 <!--    <div class="catalog_card" >-->
 <!--        <img class="catalog_card_img" :src="product.img" width="353" height="246" alt="photo" />-->
@@ -14,6 +16,19 @@
     export default {
         name: "Group",
         props:['group'],
+        data (){
+            return {
+                activeClass: 'active',
+                otherClass: 'header_block_links_item',
+
+            }
+        },
+
+        methods: {
+            changeActiveLink(){
+                this.$store.state.activeLink = this.group.name;
+            }
+        }
     }
 </script>
 
