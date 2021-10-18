@@ -1,43 +1,54 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import ZeroPage from "../views/ZeroPage";
-import Tables from "../views/Tables";
-import Chairs from "../views/Chairs";
-import Sofas from "../views/Sofas";
-import Lamps from "../views/Lamps";
+// import Tables from "../views/Tables";
+// import Chairs from "../views/Chairs";
+// import Sofas from "../views/Sofas";
+// import Lamps from "../views/Lamps";
+import Products from "../views/Products";
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Chairs',
-    component: Chairs
+    name: 'Products',
+    component: Products
   },
   {
     path: '/Стулья',
     name: 'Chairs',
-    component: Chairs
+    component: Products
   },
   {
     path: '/Мебель',
     name: 'Chairs',
-    component: Chairs
+    component: Products
   },
   {
     path: '/Столы',
     name: 'Tables',
-    component: Tables
+    component: Products
   },
   {
     path: '/Диваны',
     name: 'Sofas',
-    component: Sofas
+    component: Products
   },
   {
     path: '/Электроприборы',
     name: 'Lamps',
-    component: Lamps
+    component: Products
+  },
+  {
+    path: '/Светильники',
+    name: 'Lamps',
+    component: Products
+  },
+  {
+    path: '/Вентиляторы',
+    name: 'Lamps',
+    component: Products
   },
   {
     path: '/zero_page',

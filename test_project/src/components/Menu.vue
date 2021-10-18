@@ -1,7 +1,9 @@
 <template>
     <div class="menu">
-        <CatalogCategoriesMebel v-if="$store.state.showMebel" />
-        <CatalogCategoriesElectro v-if="$store.state.showElectro" />
+
+
+        <CatalogCategoriesMebel v-if="$store.state.activeLink === 'Мебель'" />
+        <CatalogCategoriesElectro v-if="$store.state.activeLink === 'Электроприборы'" />
     </div>
 
 <!--    <div class="menu">-->
