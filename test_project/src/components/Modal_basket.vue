@@ -14,26 +14,51 @@
                     <div  v-if="$store.state.basket.length>0" >
                         <span class="header_basket_content_text">В корзине:</span>
                         <Basket/>
-                        <div class="header_basket_content_form" action="#">
-                            <div style="display: flex; justify-content: space-between">
-                                <div class="header_basket_content_form_block" >
+                        <form id="form" @submit="checkForm" class="header_basket_content_form" action="#">
+                            <div style="display: flex; justify-content: flex-start">
+                                <div class="header_basket_content_form_phone" >
                                     <label class="header_basket_content_form_block_label" for="name">Имя</label>
-                                    <input class="header_basket_content_form_block_input" type="text" id="name">
-                                    <span class="header_basket_content_form_block_error">Имя не должно быть пустым</span>
+                                    <input class="header_basket_content_form_block_input" type="text" id="name" v-model="name">
+<!--                                    Указание на ошибку-->
+                                    <div v-if="errors.length">
+                                        <span v-for="error in errors" v-bind:key="error">
+                                            <span v-if="error == 'nameError'"  class="header_basket_content_form_block_error">
+                                                Имя не должно быть пустым
+                                            </span>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="header_basket_content_form_block" >
                                     <label class="header_basket_content_form_block_label" for="phone">Телефон</label>
                                     <input class="header_basket_content_form_block_input" type="text" id="phone"
-                                           placeholder="+ 7 (950) 45-84-345">
+                                           placeholder="+ 7 (950) 45-84-345" v-model="phone">
+<!--                                    Указание на ошибку-->
+                                    <div v-if="errors.length">
+                                        <span v-for="error in errors" v-bind:key="error">
+                                            <span v-if="error == 'phoneError'"  class="header_basket_content_form_block_error">
+                                                Номер телефона должен соответствовать виду: + 7(950)45-84-345
+                                            </span>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="header_basket_content_form_block" >
+                            <div class="header_basket_content_form_address" >
                                 <label class="header_basket_content_form_block_label" for="address">Полный адрес</label>
                                 <input class="header_basket_content_form_block_input" type="text" id="address"
-                                       placeholder="Ул. Пушкина, дом колотушкина">
+                                       placeholder="Ул. Пушкина, дом колотушкина" v-model="address"/>
                             </div>
-                            <button @click="doOrder" class="header_basket_content_form_btn">Заказать</button>
-                        </div>
+                            <!--                                    Указание на ошибку-->
+                            <div  v-if="errors.length">
+                                <span v-for="error in errors" v-bind:key="error">
+                                     <span v-if="error == 'addressError'"  class="header_basket_content_form_block_error">
+                                         Адрес не должен быть пустым
+                                     </span>
+                                </span>
+                            </div>
+                            <button type="submit" class="header_basket_content_form_btn">Заказать</button>
+                        </form>
+
+
                     </div>
                     <div v-if="$store.state.basket.length<=0 && !showResultOrder" class="header_basket_content_resultOrder">
                         <img class="header_basket_content_resultOrder_img" src="../assets/img/basket.svg" width="99" height="99" alt="basket">
@@ -58,21 +83,51 @@
             return {
                 // counter: this.$store.state.basket.length,
                 showParametrs:true,
-                showResultOrder: false
+                showResultOrder: false,
+                errors:[],
+                name: '',
+                phone: '',
+                address: ''
             }
         },
         methods:{
             //сделать заказ
             doOrder: function () {
-                this.showParametrs = false;
-                this.showResultOrder = true;
-                this.$store.dispatch('loadOrder');
-                setTimeout(() => {
-                    this.showResultOrder = false;
-                }, 2000)
+                    this.showParametrs = false;
+                    this.showResultOrder = true;
+                    this.$store.dispatch('loadOrder');
+                    setTimeout(() => {
+                        this.showResultOrder = false;
+                    }, 2000)
+                },
+            checkForm:function(e) {
+                this.errors = [];
+                //Если нет имени, то выйдет ошибка
+                if(!this.name) this.errors.push("nameError");
+                if(!this.address) this.errors.push("addressError");
+                //Если нет телефона, то выйдет ошибка
+                if(!this.phone) {
+                    this.errors.push("phoneError");
+                    console.log(this.errors)
+                } else if(!this.validPhone(this.phone)) {
+                    this.errors.push("phoneError");
+                    console.log(this.errors)
+                }
+                // if(!this.errors.length) return true;
+                e.preventDefault();
+                if(!this.errors.length){
+                    console.log(this.errors)
+                    this.doOrder();
+                }
+
             },
-        },
-    }
+            //проверка номера телефона: должен иметь вид +7(000)000-0000.
+            validPhone:function(phone) {
+                var re = /^\+7\(\d{3}\)\d{2}-\d{2}-\d{3}$/;
+                return re.test(phone);
+            }
+            },
+        }
 </script>
 
 <style scoped>
