@@ -12,13 +12,11 @@
   src: url("./fonts/roboto/roboto-medium-500.ttf");
 }
 
-
 body{
   margin: 0;
   padding: 0;
   color: $textColor;
   background-color: #F8F8F8;
-  //max-width: 1920px;
 }
 
 .header{
@@ -42,7 +40,7 @@ body{
         margin: 0 22px 0 22px;
         font-family: "Roboto_regular";
         &:hover{
-          border-bottom: 4px solid $redColor;
+          border-bottom: 4px solid #ff9c9c;
           box-sizing: border-box;
           cursor: pointer;
         }
@@ -93,7 +91,6 @@ body{
       height: 100%;
       margin-left:7px ;
     }
-
     &:first-child {
       background-color: $redColor;
       color: white;
@@ -130,7 +127,6 @@ body{
         margin-bottom: 25px;
         font-weight: bold;
         &_title{
-
         }
         &_btn{
           border: 0;
@@ -146,7 +142,6 @@ body{
         font-size: 16px;
         line-height: 19px;
         font-family: Roboto_regular;
-        //margin-right: 23px;
         &_phone{
           margin-right: 23px;
           width: 100%;
@@ -195,8 +190,10 @@ body{
           box-sizing: border-box;
           cursor: pointer;
           &:hover{
-            background-color: white;
-            color: $redColor;
+            opacity: 0.7;
+          }
+          &:active{
+            opacity: 1;
           }
         }
       }
@@ -208,7 +205,6 @@ body{
         text-align: center;
         margin-top: 183px;
         &_img{
-
         }
         &_txt{
           display: block;
@@ -222,10 +218,7 @@ body{
 .menu{
   width: 100%;
   max-width: 325px;
-  //width: 30%;
-  //max-width: 300px;
   box-shadow: 0 0px 10px 0px rgba(221, 221, 221, 1);
-  //height: 100vh;
   position: relative;
   z-index: 1;
   margin-top: 60px;
@@ -246,12 +239,10 @@ body{
     }
   }
 }
-
 .main{
   display: flex;
   height: 100vh;
 }
-
 .catalog_card{
   width: 353px;
   height: 418px;
@@ -263,7 +254,6 @@ body{
   &:last-of-type{
     margin: 0 0 38px 0;
   }
-
   &_title{
     margin: 20px 0 10px 30px;
     font-weight: bold;
@@ -285,14 +275,20 @@ body{
     padding: 0 18px;
     box-sizing: border-box;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 18px;
+    min-width: 169px;
     &:hover{
       cursor: pointer;
       opacity: 0.7;
     }
+    &:active{
+      opacity: 1;
+    }
+    &_svg{
+      margin-left:14px ;
+    }
   }
 }
-
 .catalog{
   display: flex;
   flex-wrap: wrap;
@@ -303,18 +299,12 @@ body{
   margin-top: 60px;
   align-content: flex-start;
 }
-
 .zero_page{
   width: 100%;
   max-width:1595px ;
   text-align: center;
-  //margin-top: 60px;
-  //width: 100vh;
-  //height: 100vh;
-  //text-align: center;
   &_svg{
     margin-top: 30%;
-
   }
   &_txt{
     display: block;
@@ -323,7 +313,6 @@ body{
     margin-top: 26px;
   }
 }
-
 .active{
   border-bottom: 4px solid $redColor;
   box-sizing: border-box;
@@ -331,16 +320,6 @@ body{
 .activeCategory{
   color: $redColor;
 }
-
-@media (min-width: 576px)  {
-  .modal-dialog {
-    margin: 0;
-  }
-  .header_basket{
-    max-width: 100%;
-  }
-}
-
 .basketItems:last-child{
   color: red;
 }
@@ -399,22 +378,25 @@ body{
       padding: 0;
       display: block;
       width: 128px;
+      &:hover{
+        opacity: 0.7;
+      }
+      &:active{
+        opacity: 1;
+      }
     }
   }
 }
-
 .modal_product {
   min-height: 100vh;
   font-family: Roboto_regular;
   font-size: 16px;
-
   &_img {
     border: 1px solid #E5E5E5;
     border-radius: 10px;
     box-sizing: border-box;
     margin-bottom: 25px;
   }
-
   &_name {
     font-family: Roboto_500;
     font-size: 18px;
@@ -422,16 +404,13 @@ body{
     color: #424242;
     margin-bottom: 7px;
   }
-
   &_price {
     font-family: Roboto_bold;
     display: block;
     margin-bottom: 40px;
   }
-
   &_links {
     margin-bottom: 16px;
-
     &_item {
       line-height: 25px;
       margin-right: 19px;
@@ -441,23 +420,18 @@ body{
       cursor: pointer;
       text-decoration: none;
       color: inherit;
-
       &:hover {
         color: inherit;
         border-bottom: 3px solid $redColor;
       }
-
       &:active {
         color: inherit;
         border-bottom: 3px solid #E4E2E2;
       }
     }
-
     &_transition {
-
     }
   }
-
   &_parametrs {
     margin-bottom: 32px;
     &_line {
@@ -468,7 +442,6 @@ body{
       padding: 0 7px;
       display: flex;
       justify-content: space-between;
-
       &:nth-child(2) {
         background-color: white;
       }
@@ -495,7 +468,6 @@ body{
         font-weight: normal;
       }
       &_reiting{
-
       }
     }
   }
@@ -506,7 +478,6 @@ body{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
   }
 }
-
 .form_review{
   width:100%;
   &_mark{
@@ -551,10 +522,14 @@ body{
     box-sizing: border-box;
     border-radius: 5px;
     font-size: 18px;
+    &:hover{
+      opacity: 0.7;
+    }
+    &:active{
+      opacity: 1;
+    }
   }
-
 }
-
 
 //Звёздный рейтинг
 .star-rating{
@@ -572,7 +547,7 @@ body{
     float: right;
     padding-left: 2px;
     cursor: pointer;
-    color: #FFB300;
+    color: #E4E4E4;
     &:last-child{
       padding-left: 0;
     }
@@ -585,10 +560,11 @@ body{
 .star-rating_ico:hover ~ .star-rating_ico:before,
 .star-rating_input:checked ~ .star-rating_ico:before
 {
-  content: "\f005";
+  content: "\f006";
+  color: #F1C450;
 }
 
-//Индикатор загрузки
+  //Индикатор загрузки
 .preloader{
   background: white;
   opacity: 50%;
@@ -667,5 +643,14 @@ body{
   }
   .menu{
     height: 100vh;
+  }
+}
+//Рефакторинг стилей бутстрапа
+@media (min-width: 576px)  {
+  .modal-dialog {
+    margin: 0;
+  }
+  .header_basket{
+    max-width: 100%;
   }
 }

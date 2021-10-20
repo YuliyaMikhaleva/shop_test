@@ -35,7 +35,7 @@
             showToggle(){
                 setTimeout(()=>{
                     this.$store.state.showloader=false
-                },2000)
+                },1000)
             }
         },
         watch: {
@@ -43,7 +43,7 @@
                 this.$store.state.showloader = true;
                 setTimeout(() => {
                     this.$store.state.showloader = false;
-                }, 2000);
+                }, 1000);
             },
         },
     }

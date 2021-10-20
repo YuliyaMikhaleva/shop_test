@@ -117,7 +117,12 @@
                 e.preventDefault();
                 if(!this.errors.length){
                     console.log(this.errors)
-                    this.doOrder();
+                    this.$store.state.showloader=true;
+                    setTimeout(()=>{
+                        this.$store.state.showloader=false;
+                        this.doOrder();
+                    },1000)
+
                 }
 
             },
