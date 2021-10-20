@@ -1,3 +1,4 @@
+<!--Компонент пустой страницы, если товаров нет-->
 <template>
     <div class="zero_page">
         <svg class="zero_page_svg" width="99" height="99" viewBox="0 0 99 99" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -8,7 +9,6 @@
 </template>
 
 <script>
-
     export default {
         name: 'ZeroComponent',
     }

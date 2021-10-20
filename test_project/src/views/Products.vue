@@ -1,5 +1,5 @@
 <template>
-        <div style="width: 70%">
+        <div>
                 <CatalogChairs v-if="$store.state.activeLink === 'Мебель' && $store.state.activeCategoryMebel=== 'Стулья'" />
                 <CatalogLamps v-if="$store.state.activeLink === 'Электроприборы' && $store.state.activeCategoryElectro=== 'Светильники'"/>
                 <CatalogSofas v-if="$store.state.activeLink === 'Мебель' && $store.state.activeCategoryMebel=== 'Диваны'"/>
