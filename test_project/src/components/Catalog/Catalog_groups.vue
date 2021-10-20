@@ -1,3 +1,4 @@
+<!--Каталог всех групп товаров: Электро/Мебель-->
 <template>
     <div>
         <Group v-bind:key="item.id"
@@ -12,7 +13,9 @@
     export default {
         name: "CatalogGroups",
         components: {Group},
-        computed: {//вычисляемое свойство
+        //вычисляемое свойство
+        computed: {
+            //получаем все актуальные группы товаров
             products(){
                 return this.$store.getters.getCatalogGroups
             },

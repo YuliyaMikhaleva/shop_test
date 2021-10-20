@@ -1,3 +1,4 @@
+<!--Карточка товара в каталоге-->
 <template>
     <div class="catalog_card" >
         <a type="button" data-bs-toggle="modal" data-bs-target="#productsTransition">
@@ -7,9 +8,13 @@
             <h3 class="catalog_card_title">{{ product.name }}</h3>
         </a>
         <span class="catalog_card_price"><span> {{ product.price }}</span> ₽</span>
+<!--        Если товар добавлен, будет кнопка "добавлено"-->
         <button v-if="isAdded === false" @click="addToCart" class="catalog_card_button" style="width: 219px">Добавить в корзину</button>
+<!--        Если товар загружается, будет кнопка загрузки-->
         <button v-if="isAdded === 'pending'" @click="addToCart" class="catalog_card_button" style="width: 219px">...</button>
+<!--        Если товар не добавлен, будет кнопка "добавить в корзину"-->
         <button v-if="isAdded === true" @click="deleteFromBasket" class="catalog_card_button">В корзине
+
             <svg class="catalog_card_button_svg" width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.99147 13.4124L1.77601 8.12603L0 9.9135L6.99147 17L22 1.78747L20.2365 0L6.99147 13.4124Z" fill="white"/>
             </svg>
@@ -27,7 +32,10 @@
                                     </svg>
                                 </button>
                             </div>
-                            <ProductInTransition :product="product"/>
+
+<!--                            Всплывающее окно с описанием товара-->
+                            <ProductDescription :product="product"/>
+
                         </div>
                     </div>
                 </div>
@@ -37,10 +45,10 @@
 </template>
 
 <script>
-    import ProductInTransition from "./ProductInTransition";
+    import ProductDescription from "../ModalDescription/ProductDescription";
     export default {
         name: "Product",
-        components: {ProductInTransition},
+        components: {ProductDescription},
         props:['product'],
         data(){
             return {
@@ -56,6 +64,7 @@
             }
         },
         methods:{
+            //добавить в корзину
             addToCart(){
                 this.$store.dispatch('loadToCart', this.product);
                 this.isAdded = 'pending';
@@ -63,12 +72,15 @@
                     this.isAdded = true;
                 },1000)
             },
+            //удалить из корзины
             deleteFromBasket(){
                 this.$store.commit('deleteProduct', this.product);
                 this.isAdded = false;
             }
         },
+        //вычисляемое свойство
         computed:{
+            //будет считать корзину в настоящий момент и постоянно обновлять
             basket(){
                 return this.$store.getters.getCart
             },

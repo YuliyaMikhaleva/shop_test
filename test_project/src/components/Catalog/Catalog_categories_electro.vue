@@ -1,3 +1,4 @@
+<!--Каталог категорий электро: светильники/вентиляторы-->
 <template>
     <div>
         <CategoryElectro v-bind:key="item.id"

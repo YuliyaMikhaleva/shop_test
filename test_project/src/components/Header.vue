@@ -1,3 +1,4 @@
+<!--Шапка сайта-->
 <template>
         <div>
             <div class="header">
@@ -11,15 +12,9 @@
 
                 </div>
                 <div class="header_block">
+<!--                    Здесь будут выведины группы товаров-->
                     <CatalogGroups class="header_block_links"/>
-                    <!--                <div class="header_block_links">-->
-                    <!--&lt;!&ndash;                    <div class="header_block_links_item">&ndash;&gt;-->
-                    <!--&lt;!&ndash;                        <router-link to="./zero_page" style="text-decoration: none; color: inherit;">Электроприборы</router-link>&ndash;&gt;-->
-                    <!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;                    <div class="header_block_links_item">&ndash;&gt;-->
-                    <!--&lt;!&ndash;                        <router-link to="/" style="text-decoration: none; color: inherit;">Мебель</router-link>&ndash;&gt;-->
-                    <!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-                    <!--                </div>-->
+
                     <a class="header_block_basket" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         <svg class="header_block_basket_svg" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.29766 16.8C5.14309 16.8 4.20894 17.745 4.20894 18.9C4.20894 20.055 5.14309 21 6.29766 21C7.45223 21 8.39688 20.055 8.39688 18.9C8.39688 17.745 7.45223 16.8 6.29766 16.8ZM16.7938 16.8C15.6392 16.8 14.705 17.745 14.705 18.9C14.705 20.055 15.6392 21 16.7938 21C17.9483 21 18.893 20.055 18.893 18.9C18.893 17.745 17.9483 16.8 16.7938 16.8ZM15.2718 11.55C16.059 11.55 16.7518 11.1195 17.1086 10.4685L20.8663 3.654C21.2546 2.961 20.7508 2.1 19.9531 2.1H4.41886L3.43223 0H0V2.1H2.09922L5.87782 10.0695L4.46084 12.6315C3.69463 14.0385 4.70225 15.75 6.29766 15.75H18.893V13.65H6.29766L7.45223 11.55H15.2718ZM5.41599 4.2H18.1688L15.2718 9.45H7.90356L5.41599 4.2Z" fill="#424242"/>
@@ -30,43 +25,27 @@
                 </div>
             </div>
 
-            <!--Модальное окно (изначально скрыто)-->
+            <!--Модальное окно корзины(изначально скрыто)-->
             <!-- Modal -->
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <Modal_basket/>
     </div>
 
-
-
         </div>
 </template>
 
 <script>
-    import CatalogGroups from "./Catalog_groups";
-    import Modal_basket from "./Modal_basket";
+    import CatalogGroups from "./Catalog/Catalog_groups";
+    import Modal_basket from "./Basket/Modal_basket";
     export default {
         name: "Header",
         components: {Modal_basket, CatalogGroups},
-        data(){
-            return {
-                // counter: this.$store.state.basket.length,
-                // showParametrs:true,
-                // showResultOrder: false
-            }
-        },
-        methods:{
-            // doOrder: function () {
-            //     // this.showParametrs = false;
-            //     // this.showResultOrder = true;
-            // },
-
-        },
         computed: {//вычисляемое свойство
+            //возвращает всегда актуальное количество товаров в корзине
             counter(){
                 return this.$store.state.basket.length
             }
-            // counter: this.$store.state.basket.length,
         },
     }
 </script>

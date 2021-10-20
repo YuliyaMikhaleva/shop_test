@@ -1,3 +1,4 @@
+<!--Каталог категорий мебели: Диваны/столы/стулья-->
 <template>
     <div>
         <CategoryMebel v-bind:key="item.id"

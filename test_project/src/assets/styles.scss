@@ -304,7 +304,7 @@ body{
   max-width:1595px ;
   text-align: center;
   &_svg{
-    margin-top: 30%;
+    margin-top: 25%;
   }
   &_txt{
     display: block;
@@ -329,9 +329,6 @@ body{
   box-sizing: border-box;
   height: 119px;
   margin-bottom: 21px;
-  &:last-child{
-    color: red;
-  }
   &_img{
     float: left;
     border: 1px solid #E5E5E5;
@@ -387,6 +384,7 @@ body{
     }
   }
 }
+
 .modal_product {
   min-height: 100vh;
   font-family: Roboto_regular;
@@ -653,4 +651,13 @@ body{
   .header_basket{
     max-width: 100%;
   }
+}
+
+.activeLinkInDescription{
+  border-bottom: 3px solid $redColor;
+  box-sizing: border-box;
+}
+
+.errorClass{
+  border: 1px solid $redColor;
 }

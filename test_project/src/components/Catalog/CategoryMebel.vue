@@ -1,3 +1,4 @@
+<!--блок в меню с 1 категорией мебели(стулья/столы/диваны)-->
 <template>
     <div v-bind:class="[this.$store.state.activeCategoryMebel === category.name ? activeClass: '', otherClass]"
          @click="changeActiveLink">
@@ -16,6 +17,7 @@
             }
         },
         methods: {
+            //изменение активной ссылки, соответственно будут меняться стили "кнопки"
             changeActiveLink(){
                 this.$store.state.activeCategoryMebel = this.category.name;
             }

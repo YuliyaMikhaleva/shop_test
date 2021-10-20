@@ -1,10 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import ZeroPage from "../views/ZeroPage";
-// import Tables from "../views/Tables";
-// import Chairs from "../views/Chairs";
-// import Sofas from "../views/Sofas";
-// import Lamps from "../views/Lamps";
 import Products from "../views/Products";
 
 Vue.use(VueRouter)
@@ -49,11 +44,6 @@ const routes = [
     path: '/Вентиляторы',
     name: 'Lamps',
     component: Products
-  },
-  {
-    path: '/zero_page',
-    name: 'ZeroPage',
-    component: ZeroPage
   },
 ]
 

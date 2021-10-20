@@ -1,3 +1,4 @@
+<!--Всплывающее окно с описанием товара-->
 <template>
     <div class="modal_product" >
         <a type="button" data-bs-toggle="modal" data-bs-target="#productsTransition">
@@ -24,91 +25,86 @@
             </div>
         </div>
         <div class="modal_product_links">
-            <a @click="goToTransition" :class="[activeLink === 'transition' ? activeClass:'', otherClass]">Описание</a>
+            <a @click="goToDescription" :class="[activeLink === 'description' ? activeClass:'', otherClass]">Описание</a>
             <a @click="goToParametrs" :class="[activeLink === 'parametrs' ? activeClass:'', otherClass]">Характеристики</a>
             <a @click="goToReviews" :class="[activeLink === 'reviews' ? activeClass:'', otherClass]">Отзывы</a>
             <a @click="goToFormReview" :class="[activeLink === 'form_review' ? activeClass:'', otherClass]">Оставить отзыв</a>
         </div>
-        <div v-if="activeLink=='transition'" class="modal_product_transitions" v-html="description">
-<!--            <p>VIKING A3 - удобное кресло, которое станет удачным выбором для домашнего использования и для офиса. Кресло выдерживает нагрузку до 181 кг. Высота сиденья регулируется при помощи надежного механизма. Спинка качается, при желании ее можно прочно зафиксировать в вертикальном положении. Эргономичная конструкция помогает снизить нагрузку на мышцы и уменьшить усталость от долгой работы за компьютером. Кресло закреплено на прочной и устойчивой </p>-->
-        </div>
-        <div v-if="activeLink=='parametrs'" class="modal_product_parametrs">
-            <div class="modal_product_parametrs_line">
-                <span>{{height}}</span>
-                <div>
-                    <span style="margin-right: 3px">{{valueHeight}}</span>
-                    <span>{{measureHeight}}</span>
-                </div>
 
-            </div>
-            <div class="modal_product_parametrs_line">
-                <span>{{width}}</span>
-                <div>
-                    <span style="margin-right: 3px">{{valueWidth}}</span>
-                    <span>{{measureWidth}}</span>
-                </div>
-
-            </div>
-            <div class="modal_product_parametrs_line">
-                <span>{{length}}</span>
-                <div>
-                    <span style="margin-right: 3px">{{valueLength}}</span>
-                    <span>{{measureLength}}</span>
-                </div>
-            </div>
+        <div v-if="activeLink=='description'" class="modal_product_transitions" v-html="description">
+<!--            здесь вставится html-код с описанием товара-->
         </div>
-        <div v-if="activeLink=='reviews'">
-            <div class="review" v-bind:key="review.author" v-for="review of reviews" v-bind:review="review">
-                <img class="review_photo" style="border-radius: 50%" :src="review.avatar" alt="avatar" width="50" height="50">
-                <div class="review_block">
-                    <div class="review_block_header">
-                        <span class="review_block_header_name">{{review.author}}</span>
-                        <div>
-                            <span v-bind:key="n" v-for="n of review.rate">
-                                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5468 5.72227L17.9471 6.03531C18.97 6.08748 19.3686 7.36199 18.5939 7.98806L14.3895 11.4315L15.7584 16.619C16.0141 17.5954 14.9235 18.3556 14.0812 17.8264L9.47815 14.9271L4.92027 17.8189C4.03276 18.3854 2.93466 17.5134 3.25807 16.5444L4.59685 11.3868L0.407516 7.98061C-0.382216 7.33963 0.0540168 6.08748 1.04682 6.02786L6.48469 5.69246L8.45526 0.698757C8.8238 -0.240357 10.1626 -0.225451 10.5311 0.698757L12.5468 5.72227ZM11.3961 6.9297C11.4562 7.08622 11.6067 7.18311 11.7721 7.18311H11.7947L16.8415 7.47379L12.8778 10.7234C12.7499 10.8278 12.7048 10.9992 12.7499 11.1557L12.7574 11.1781L14.036 16.0227L9.69626 13.2874C9.56088 13.1979 9.38037 13.2054 9.24499 13.3023L9.22995 13.3097L4.96539 16.0227L6.25153 11.0812C6.28913 10.9321 6.23649 10.7756 6.11615 10.6787L2.16749 7.46633L7.29698 7.1533C7.45493 7.14585 7.59031 7.04895 7.65048 6.89989L9.50823 2.18941L11.3961 6.9297Z" fill="#F1C450"/>
-                                </svg>
-                            </span>
-                           <span v-bind:key="n" v-for="n of (5-review.rate)">
-                                <svg class="review_block_header_reiting" width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5468 5.72227L17.9471 6.03531C18.97 6.08748 19.3686 7.36199 18.5939 7.98806L14.3895 11.4315L15.7584 16.619C16.0141 17.5954 14.9235 18.3556 14.0812 17.8264L9.47815 14.9271L4.92027 17.8189C4.03276 18.3854 2.93466 17.5134 3.25807 16.5444L4.59685 11.3868L0.407516 7.98061C-0.382216 7.33963 0.0540168 6.08748 1.04682 6.02786L6.48469 5.69246L8.45526 0.698757C8.8238 -0.240357 10.1626 -0.225451 10.5311 0.698757L12.5468 5.72227ZM11.3961 6.9297C11.4562 7.08622 11.6067 7.18311 11.7721 7.18311H11.7947L16.8415 7.47379L12.8778 10.7234C12.7499 10.8278 12.7048 10.9992 12.7499 11.1557L12.7574 11.1781L14.036 16.0227L9.69626 13.2874C9.56088 13.1979 9.38037 13.2054 9.24499 13.3023L9.22995 13.3097L4.96539 16.0227L6.25153 11.0812C6.28913 10.9321 6.23649 10.7756 6.11615 10.6787L2.16749 7.46633L7.29698 7.1533C7.45493 7.14585 7.59031 7.04895 7.65048 6.89989L9.50823 2.18941L11.3961 6.9297Z" fill="#E4E4E4"/>
-                                </svg>
-                            </span>
-                        </div>
 
-<!--                        <img class="review_block_header_reiting" src="../assets/img/reiting.png" alt="reiting" width="103" height="18">-->
-                    </div>
-                    <p class="review_txt">{{review.text}}</p>
-                </div>
-            </div>
-        </div>
+<!--    Блок с параметрами товара       -->
+        <ProductParametrs v-if="activeLink=='parametrs'"
+                :height="height"
+                :valueHeight="valueHeight"
+                :measureHeight="measureHeight"
+                :width="width"
+                :valueWidth="valueWidth"
+                :measureWidth="measureWidth"
+                :length="length"
+                :valueLength="valueLength"
+                :measureLength="measureLength"
+        />
+<!--    Блок с отзывами о товаре       -->
+        <ProductReviews v-if="activeLink=='reviews'" :reviews="reviews"/>
+
+
+<!--    Блок с формой для добавления отзывов о товаре       -->
+
         <div v-if="activeLink=='form_review'" class="form_review" >
              <span class="form_review_mark">Оценка</span>
+
+<!--            Здесь будет рейтинг товара виде звёзд-->
             <StarRating v-bind:mark="mark" @update="onStepUpdate" />
-<!--             <img class="form_review_img" src="../assets/img/reiting.png" alt="reiting">-->
+
+
+
              <label class="form_review_label" for="name">Имя</label>
-             <input class="form_review_input" type="text" id="name"
+            <!--         Указание на ошибку пустого поля -->
+            <div v-if="errors.length">
+                 <span v-for="error in errors" v-bind:key="error">
+                      <span v-if="error == 'textError'"  class="header_basket_content_form_block_error">
+                           Поле не должно быть пустым
+                      </span>
+                 </span>
+            </div>
+             <input :class="[errors.indexOf('textError') ? errorClass:'', normClass ]" type="text" id="name"
                         v-model="author">
+
              <label class="form_review_label" for="review">Отзыв</label>
-            <textarea class="form_review_textarea" name="review" id="review" v-model="text">
+            <!--         Указание на ошибку пустого поля -->
+            <div v-if="errors.length">
+                 <span v-for="error in errors" v-bind:key="error">
+                      <span v-if="error == 'authorError'"  class="header_basket_content_form_block_error">
+                           Поле не должно быть пустым
+                      </span>
+                 </span>
+            </div>
+            <textarea :class="[errors.indexOf('authorError') ? errorClass:'', normClassArea]"  name="review" id="review" v-model="text">
                 Он подходит именно для питья, для утоления жажды. Этот квас сильногазированный. После вскрытия бутылки газ сохраняется в ней в течении суток. Квас сладкий, послевкусие придаёт небольшую кислинку. Квас тёмного цвета.
             </textarea>
-            <button  @click="addNewReview" class="form_review_btn">Отправить отзыв</button>
+
+            <button  @click="checkForm" class="form_review_btn">Отправить отзыв</button>
         </div>
+
     </div>
 </template>
 
 <script>
     import StarRating from "./StarRating";
+    import ProductParametrs from "./ProductParametrs";
+    import ProductReviews from "./ProductReviews";
     export default {
-        name: "ProductInTransition",
+        name: "ProductDescription",
         props:['product'],
-        components: {StarRating},
+        components: {ProductReviews, ProductParametrs, StarRating},
         data(){
             return {
                 isAdded:false,//добавлен ли товар
-                activeLink:'transition',
-                activeClass: 'activeLinkInTransition',
+                activeLink:'description',
+                activeClass:'activeLinkInDescription',
                 otherClass:'modal_product_links_item',
                 description:'',//описание товара
                 width:'',//параметр ширина
@@ -123,9 +119,14 @@
                 reviews:[],//массив отзывов
                 mark:5,
                 author: '',
-                text:''
+                text:'',
+                errors:[],
+                errorClass:'errorClass',
+                normClass:'form_review_input',
+                normClassArea:'form_review_textarea'
             }
         },
+        //с этого метода программа начинает работать
         mounted() {
             let find = this.$store.state.basket.find((element) => element.id === this.product.id);
             if (find){
@@ -133,10 +134,10 @@
             } else {
                 this.isAdded = false;
             }
+            //Запрос к API для получения информации о товаре
                 fetch(`http://test1.web-gu.ru/?action=show_product&id=${this.product.id}`)
                     .then(response => response.json())
                     .then(data => {
-                        // const info = data.filter((e) => e.parent_id === 17)
                         this.description = data.descr;
                         this.width = data.props.width.caption;
                         this.valueWidth = data.props.width.value;
@@ -149,29 +150,36 @@
                         this.measureLength = data.props.length.measure;
                         this.reviews = data.reviews
                     });
-            // }
-        },
+         },
         methods:{
+            //добавить в корзину
             addToCart(){
                 this.$store.dispatch('loadToCart', this.product);
                 this.isAdded = true;
             },
+            //удалить из корзины
             deleteFromBasket(){
                 this.$store.commit('deleteProduct', this.product);
                 this.isAdded = false;
             },
-            goToTransition(){
-                this.activeLink='transition';
+            //перейти на вкладку "описание"
+            goToDescription(){
+                this.activeLink='description';
+                console.log(this.activeLink)
             },
+            //перейти на вкладку "параметры"
             goToParametrs(){
                 this.activeLink='parametrs';
             },
+            //перейти на вкладку "отзывы"
             goToReviews(){
                 this.activeLink='reviews';
             },
+            //перейти на вкладку "добавить отзывы"
             goToFormReview(){
                 this.activeLink='form_review';
             },
+            //добавить новый отзыв
             addNewReview(){
                 const element = Object.assign({
                     author: this.author,
@@ -179,12 +187,33 @@
                     avatar: 'https://ob-kassa.ru/content/front/buhoskol_tmp1/images/reviews-icon.jpg',
                     text: this.text
                 })
-                this.reviews.push(element);
+                this.$store.state.showloader = true
+                this.author = '';
+                this.text = '';
+                setTimeout(() => {
+                    this.$store.state.showloader = false;
+                    this.reviews.push(element);
+                },1000)
                 console.log(this.reviews)
             },
+            //для передачи из дочернего компонента в родительский
             onStepUpdate(newData){
                 this.mark = newData;
-            }
+            },
+            //проверить форму на ошибки
+            checkForm:function() {
+                //Если нет имени, то выйдет ошибка
+                if(!this.author) this.errors.push("authorError");
+                if(!this.text) this.errors.push("textError");
+                if(!this.errors.length){
+                    console.log(this.errors)
+                    this.$store.state.showloader=true;
+                    setTimeout(()=>{
+                        this.addNewReview()
+                        this.$store.state.showloader=false;
+                    },1000)
+                }
+            },
         },
         computed:{
             basket(){

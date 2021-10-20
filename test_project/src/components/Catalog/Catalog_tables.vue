@@ -1,3 +1,4 @@
+<!--Каталог столов-->
 <template>
     <div class="catalog" >
         <Product v-bind:key="item.id"
@@ -11,7 +12,9 @@
     export default {
         name: "CatalogTables",
         components: {Product},
-        computed: {//вычисляемое свойство
+        //вычисляемое свойство
+        computed: {
+            //получаем все столы, данные всегда актуальны
             products(){
                 return this.$store.getters.getCatalogTables
             }

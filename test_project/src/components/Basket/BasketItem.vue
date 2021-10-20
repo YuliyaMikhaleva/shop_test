@@ -1,3 +1,4 @@
+<!--Товар в корзине-->
 <template>
         <div class="newProducts">
             <div class="basketItem" >
@@ -8,10 +9,7 @@
                     <button @click="deleteFromBasket" class="basketItem_txt_button">Убрать из корзины</button>
                 </div>
          </div>
-
-
     </div>
-<!---->
 </template>
 
 <script>
@@ -19,6 +17,7 @@
         name: "BasketItem",
         props: ['cartItem'],
         methods:{
+            // удаление товара из корзины
             deleteFromBasket(){
                 this.$store.commit('deleteProduct', this.cartItem);
                 console.log(this.$store.state.basket)

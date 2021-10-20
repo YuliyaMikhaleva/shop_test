@@ -1,3 +1,4 @@
+<!--Каталог светильников-->
 <template>
     <div class="catalog" >
         <Product v-bind:key="item.id"
@@ -9,11 +10,13 @@
 <script>
     import Product from "./Product";
     export default {
-        name: "CatalogChairs",
+        name: "CatalogLamps",
         components: {Product},
-        computed: {//вычисляемое свойство
+        //вычисляемое свойство
+        computed: {
+            //получаем все светильники, данные всегда актуальны
             products(){
-                return this.$store.getters.getCatalogChairs
+                return this.$store.getters.getCatalogLamps
             }
         },
     }

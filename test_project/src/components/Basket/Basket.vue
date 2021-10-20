@@ -1,3 +1,4 @@
+<!--Корзина со всеми выбранными товарами-->
 <template>
     <div class="basket">
         <BasketItem v-bind:key="good.id" v-for="good of basket"

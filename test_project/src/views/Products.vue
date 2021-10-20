@@ -9,11 +9,11 @@
 </template>
 
 <script>
-    import CatalogChairs from "../components/Catalog_chairs";
-    import CatalogLamps from "../components/Catalog_lamps";
-    import CatalogSofas from "../components/Catalog_sofas";
-    import CatalogTables from "../components/Catalog_tables";
-    import ZeroComponent from "../components/ZeroComponent";
+    import CatalogChairs from "../components/Catalog/Catalog_chairs";
+    import CatalogLamps from "../components/Catalog/Catalog_lamps";
+    import CatalogSofas from "../components/Catalog/Catalog_sofas";
+    import CatalogTables from "../components/Catalog/Catalog_tables";
+    import ZeroComponent from "../components/Catalog/ZeroComponent";
     export default {
         name: "Chairs",
         components: {ZeroComponent, CatalogTables, CatalogSofas, CatalogLamps, CatalogChairs},
