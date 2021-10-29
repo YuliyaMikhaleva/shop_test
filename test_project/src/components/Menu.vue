@@ -1,23 +1,23 @@
 <!--Боковое меню сайта-->
 <template>
-    <div class="menu">
-        <CatalogCategoriesMebel v-if="$store.state.activeLink === 'Мебель'" />
-        <CatalogCategoriesElectro v-if="$store.state.activeLink === 'Электроприборы'" />
-    </div>
+    <nav class="menu">
+        <!-- eslint-disable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
+        <MenuItem v-if="$store.state.activeLink === 'Электроприборы'"  v-bind:key="group.id" v-bind:category="group" v-for="group of catalogElectro" />
+        <MenuItem v-if="$store.state.activeLink === 'Мебель'" v-bind:key="group.id" v-bind:category="group" v-for="group of catalogMebel" />
+    </nav>
 </template>
 
 <script>
-    import CatalogCategoriesMebel from "./Catalog/Catalog_categories_mebel";
-    import CatalogCategoriesElectro from "./Catalog/Catalog_categories_electro";
+    import MenuItem from "./MenuItem";
     export default {
         name: "Menu",
-        components: {CatalogCategoriesElectro, CatalogCategoriesMebel},
+        components: {MenuItem},
         computed: {//вычисляемое свойство
-            products(){
-                return this.$store.getters.getCatalogCategoriesMebel;
+            catalogElectro(){
+                return this.$store.getters.getMenuItemsElectro
             },
-            product(){
-                return this.$store.getters.getCatalogCategoriesElectro;
+            catalogMebel(){
+                return this.$store.getters.getMenuItemsMebel
             }
         },
     }

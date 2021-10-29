@@ -6,48 +6,45 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    chairs:[],
-    tables:[],
-    sofas:[],
-    lamps:[],
-    groups:[],
-    categoriesMebel:[],
-    categoriesElectro:[],
+    products:[{name,value:[]}],//новый массив товаров со вложенностями
     basket:[],
     activeLink:'Электроприборы',
-    activeCategoryMebel:'Диваны',
+    activeCategoryMebel:'Стулья',
     activeCategoryElectro:'Светильники',
     infoAboutProduct:[],
     showloader:true
   },
   getters:{
+    //кнопки меню (слева)
+    getMenuItemsElectro(state){
+        return state.products[0].value
+    },
+    //кнопки меню (слева)
+     getMenuItemsMebel(state){
+        return state.products[1].value
+    },
+    //кнопки навигации (сверху)
+    getHeaderItems(state){
+        return state.products
+    },
+    getCatalogVentilators(state){
+        return state.products[0].value[1].value
+    },
     //получение каталога стульев
     getCatalogChairs(state){
-      return state.chairs
+        return state.products[1].value[0].value
     },
       //получение каталога столов
     getCatalogTables(state){
-      return state.tables
+        return state.products[1].value[2].value
     },
       //получить каталог диванов
     getCatalogSofas(state){
-      return state.sofas
+        return state.products[1].value[1].value
     },
       //получить каталог светильников
     getCatalogLamps(state){
-      return state.lamps
-    },
-      //получить каталог групп товаров (мебель/электроприборы)
-    getCatalogGroups(state){
-      return state.groups
-    },
-      //получить категории мебели
-    getCatalogCategoriesMebel(state){
-        return state.categoriesMebel
-    },
-      //получить категории электроприборов
-    getCatalogCategoriesElectro(state){
-        return state.categoriesElectro
+        return state.products[0].value[0].value
     },
       //получить содержимое корзны
     getCart(state){
@@ -57,16 +54,9 @@ export default new Vuex.Store({
     getInfo(state){
         return state.infoAboutProduct
     }
-
   },
   mutations: {
-    setCatalogChairs(state, payload) {state.chairs = [...state.chairs, ...payload] },//установка каталога стульев
-    setCatalogTables(state, payload) {state.tables = [...state.tables, ...payload] },//установка каталога столов
-    setCatalogSofas(state, payload) {state.sofas = [...state.sofas, ...payload] },//установка каталога диванов
-    setCatalogLamps(state, payload) {state.lamps = [...state.lamps, ...payload] },//установка каталога светильников
-    setCatalogGroups(state, payload) {state.groups = [...state.groups, ...payload] },//установка каталога групп товаров
-    setCatalogCategoriesMebel(state, payload) {state.categoriesMebel = [...state.categoriesMebel, ...payload] },//установка каталога категорий мебели
-    setCatalogCategoriesElectro(state, payload) {state.categoriesElectro = [...state.categoriesElectro, ...payload] },//установка каталога категорий электро
+    setProducts(state, payload){state.products = [ ...payload]},//добавляем продукты в стейт
     setBasket(state,payload){ state.basket = [...state.basket, ...payload]},
       //добавить в корзину
     addToCart(state, product) {
@@ -91,75 +81,45 @@ export default new Vuex.Store({
     }
   },
   actions: {
-      //загрузка каталога стульев с API
-    loadCatalogChairs({commit}){//передаем объекь для работы со стейтом, и с помощью деструктуризации передаем метод этого объекта - commit - вызывает какие-то мутации
-      return fetch('http://test1.web-gu.ru/')
-          .then(response => response.json())
-          .then(data => {
-            const chairs = data.filter((e) => e.parent_id === 2)
-            console.log("chairs: ", chairs);
-            commit('setCatalogChairs',chairs)
-          });
-    },
-      //загрузка каталога столов с API
-      loadCatalogTables({commit}){//передаем объекь для работы со стейтом, и с помощью деструктуризации передаем метод этого объекта - commit - вызывает какие-то мутации
-      return fetch('http://test1.web-gu.ru/')
-          .then(response => response.json())
-          .then(data => {
-            const tables = data.filter((e) => e.parent_id === 4)
-            console.log("tables: ", tables);
-            commit('setCatalogTables',tables)
-          });
-    },
-      //загрузка каталога диванов с API
-      loadCatalogSofas({commit}){//передаем объекь для работы со стейтом, и с помощью деструктуризации передаем метод этого объекта - commit - вызывает какие-то мутации
-      return fetch('http://test1.web-gu.ru/')
-          .then(response => response.json())
-          .then(data => {
-            const sofas = data.filter((e) => e.parent_id === 3)
-            console.log("sofas: ", sofas);
-            commit('setCatalogSofas',sofas)
-          });
-    },
-      //загрузка каталога светильников с API
-      loadCatalogLamps({commit}){//передаем объекь для работы со стейтом, и с помощью деструктуризации передаем метод этого объекта - commit - вызывает какие-то мутации
-      return fetch('http://test1.web-gu.ru/')
-          .then(response => response.json())
-          .then(data => {
-            const lamps = data.filter((e) => e.parent_id === 15)
-            console.log("lamps: ", lamps);
-            commit('setCatalogLamps',lamps)
-          });
-    },
-      //загрузка каталога групп товаров с API
-      loadCatalogGroups({commit}){//передаем объекь для работы со стейтом, и с помощью деструктуризации передаем метод этого объекта - commit - вызывает какие-то мутации
-      return fetch('http://test1.web-gu.ru/')
-          .then(response => response.json())
-          .then(data => {
-            const products = data.filter((e) => e.parent_id === -1)
-            console.log("groupsProducts: ", products);
-            commit('setCatalogGroups',products)
-          });
-    },
-      //загрузка каталога категорий мебели с API
-      loadCatalogCategoriesMebel({commit}){//передаем объекь для работы со стейтом, и с помощью деструктуризации передаем метод этого объекта - commit - вызывает какие-то мутации
-       return fetch('http://test1.web-gu.ru/')
-           .then(response => response.json())
-           .then(data => {
-             const categories = data.filter((e) => e.parent_id === 100)
-             console.log("CategoriesMebel: ", categories);
-             commit('setCatalogCategoriesMebel',categories)
-           });
-      },
-      //загрузка каталога категорий электро с API
-      loadCatalogCategoriesElectro({commit}){//передаем объекь для работы со стейтом, и с помощью деструктуризации передаем метод этого объекта - commit - вызывает какие-то мутации
+      //загрузка товаров с API
+      loadProducts({commit}) {
           return fetch('http://test1.web-gu.ru/')
               .then(response => response.json())
-              .then(data => {
-                  const categories = data.filter((e) => e.parent_id === 14)
-                  console.log("CategoriesElectro: ", categories);
-                  commit('setCatalogCategoriesElectro',categories)
-              });
+              .then(result => JSON.parse(JSON.stringify(result)))
+              .then(data => {//data - наш изначальный массив
+                  console.log(data)
+                  let categories = [...data.filter((e) => e.parent_id === -1)];//выведутся: электрориборы и мебель
+                  let subcategoriesMebel = [...data.filter((e) => e.parent_id === 100)];//выведутся: диваны, столы, стулья
+                  //меняем местами, чтобы получилось: стулья, диваны, столы
+                  /*eslint no-self-assign: ["error", {"props": false}]*/
+                  [subcategoriesMebel[0],subcategoriesMebel[1],subcategoriesMebel[2]]=[subcategoriesMebel[2],subcategoriesMebel[0],subcategoriesMebel[1]];
+                  let subcategoriesElectro = [...data.filter((e) => e.parent_id === 14)];//выведутся: светильники, вентиляторы
+                  let chairs = [...data.filter((e) => e.parent_id === 2)];//названия стульев
+                  let sofas = [...data.filter((e) => e.parent_id === 3)];//названия диванов
+                  let tables = [...data.filter((e) => e.parent_id === 4)];//названия столов
+                  let lamps = [...data.filter((e) => e.parent_id === 15)];//названия светильников
+                  let ventilators = [...data.filter((e) => e.parent_id === 10)];//пустой массив вентиляторов
+
+                  let products = [...categories.map((element) => Object.assign({
+                      name:element.name,
+                      value:[]
+                  }))]
+                  products[0].value = [...subcategoriesElectro.map((el) => Object.assign({
+                      name:el.name,
+                      value:[]
+                  }))]
+                  products[1].value = [...subcategoriesMebel.map((el) => Object.assign({
+                      name:el.name,
+                      value:[]
+                  }))]
+                  products[0].value[0].value = lamps;//светильники
+                  products[0].value[1].value = ventilators;//вентиляторы
+                  products[1].value[1].value = sofas;//диваны
+                  products[1].value[2].value = tables;//столы
+                  products[1].value[0].value = chairs;//стулья
+                  console.log('Группы товаров:', products)//Массив групп товаров (электроприборы/мебель)
+                  commit('setProducts',JSON.parse(JSON.stringify(products)));
+              })
       },
       //загрузить корзину
     loadToCart({commit}, product) {
@@ -182,6 +142,7 @@ export default new Vuex.Store({
         createPersistedState({
             paths:['basket']
         }),
-    ],
+
+  ],
 })
 

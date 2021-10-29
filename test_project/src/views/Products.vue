@@ -1,33 +1,39 @@
 <template>
         <div>
-                <CatalogChairs v-if="$store.state.activeLink === 'Мебель' && $store.state.activeCategoryMebel=== 'Стулья'" />
-                <CatalogLamps v-if="$store.state.activeLink === 'Электроприборы' && $store.state.activeCategoryElectro=== 'Светильники'"/>
-                <CatalogSofas v-if="$store.state.activeLink === 'Мебель' && $store.state.activeCategoryMebel=== 'Диваны'"/>
-                <CatalogTables v-if="$store.state.activeLink === 'Мебель' && $store.state.activeCategoryMebel=== 'Столы'"/>
-                <ZeroComponent v-if="$store.state.activeLink === 'Электроприборы' && $store.state.activeCategoryElectro === 'Вентиляторы' "/>
+                <Catalog v-if="$store.state.activeLink === 'Электроприборы' && $store.state.activeCategoryElectro=== 'Светильники'" v-bind:goods="lamps" />
+                <Catalog v-if="$store.state.activeLink === 'Мебель' && $store.state.activeCategoryMebel=== 'Стулья'" v-bind:goods="chairs"/>
+                <Catalog v-if="$store.state.activeLink === 'Мебель' && $store.state.activeCategoryMebel=== 'Диваны'" v-bind:goods="sofas"/>
+                <Catalog v-if="$store.state.activeLink === 'Мебель' && $store.state.activeCategoryMebel=== 'Столы'" v-bind:goods="tables"/>
+                <Catalog v-if="$store.state.activeLink === 'Электроприборы' && $store.state.activeCategoryElectro=== 'Вентиляторы'" v-bind:goods="ventilators"/>
         </div>
 </template>
 
 <script>
-    import CatalogChairs from "../components/Catalog/Catalog_chairs";
-    import CatalogLamps from "../components/Catalog/Catalog_lamps";
-    import CatalogSofas from "../components/Catalog/Catalog_sofas";
-    import CatalogTables from "../components/Catalog/Catalog_tables";
-    import ZeroComponent from "../components/Catalog/ZeroComponent";
+    import Catalog from "../components/Catalog/Catalog";
     export default {
-        name: "Chairs",
-        components: {ZeroComponent, CatalogTables, CatalogSofas, CatalogLamps, CatalogChairs},
+        name: "Products",
+        components: {
+                Catalog,
+        },
         computed: {//вычисляемое свойство
-            products(){
-                return [
-                        this.$store.getters.getCatalogChairs,
-                        this.$store.getters.getCatalogLamps,
-                        this.$store.getters.getCatalogSofas,
-                        this.$store.getters.getCatalogTables
-                ]
-            }
+            lamps(){
+                    return this.$store.getters.getCatalogLamps
+            },
+            chairs(){
+                    return this.$store.getters.getCatalogChairs
+            },
+            sofas(){
+                    return this.$store.getters.getCatalogSofas
+            },
+            tables(){
+                    return this.$store.getters.getCatalogTables
+            },
+            ventilators(){
+                    return this.$store.getters.getCatalogVentilators
+            },
         },
     }
+
 </script>
 
 <style scoped>

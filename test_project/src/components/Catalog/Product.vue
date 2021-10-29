@@ -1,6 +1,6 @@
 <!--Карточка товара в каталоге-->
 <template>
-    <div class="catalog_card" >
+    <article class="catalog_card" >
         <a type="button" data-bs-toggle="modal" data-bs-target="#productsTransition">
             <img  class="catalog_card_img" :src="product.img" width="353" height="246" alt="photo" />
         </a>
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </article>
 </template>
 
 <script>

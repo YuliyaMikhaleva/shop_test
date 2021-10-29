@@ -1,6 +1,6 @@
 <!--Шапка сайта-->
 <template>
-        <div>
+        <header>
             <div class="header">
                 <div class="header_block">
                     <span>shop</span>
@@ -13,7 +13,8 @@
                 </div>
                 <div class="header_block">
 <!--                    Здесь будут выведины группы товаров-->
-                    <CatalogGroups class="header_block_links"/>
+                    <HeaderButtons class="header_block_links"/>
+<!--                    <CatalogGroups class="header_block_links"/>-->
 
                     <a class="header_block_basket" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         <svg class="header_block_basket_svg" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,15 +33,16 @@
         <Modal_basket/>
     </div>
 
-        </div>
+        </header>
 </template>
 
 <script>
-    import CatalogGroups from "./Catalog/Catalog_groups";
+    // import CatalogGroups from "./Catalog/Catalog_groups";
     import Modal_basket from "./Basket/Modal_basket";
+    import HeaderButtons from "./HeaderButtons";
     export default {
         name: "Header",
-        components: {Modal_basket, CatalogGroups},
+        components: {HeaderButtons, Modal_basket},
         computed: {//вычисляемое свойство
             //возвращает всегда актуальное количество товаров в корзине
             counter(){

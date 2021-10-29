@@ -42,7 +42,7 @@ const routes = [
   },
   {
     path: '/Вентиляторы',
-    name: 'Lamps',
+    name: 'Ventilators',
     component: Products
   },
 ]

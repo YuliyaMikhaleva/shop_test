@@ -21,13 +21,7 @@
         },
         mounted() {
             this.showToggle()
-            this.$store.dispatch('loadCatalogChairs');
-            this.$store.dispatch('loadCatalogTables');
-            this.$store.dispatch('loadCatalogSofas');
-            this.$store.dispatch('loadCatalogLamps');
-            this.$store.dispatch('loadCatalogGroups');
-            this.$store.dispatch('loadCatalogCategoriesMebel');
-            this.$store.dispatch('loadCatalogCategoriesElectro');
+            this.$store.dispatch('loadProducts');
             this.$store.dispatch('loadToCart');
             this.$store.dispatch('loadInfoAboutProduct');
         },
@@ -46,6 +40,15 @@
                 }, 1000);
             },
         },
+        created () {// Считываем информацию о статусе в localStorage, когда страница загружается
+            localStorage.getItem("userMsg") && this.$store.replaceState(Object.assign(this.$store.state,JSON.parse(localStorage.getItem("userMsg"))));
+
+            // Сохраняем информацию в vuex в localStorage при обновлении страницы
+            window.addEventListener("beforeunload",()=>{
+                localStorage.setItem("userMsg",JSON.stringify(this.$store.state))
+            })
+        },
+
     }
 </script>
 
