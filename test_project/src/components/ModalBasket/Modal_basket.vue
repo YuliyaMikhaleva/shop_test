@@ -54,7 +54,8 @@
 <!--                                    Указание на ошибку пустого поля-->
                             <ErrorFormBasket :errors="errors"/>
 
-                            <button type="submit" class="header_basket_content_form_btn">Заказать</button>
+                            <Button :type="button" value="Заказать" :class="$style.button"/>
+<!--                            <button type="submit" class="header_basket_content_form_btn">Заказать</button>-->
                         </form>
 
 
@@ -74,11 +75,12 @@
 </template>
 
 <script>
-    import Basket from "./Basket";
-    import ErrorFormBasket from "./ErrorFormBasket";
+    import Basket from "../Basket/Basket";
+    import ErrorFormBasket from "../Basket/ErrorFormBasket";
+    import Button from "../Button/Button";
     export default {
         name: "Modal_basket",
-        components: {ErrorFormBasket, Basket},
+        components: {Button, ErrorFormBasket, Basket},
         data(){
             return {
                 showParametrs:true,
@@ -134,6 +136,6 @@
         }
 </script>
 
-<style scoped>
-
+<style lang="scss" module>
+@import "ModalBasket.module.scss";
 </style>

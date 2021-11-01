@@ -1,5 +1,5 @@
 <template>
-    <button :class="$style.button" @click="addToCart">
+    <button :type="type" :class="$style.button" @click="method">
 
                     {{text}}
         <svg v-if="isLoading===true"  :class="$style.button__svg" width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,10 +12,13 @@
 <script>
     export default {
         name: "Button",
-        props:['isLoading', 'addToCart'],
+        props:['isLoading', 'method','type','value'],
         computed:{
             text(){
-                if (this.isLoading === false){
+                console.log(this.value)
+                if (this.value){
+                    return this.value
+                } else if (this.isLoading === false){
                     return "Добавить в корзину"
                 } else if (this.isLoading === 'pending'){
                     return "..."

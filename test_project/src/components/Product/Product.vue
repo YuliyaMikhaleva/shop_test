@@ -9,7 +9,7 @@
         </a>
         <span class="catalog_card_price"><span> {{ product.price }}</span> ₽</span>
 
-        <Button :addToCart="addToCart" :isLoading="isLoading" class="button"/>
+        <Button :type="button" :method="addToCart" :isLoading="isLoading" :class="$style.button"/>
 <!--&lt;!&ndash;        Если товар добавлен, будет кнопка "добавлено"&ndash;&gt;-->
 <!--        <button v-if="isAdded === false" @click="addToCart" class="catalog_card_button" style="width: 219px">Добавить в корзину</button>-->
 <!--&lt;!&ndash;        Если товар загружается, будет кнопка загрузки&ndash;&gt;-->
@@ -97,22 +97,10 @@
                 console.log(this.isAdded)
                 return this.isAdded
             },
-            title(){
-                if (this.isLoading === false){
-                    return "Добавить в корзину"
-                } else if (this.isLoading === true){
-                    return "..."
-                } else {
-                    return "В корзине"
-                }
-            }
-
-
-
         }
     }
 </script>
 
-<style scoped>
+<style lang="scss" module>
 @import "Product.module.scss";
 </style>

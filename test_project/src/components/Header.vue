@@ -38,7 +38,7 @@
 
 <script>
     // import CatalogGroups from "./Catalog/Catalog_groups";
-    import Modal_basket from "./Basket/Modal_basket";
+    import Modal_basket from "./ModalBasket/Modal_basket";
     import HeaderButtons from "./HeaderButtons";
     export default {
         name: "Header",

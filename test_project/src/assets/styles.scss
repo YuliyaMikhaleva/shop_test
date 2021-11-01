@@ -178,24 +178,24 @@ body{
         &_address{
           width: 100%;
         }
-        &_btn{
-          margin-top: 35px;
-          background-color: $redColor;
-          color: white;
-          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
-          border-radius: 5px;
-          border: 0;
-          width: 219px;
-          padding: 7px;
-          box-sizing: border-box;
-          cursor: pointer;
-          &:hover{
-            opacity: 0.7;
-          }
-          &:active{
-            opacity: 1;
-          }
-        }
+        //&_btn{
+        //  margin-top: 35px;
+        //  background-color: $redColor;
+        //  color: white;
+        //  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+        //  border-radius: 5px;
+        //  border: 0;
+        //  width: 219px;
+        //  padding: 7px;
+        //  box-sizing: border-box;
+        //  cursor: pointer;
+        //  &:hover{
+        //    opacity: 0.7;
+        //  }
+        //  &:active{
+        //    opacity: 1;
+        //  }
+        //}
       }
       &_resultOrder{
         width: 100%;
@@ -265,29 +265,29 @@ body{
     font-family: Roboto_bold;
     font-size: 18px;
   }
-  &_button{
-    margin: 0 0 26px 30px;
-    background-color: $redColor;
-    color: white;
-    border: 0;
-    height: 40px;
-    line-height: 40px;
-    padding: 0 18px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    font-size: 18px;
-    min-width: 169px;
-    &:hover{
-      cursor: pointer;
-      opacity: 0.7;
-    }
-    &:active{
-      opacity: 1;
-    }
-    &_svg{
-      margin-left:14px ;
-    }
-  }
+  //&_button{
+  //  margin: 0 0 26px 30px;
+  //  background-color: $redColor;
+  //  color: white;
+  //  border: 0;
+  //  height: 40px;
+  //  line-height: 40px;
+  //  padding: 0 18px;
+  //  box-sizing: border-box;
+  //  border-radius: 10px;
+  //  font-size: 18px;
+  //  min-width: 169px;
+  //  &:hover{
+  //    cursor: pointer;
+  //    opacity: 0.7;
+  //  }
+  //  &:active{
+  //    opacity: 1;
+  //  }
+  //  &_svg{
+  //    margin-left:14px ;
+  //  }
+  //}
 }
 .catalog{
   display: flex;
