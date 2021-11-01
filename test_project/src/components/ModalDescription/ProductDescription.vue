@@ -85,8 +85,8 @@
             <textarea :class="[errors.indexOf('authorError') ? errorClass:'', normClassArea]"  name="review" id="review" v-model="text">
                 Он подходит именно для питья, для утоления жажды. Этот квас сильногазированный. После вскрытия бутылки газ сохраняется в ней в течении суток. Квас сладкий, послевкусие придаёт небольшую кислинку. Квас тёмного цвета.
             </textarea>
-
-            <button  @click="checkForm" class="form_review_btn">Отправить отзыв</button>
+            <Button :method="checkForm" value="Отправить отзыв"/>
+<!--            <button  @click="checkForm" class="form_review_btn">Отправить отзыв</button>-->
         </div>
 
     </div>
@@ -96,10 +96,11 @@
     import StarRating from "./StarRating";
     import ProductParametrs from "./ProductParametrs";
     import ProductReviews from "./ProductReviews";
+    import Button from "../Button/Button";
     export default {
         name: "ProductDescription",
         props:['product'],
-        components: {ProductReviews, ProductParametrs, StarRating},
+        components: {Button, ProductReviews, ProductParametrs, StarRating},
         data(){
             return {
                 isAdded:false,//добавлен ли товар
