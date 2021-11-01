@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <Catalog v-bind:goods="lamps"/>
-    </div>
+    <section :class="$style.products">
+        <Catalog :class="$style.products__catalog" v-bind:goods="lamps"/>
+    </section>
 </template>
 
 <script>
@@ -17,6 +17,6 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="scss" module>
+    @import "Products.module";
 </style>
