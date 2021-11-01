@@ -8,17 +8,19 @@
             <h3 class="catalog_card_title">{{ product.name }}</h3>
         </a>
         <span class="catalog_card_price"><span> {{ product.price }}</span> ₽</span>
-<!--        Если товар добавлен, будет кнопка "добавлено"-->
-        <button v-if="isAdded === false" @click="addToCart" class="catalog_card_button" style="width: 219px">Добавить в корзину</button>
-<!--        Если товар загружается, будет кнопка загрузки-->
-        <button v-if="isAdded === 'pending'" @click="addToCart" class="catalog_card_button" style="width: 219px">...</button>
-<!--        Если товар не добавлен, будет кнопка "добавить в корзину"-->
-        <button v-if="isAdded === true" @click="deleteFromBasket" class="catalog_card_button">В корзине
 
-            <svg class="catalog_card_button_svg" width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.99147 13.4124L1.77601 8.12603L0 9.9135L6.99147 17L22 1.78747L20.2365 0L6.99147 13.4124Z" fill="white"/>
-            </svg>
-        </button>
+        <Button :addToCart="addToCart" :isLoading="isLoading" class="button"/>
+<!--&lt;!&ndash;        Если товар добавлен, будет кнопка "добавлено"&ndash;&gt;-->
+<!--        <button v-if="isAdded === false" @click="addToCart" class="catalog_card_button" style="width: 219px">Добавить в корзину</button>-->
+<!--&lt;!&ndash;        Если товар загружается, будет кнопка загрузки&ndash;&gt;-->
+<!--        <button v-if="isAdded === 'pending'" @click="addToCart" class="catalog_card_button" style="width: 219px">...</button>-->
+<!--&lt;!&ndash;        Если товар не добавлен, будет кнопка "добавить в корзину"&ndash;&gt;-->
+<!--        <button v-if="isAdded === true" @click="deleteFromBasket" class="catalog_card_button">В корзине-->
+
+<!--            <svg class="catalog_card_button_svg" width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                <path d="M6.99147 13.4124L1.77601 8.12603L0 9.9135L6.99147 17L22 1.78747L20.2365 0L6.99147 13.4124Z" fill="white"/>-->
+<!--            </svg>-->
+<!--        </button>-->
         <div class="modal fade" id="productsTransition" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="productsTransitionLabel" aria-hidden="true">
             <div style="display: flex; justify-content: flex-end">
                 <div class="modal-dialog header_basket">
@@ -46,9 +48,10 @@
 
 <script>
     import ProductDescription from "../ModalDescription/ProductDescription";
+    import Button from "../Button/Button";
     export default {
         name: "Product",
-        components: {ProductDescription},
+        components: { Button, ProductDescription},
         props:['product'],
         data(){
             return {
@@ -66,11 +69,17 @@
         methods:{
             //добавить в корзину
             addToCart(){
-                this.$store.dispatch('loadToCart', this.product);
-                this.isAdded = 'pending';
-                setTimeout(() => {
-                    this.isAdded = true;
-                },1000)
+                console.log('FALSE')
+                if (this.isLoading === false){
+                    this.$store.dispatch('loadToCart', this.product);
+                    this.isAdded = 'pending';
+                    setTimeout(() => {
+                        this.isAdded = true;
+                    },1000)
+                } else {
+                    this.deleteFromBasket()
+                }
+
             },
             //удалить из корзины
             deleteFromBasket(){
@@ -84,6 +93,19 @@
             basket(){
                 return this.$store.getters.getCart
             },
+            isLoading(){
+                console.log(this.isAdded)
+                return this.isAdded
+            },
+            title(){
+                if (this.isLoading === false){
+                    return "Добавить в корзину"
+                } else if (this.isLoading === true){
+                    return "..."
+                } else {
+                    return "В корзине"
+                }
+            }
 
 
 
@@ -92,5 +114,5 @@
 </script>
 
 <style scoped>
-
+@import "Product.module.scss";
 </style>

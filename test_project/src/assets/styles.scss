@@ -1,15 +1,15 @@
 @import "./variables.scss";
 @font-face {
   font-family: Roboto_bold;
-  src: url("./fonts/roboto-bold.ttf");
+  src: url("~@/assets/fonts/roboto-bold.ttf");
 }
 @font-face {
   font-family: Roboto_regular;
-  src: url("./fonts/roboto-regular.ttf");
+  src: url("~@/assets/fonts/roboto-regular.ttf");
 }
 @font-face {
   font-family: Roboto_500;
-  src: url("./fonts/roboto/roboto-medium-500.ttf");
+  src: url("~@/assets/fonts/roboto/roboto-medium-500.ttf");
 }
 
 body{

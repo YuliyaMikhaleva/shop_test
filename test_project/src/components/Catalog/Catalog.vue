@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import Product from "./Product";
+    import Product from "../Product/Product";
     import ZeroComponent from "./ZeroComponent";
     export default {
         name: "Catalog",
