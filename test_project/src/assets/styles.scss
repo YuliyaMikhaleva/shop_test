@@ -324,63 +324,63 @@ body{
   color: red;
 }
 .basketItem{
-  border-bottom: 1px solid #E5E5E5;
-  padding-bottom: 22px;
-  box-sizing: border-box;
-  height: 119px;
-  margin-bottom: 21px;
+  //border-bottom: 1px solid #E5E5E5;
+  //padding-bottom: 22px;
+  //box-sizing: border-box;
+  //height: 119px;
+  //margin-bottom: 21px;
   &_img{
-    float: left;
-    border: 1px solid #E5E5E5;
-    border-radius: 10px;
-    box-sizing: border-box;
-    margin-right: 22px;
+    //float: left;
+    //border: 1px solid #E5E5E5;
+    //border-radius: 10px;
+    //box-sizing: border-box;
+    //margin-right: 22px;
   }
   &_txt{
-    font-size: 18px;
-    font-family: Roboto_regular;
-    font-weight: 500;
-    line-height: 21px;
-    color: $textColor;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
+    //font-size: 18px;
+    //font-family: Roboto_regular;
+    //font-weight: 500;
+    //line-height: 21px;
+    //color: $textColor;
+    //display: flex;
+    //flex-direction: column;
+    //justify-content: center;
+    //height: 100%;
     &_title{
-      display: block;
-      font-size: 18px;
-      margin-bottom: 7px;
-      line-height: 21px;
-      font-family: Roboto_regular;
-      display: block;
-      font-weight: bold;
+      //display: block;
+      //font-size: 18px;
+      //margin-bottom: 7px;
+      //line-height: 21px;
+      //font-family: Roboto_regular;
+      //display: block;
+      //font-weight: bold;
     }
     &_price{
-      display: block;
-      font-weight: bold;
-      display: block;
-      font-size: 18px;
-      margin-bottom: 7px;
-      line-height: 21px;
-      font-family: Roboto_regular;
-      display: block;
+      //display: block;
+      //font-weight: bold;
+      //display: block;
+      //font-size: 18px;
+      //margin-bottom: 7px;
+      //line-height: 21px;
+      //font-family: Roboto_regular;
+      //display: block;
     }
     &_button{
-      color: $redColor;
-      font-weight: bold;
-      font-size: 14px;
-      line-height: 16px;
-      border: 0;
-      background-color: transparent;
-      padding: 0;
-      display: block;
-      width: 128px;
-      &:hover{
-        opacity: 0.7;
-      }
-      &:active{
-        opacity: 1;
-      }
+      //color: $redColor;
+      //font-weight: bold;
+      //font-size: 14px;
+      //line-height: 16px;
+      //border: 0;
+      //background-color: transparent;
+      //padding: 0;
+      //display: block;
+      //width: 128px;
+      //&:hover{
+      //  opacity: 0.7;
+      //}
+      //&:active{
+      //  opacity: 1;
+      //}
     }
   }
 }

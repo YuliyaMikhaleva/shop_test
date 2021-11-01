@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import ErrorFormBasket from "../Basket/ErrorFormBasket";
+    import ErrorFormBasket from "../ErrorFromBasket/ErrorFormBasket";
     export default {
         name: "Input",
         components: {ErrorFormBasket},
