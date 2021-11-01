@@ -1,0 +1,20 @@
+.form{
+  font-size: 16px;
+  line-height: 19px;
+  font-family: Roboto_regular;
+  &__wrp{
+    display: flex;
+    justify-content: flex-start;
+  }
+  &__button{
+    margin-top: 35px;
+    width: 219px;
+  }
+  &__block{
+    width: 100%;
+    &_item{
+      margin-right: 23px;
+      width: 100%;
+    }
+  }
+}

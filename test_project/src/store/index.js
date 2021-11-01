@@ -53,6 +53,12 @@ export default new Vuex.Store({
       //получить информацию о продукте
     getInfo(state){
         return state.infoAboutProduct
+    },
+    getShowloader(state){
+        return state.showloader
+    },
+    getBasket(state){
+        return state.basket
     }
   },
   mutations: {
@@ -78,6 +84,14 @@ export default new Vuex.Store({
       //установить в стейт информацию о продукте
     setInfoAboutProduct(state, payload){
         state.infoAboutProduct = [...state.infoAboutProduct, ...payload]
+    },
+      //включить шоулоадер
+    turnOnShowloader(state){
+        state.showloader = true;
+    },
+      //выключить шоулоадре
+    turnOfShowLoader(state){
+        state.showloader = false
     }
   },
   actions: {

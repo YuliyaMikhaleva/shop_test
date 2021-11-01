@@ -139,44 +139,44 @@ body{
         margin-bottom: 28px;
       }
       &_form{
-        font-size: 16px;
-        line-height: 19px;
-        font-family: Roboto_regular;
+        //font-size: 16px;
+        //line-height: 19px;
+        //font-family: Roboto_regular;
         &_phone{
-          margin-right: 23px;
-          width: 100%;
+          //margin-right: 23px;
+          //width: 100%;
         }
         &_block{
-          width: 100%;
+          //width: 100%;
           &_label{
-            display: block;
-            margin-bottom: 7px;
+            //display: block;
+            //margin-bottom: 7px;
           }
           &_input{
-            height: 41px;
-            border: 1px solid #898989;
-            box-sizing: border-box;
-            border-radius: 5px;
-            padding: 12px 14px 10px 14px;
-            display: block;
-            width: 100%;
-            &::placeholder{
-              color: black;
-            }
-            &:last-child{
-              width: 100%;
-              max-width: 572px;
-            }
+            //height: 41px;
+            //border: 1px solid #898989;
+            //box-sizing: border-box;
+            //border-radius: 5px;
+            //padding: 12px 14px 10px 14px;
+            //display: block;
+            //width: 100%;
+            //&::placeholder{
+            //  color: black;
+            //}
+            //&:last-child{
+            //  width: 100%;
+            //  max-width: 572px;
+            //}
           }
           &_error{
-            color: $redColor;
-            margin: 5px 0 0 0 ;
-            font-size: 14px;
-            line-height: 16px;
+            //color: $redColor;
+            //margin: 5px 0 0 0 ;
+            //font-size: 14px;
+            //line-height: 16px;
           }
         }
         &_address{
-          width: 100%;
+          //width: 100%;
         }
         //&_btn{
         //  margin-top: 35px;

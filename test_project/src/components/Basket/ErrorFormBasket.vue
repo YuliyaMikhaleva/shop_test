@@ -2,7 +2,7 @@
 <template>
     <div v-if="errors.length">
          <span v-for="error in errors" v-bind:key="error">
-               <span v-if="error == 'nameError'"  class="header_basket_content_form_block_error">
+               <span v-if="error == 'nameError'"  class="error">
                     Поле не должно быть пустым
                </span>
          </span>
@@ -17,5 +17,9 @@
 </script>
 
 <style scoped>
-
+.error{
+    color: #FF6969;
+    font-size: 14px;
+    line-height: 16px;
+}
 </style>

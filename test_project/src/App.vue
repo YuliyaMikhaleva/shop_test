@@ -22,8 +22,8 @@
         mounted() {
             this.showToggle()
             this.$store.dispatch('loadProducts');
-            this.$store.dispatch('loadToCart');
-            this.$store.dispatch('loadInfoAboutProduct');
+            // this.$store.dispatch('loadToCart');
+            // this.$store.dispatch('loadInfoAboutProduct');
         },
         methods:{
             showToggle(){
