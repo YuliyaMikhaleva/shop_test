@@ -10,7 +10,7 @@
 </template>
 
 <script>
-    import Header from "./components/Header";
+    import Header from "./components/Header/Header";
     import Menu from "./components/Menu";
     import Preloader from "./components/Preloader";
     export default {

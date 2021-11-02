@@ -1,5 +1,5 @@
 <template>
-    <div class="input-block">
+    <div :class="$style['input-block']">
         <label :for="element" :class="$style['input-block__label']">{{label}}</label>
         <input :class="[errors.indexOf(error) ? $style['input-block__error']  : $style['input-block__input'] ]"
                 type="text" :id="element" @input="$emit('input', $event.target.value)" :value="element">

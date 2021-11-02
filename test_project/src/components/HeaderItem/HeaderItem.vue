@@ -1,6 +1,6 @@
 <!--1 элемент навигации в шапке сайта(сверху)-->
 <template>
-    <div v-bind:class="[this.$store.state.activeLink===group.name ? activeClass: '', otherClass]"
+    <div v-bind:class="[this.$store.getters.getActiveLink===group.name ? $style['item__active'] : $style['item']]"
          @click="changeActiveLink">
         <router-link :to="group.name" style="text-decoration: none; color: inherit;"
         >{{ group.name }}</router-link>
@@ -12,22 +12,15 @@
     export default {
         name: "HeaderItem",
         props:['group'],
-        data (){
-            return {
-                activeClass: 'active',
-                otherClass: 'header_block_links_item',
-            }
-        },
         methods: {
             //изменение активной ссылки, соответственно будут меняться стили "кнопки"
             changeActiveLink(){
-                this.$store.state.activeLink = this.group.name;
-                console.log(this.$store.state.activeLink )
+                this.$store.commit('changeActiveLink', this.group.name);
             }
         }
     }
 </script>
 
-<style scoped>
-
+<style lang="scss" module>
+    @import "HeaderItem.module";
 </style>

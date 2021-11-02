@@ -1,0 +1,23 @@
+.item{
+  font-family: "Roboto_regular";
+  &:hover{
+    border-bottom: 4px solid #ff9c9c;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  &:active{
+    border-bottom: 4px solid white;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  &:focus{
+    border-bottom: 3px solid black;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  &__active{
+    border-bottom: 4px solid $redColor;
+    box-sizing: border-box;
+    font-weight: normal;
+  }
+}

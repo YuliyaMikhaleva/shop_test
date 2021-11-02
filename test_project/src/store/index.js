@@ -59,6 +59,9 @@ export default new Vuex.Store({
     },
     getBasket(state){
         return state.basket
+    },
+    getActiveLink(state){
+        return state.activeLink
     }
   },
   mutations: {
@@ -92,6 +95,9 @@ export default new Vuex.Store({
       //выключить шоулоадре
     turnOfShowLoader(state){
         state.showloader = false
+    },
+    changeActiveLink(state, payload){
+        state.activeLink = payload
     }
   },
   actions: {
