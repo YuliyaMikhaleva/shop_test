@@ -1,47 +1,29 @@
 <!--Карточка товара в каталоге-->
 <template>
-    <article class="catalog_card" >
-        <a type="button" data-bs-toggle="modal" data-bs-target="#productsTransition">
-            <img  class="catalog_card_img" :src="product.img" width="353" height="246" alt="photo" />
+    <article :class="$style['catalog-card']" >
+        <a :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" data-bs-target="#productsTransition">
+            <img  :class="$style['catalog-card__img']" :src="product.img" width="353" height="246" alt="photo" />
         </a>
-        <a type="button" data-bs-toggle="modal" data-bs-target="#productsTransition">
-            <h3 class="catalog_card_title">{{ product.name }}</h3>
+        <a :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" data-bs-target="#productsTransition">
+            <h3 :class="$style['catalog-card__title']" >{{ product.name }}</h3>
         </a>
-        <span class="catalog_card_price"><span> {{ product.price }}</span> ₽</span>
+        <span :class="$style['catalog-card__price']" ><span> {{ product.price }}</span> ₽</span>
 
-        <Button type="button" :method="addToCart" :isLoading="isLoading" :class="$style.button"/>
+        <Button :class="$style['catalog-card__button']" type="button" :method="addToCart" :isLoading="isLoading" />
 
         <div class="modal fade" id="productsTransition" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="productsTransitionLabel" aria-hidden="true">
-            <div style="display: flex; justify-content: flex-end">
-                <div class="modal-dialog header_basket">
-                    <div class="modal-content ">
-                        <div class="header_basket_content">
-                            <div class="header_basket_content_top">
-                                <h5 class="header_basket_content_top_title">Информация</h5>
-                                <button class="header_basket_content_top_btn" type="button" data-bs-dismiss="modal">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M20 2.01429L17.9857 0L10 7.98571L2.01429 0L0 2.01429L7.98571 10L0 17.9857L2.01429 20L10 12.0143L17.9857 20L20 17.9857L12.0143 10L20 2.01429Z" fill="black"/>
-                                    </svg>
-                                </button>
-                            </div>
 
-<!--                            Всплывающее окно с описанием товара-->
-                            <ProductDescription :product="product"/>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ModalDescription :class="$style.modal" :product="product"/>
         </div>
     </article>
 </template>
 
 <script>
-    import ProductDescription from "../ModalDescription/ProductDescription";
     import Button from "../Button/Button";
+    import ModalDescription from "../ModalDescription/ModalDescription";
     export default {
         name: "Product",
-        components: { Button, ProductDescription},
+        components: {ModalDescription, Button},
         props:['product'],
         data(){
             return {

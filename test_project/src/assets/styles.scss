@@ -126,8 +126,8 @@ body{
         //justify-content: space-between;
         //margin-bottom: 25px;
         //font-weight: bold;
-        //&_title{
-        //}
+        &_title{
+        }
         &_btn{
           //border: 0;
           //background-color: transparent;
@@ -244,26 +244,26 @@ body{
   height: 100vh;
 }
 .catalog_card{
-  width: 353px;
-  height: 418px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
-  font-family: Roboto_regular;
-  margin: 0 0 38px 0;
-  background-color: white;
+  //width: 353px;
+  //height: 418px;
+  //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+  //border-radius: 10px;
+  //font-family: Roboto_regular;
+  //margin: 0 0 38px 0;
+  //background-color: white;
   &:last-of-type{
     margin: 0 0 38px 0;
   }
-  &_title{
-    margin: 20px 0 10px 30px;
-    font-weight: bold;
-    font-size: 18px;
-  }
+  //&_title{
+  //  margin: 20px 0 10px 30px;
+  //  font-weight: bold;
+  //  font-size: 18px;
+  //}
   &_price{
-    display: block;
-    margin: 0 0 34px 30px;
-    font-family: Roboto_bold;
-    font-size: 18px;
+    //display: block;
+    //margin: 0 0 34px 30px;
+    //font-family: Roboto_bold;
+    //font-size: 18px;
   }
   //&_button{
   //  margin: 0 0 26px 30px;

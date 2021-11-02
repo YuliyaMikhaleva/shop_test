@@ -16,5 +16,5 @@
 </script>
 
 <style lang="scss" module>
-@import "Catalog.module.scss";
+    @import "Catalog.module";
 </style>

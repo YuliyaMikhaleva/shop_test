@@ -1,14 +1,13 @@
-.сatalog{
-  //display: flex;
-  //flex-wrap: wrap;
-  //justify-content: space-evenly;
+.catalog{
   padding: 53px 37px 0 35px;
   box-sizing: border-box;
-  //width: 100%;
-  //margin-top: 60px;
-  //align-content: flex-start;
-  &__zeropage{
-    width: 100%;
-    max-width:1595px ;
-  }
+}
+.catalog__product{
+  width: 353px;
+  height: 418px;
+  margin: 0 0 38px 0;
+}
+.catalog__zeropage{
+  width: 100%;
+  max-width:1595px ;
 }

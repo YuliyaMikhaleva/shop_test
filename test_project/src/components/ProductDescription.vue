@@ -96,7 +96,7 @@
     import StarRating from "./StarRating";
     import ProductParametrs from "./ProductParametrs";
     import ProductReviews from "./ProductReviews";
-    import Button from "../Button/Button";
+    import Button from "./Button/Button";
     export default {
         name: "ProductDescription",
         props:['product'],
