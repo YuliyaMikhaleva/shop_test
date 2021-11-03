@@ -3,7 +3,7 @@
     <div>
         <div v-bind:class="[categoryName === category.name ? activeClass: '', otherClass]"
              @click="functionName">
-            <router-link :to="category.name" style="text-decoration: none; color: inherit;"><span class="menu_item">{{ category.name }}</span></router-link>
+            <router-link :to="category.name" style="text-decoration: none; color: inherit;"><span class="category">{{ category.name }}</span></router-link>
         </div>
     </div>
 </template>
@@ -48,5 +48,19 @@
 </script>
 
 <style scoped>
-
+    .category{
+        background-color: white;
+        display: block;
+        height: 54px;
+        border-bottom: 1px solid #E4E4E4;
+        box-sizing: border-box;
+        font-family: Roboto_regular;
+        line-height: 54px;
+        padding-left: 30px;
+        box-sizing: border-box;
+    }
+    .category:hover{
+        color: #FF6969;
+        cursor: pointer;
+    }
 </style>
