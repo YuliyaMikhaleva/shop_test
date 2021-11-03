@@ -532,7 +532,7 @@ body{
 //Звёздный рейтинг
 .star-rating{
   font-size: 0;
-  &_wrap{
+  &__wrap{
     display: inline-block;
     font-size: 1rem;
     &:after{
@@ -541,7 +541,7 @@ body{
       clear: both;
     }
   }
-  &_ico{
+  &__ico{
     float: right;
     padding-left: 2px;
     cursor: pointer;
@@ -550,13 +550,13 @@ body{
       padding-left: 0;
     }
   }
-  &_input{
+  &__input{
     display: none;
   }
 }
-.star-rating_ico:hover:before,
-.star-rating_ico:hover ~ .star-rating_ico:before,
-.star-rating_input:checked ~ .star-rating_ico:before
+.star-rating__ico:hover:before,
+.star-rating__ico:hover ~ .star-rating_ico:before,
+.star-rating__input:checked ~ .star-rating_ico:before
 {
   content: "\f006";
   color: #F1C450;
@@ -658,6 +658,6 @@ body{
 //  box-sizing: border-box;
 //}
 
-.errorClass{
-  border: 1px solid $redColor;
-}
+//.errorClass{
+//  border: 1px solid $redColor;
+//}

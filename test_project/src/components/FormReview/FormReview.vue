@@ -17,7 +17,7 @@
 </template>
 
 <script>
-    import StarRating from "../StarRating";
+    import StarRating from "../StarRating/StarRating";
     import Button from "../Button/Button";
     import Input from "../Input/Input";
     import ErrorFormBasket from "../ErrorFromBasket/ErrorFormBasket";
