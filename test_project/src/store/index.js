@@ -12,7 +12,8 @@ export default new Vuex.Store({
     activeCategoryMebel:'Стулья',
     activeCategoryElectro:'Светильники',
     infoAboutProduct:[],
-    showloader:true
+    showloader:true,
+    description:[]  //массив описаний товаров по id товара
   },
   getters:{
     //кнопки меню (слева)
@@ -62,6 +63,9 @@ export default new Vuex.Store({
     },
     getActiveLink(state){
         return state.activeLink
+    },
+    getDescription(state){
+        return state.description
     }
   },
   mutations: {
@@ -98,11 +102,14 @@ export default new Vuex.Store({
     },
     changeActiveLink(state, payload){
         state.activeLink = payload
+    },
+    setDescription(state, payload){
+        state.description = [...state.description, ...payload]
     }
   },
   actions: {
       //загрузка товаров с API
-      loadProducts({commit}) {
+    loadProducts({commit}) {
           return fetch('http://test1.web-gu.ru/')
               .then(response => response.json())
               .then(result => JSON.parse(JSON.stringify(result)))
@@ -148,21 +155,51 @@ export default new Vuex.Store({
           console.log('state.basket= ',this.state.basket )
       },
       //get запрос при заказе товара с удачным результатом
-      loadOrder({commit}){
+    loadOrder({commit}){
         return fetch('http://test1.web-gu.ru/?action=send_form')
             .then(response => response.json())
             .then(data => {
                 console.log('data=', data);
                 commit('clearBasket')
             });
-    }
+    },
+    //загрузить описание к товарам
+      loadDescription({commit}){
+          return fetch('http://test1.web-gu.ru')
+              .then(response => response.json())
+              .then(data => {
+                  //массив объектов с отзывами
+                  let array = data.filter((el) => {
+                      return el.reviews
+                  })
+                  let newArray = array.map((element) => Object.assign({
+                      id: element.id,
+                      data: element.props,
+                      reviews:element.reviews
+                  }))
+                  console.log(newArray)//11 товаров, у которых есть reviews
+                  return newArray
+              })
+              .then((newArray) => {
+                    let arrayDescription = [];
+                    newArray.map(async (element) => {
+                      fetch(`http://test1.web-gu.ru/?action=show_product&id=${element.id}`)
+                          .then(response => response.json())
+                          .then(async (data) => {
+                              await arrayDescription.push(data)
+                              await console.log('arrayDescription=', arrayDescription)
+                              // await commit('setDescription', arrayDescription)
+                          })
+                    })
+                    console.log("!!!!!!!!",arrayDescription)
+                    commit('setDescription', arrayDescription)
+              })
+      },
   },
   //плагин для сохранения состояния конкретных ключей (у нас нет бэка, поэтому нужен плагин)
   plugins: [
         createPersistedState({
             paths:['basket']
         }),
-
   ],
 })
-

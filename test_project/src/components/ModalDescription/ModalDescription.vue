@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import ProductDescription from "../ProductDescription";
+    import ProductDescription from "../ProductDescription/ProductDescription";
     import HeaderModal from "../HeaderModal/HeaderModal";
     export default {
         name: "ModalDescription",

@@ -1,0 +1,25 @@
+.link-active{
+  border-bottom: 3px solid $redColor;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: inherit;
+  margin-right: 19px;
+}
+.link-item{
+  line-height: 25px;
+  margin-right: 19px;
+  border-bottom: 3px solid #E4E2E2;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    color: inherit;
+    border-bottom: 3px solid $redColor;
+  }
+  &:active {
+    color: inherit;
+    border-bottom: 3px solid #E4E2E2;
+  }
+}

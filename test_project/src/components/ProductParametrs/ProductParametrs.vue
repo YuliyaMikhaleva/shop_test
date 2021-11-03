@@ -1,28 +1,28 @@
 <!--Блок с параметрами товара-->
 <template>
-    <div class="modal_product_parametrs">
-        <div class="modal_product_parametrs_line">
+    <section :class="$style.parametrs">
+        <div :class="$style.parametrs__line">
             <span>{{height}}</span>
             <div>
-                <span style="margin-right: 3px">{{valueHeight}}</span>
+                <span :class="$style.parametrs__value">{{valueHeight}}</span>
                 <span>{{measureHeight}}</span>
             </div>
         </div>
-        <div class="modal_product_parametrs_line">
+        <div :class="$style.parametrs__line">
             <span>{{width}}</span>
             <div>
-                <span style="margin-right: 3px">{{valueWidth}}</span>
+                <span :class="$style.parametrs__value">{{valueWidth}}</span>
                 <span>{{measureWidth}}</span>
             </div>
         </div>
-        <div class="modal_product_parametrs_line">
+        <div :class="$style.parametrs__line">
             <span>{{length}}</span>
             <div>
-                <span style="margin-right: 3px">{{valueLength}}</span>
+                <span :class="$style.parametrs__value">{{valueLength}}</span>
                 <span>{{measureLength}}</span>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -36,6 +36,6 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="scss" module>
+    @import "ProductParametrs.module";
 </style>

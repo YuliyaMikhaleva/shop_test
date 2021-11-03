@@ -1,11 +1,11 @@
-<!--Всплывающее окно с описанием товара-->
+<!--Всплывающее окно с описанием товара (само содержимое)-->
 <template>
-    <div class="modal_product" >
+    <div :class="$style['modal-product']" >
         <a type="button" data-bs-toggle="modal" data-bs-target="#productsTransition">
-            <img  class="modal_product_img" :src="product.img" width="565" height="341" alt="photo" />
+            <img :class="$style['modal-product__img']" :src="product.img" width="565" height="341" alt="photo" />
         </a>
-        <h3 class="modal_product_name">{{ product.name }}</h3>
-        <span class="modal_product_price"><span> {{ product.price }}</span> ₽</span>
+        <h3 :class="$style['modal-product__name']" >{{ product.name }}</h3>
+        <span :class="$style['modal-product__price']" ><span> {{ product.price }}</span> ₽</span>
         <div class="modal fade" id="productsTransition" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="productsTransitionLabel" aria-hidden="true">
             <div style="display: flex; justify-content: flex-end">
                 <div class="modal-dialog header_basket">
@@ -24,19 +24,20 @@
                 </div>
             </div>
         </div>
-        <div class="modal_product_links">
-            <a @click="goToDescription" :class="[activeLink === 'description' ? activeClass:'', otherClass]">Описание</a>
-            <a @click="goToParametrs" :class="[activeLink === 'parametrs' ? activeClass:'', otherClass]">Характеристики</a>
-            <a @click="goToReviews" :class="[activeLink === 'reviews' ? activeClass:'', otherClass]">Отзывы</a>
-            <a @click="goToFormReview" :class="[activeLink === 'form_review' ? activeClass:'', otherClass]">Оставить отзыв</a>
+
+        <div :class="$style['modal-product__links']">
+            <LinkInModal :method="goToDescription" title="Описание" block="description" :activeLink="link" />
+            <LinkInModal :method="goToParametrs" title="Характеристики" block="parametrs" :activeLink="link" />
+            <LinkInModal :method="goToReviews" title="Отзывы" block="reviews" :activeLink="link" />
+            <LinkInModal :method="goToFormReview" title="Оставить отзыв" block="form_review" :activeLink="link" />
         </div>
 
-        <div v-if="activeLink=='description'" class="modal_product_transitions" v-html="description">
+        <section v-if="activeLink=='description'" v-html="description">
 <!--            здесь вставится html-код с описанием товара-->
-        </div>
+        </section>
 
 <!--    Блок с параметрами товара       -->
-        <ProductParametrs v-if="activeLink=='parametrs'"
+        <ProductParametrs :class="$style['modal-product__parametrs']" v-if="activeLink=='parametrs'"
                 :height="height"
                 :valueHeight="valueHeight"
                 :measureHeight="measureHeight"
@@ -50,63 +51,26 @@
 <!--    Блок с отзывами о товаре       -->
         <ProductReviews v-if="activeLink=='reviews'" :reviews="reviews"/>
 
-
 <!--    Блок с формой для добавления отзывов о товаре       -->
-
-        <div v-if="activeLink=='form_review'" class="form_review" >
-             <span class="form_review_mark">Оценка</span>
-
-<!--            Здесь будет рейтинг товара виде звёзд-->
-            <StarRating v-bind:mark="mark" @update="onStepUpdate" />
-
-
-
-             <label class="form_review_label" for="name">Имя</label>
-            <!--         Указание на ошибку пустого поля -->
-            <div v-if="errors.length">
-                 <span v-for="error in errors" v-bind:key="error">
-                      <span v-if="error == 'textError'"  class="header_basket_content_form_block_error">
-                           Поле не должно быть пустым
-                      </span>
-                 </span>
-            </div>
-             <input :class="[errors.indexOf('textError') ? errorClass:'', normClass ]" type="text" id="name"
-                        v-model="author">
-
-             <label class="form_review_label" for="review">Отзыв</label>
-            <!--         Указание на ошибку пустого поля -->
-            <div v-if="errors.length">
-                 <span v-for="error in errors" v-bind:key="error">
-                      <span v-if="error == 'authorError'"  class="header_basket_content_form_block_error">
-                           Поле не должно быть пустым
-                      </span>
-                 </span>
-            </div>
-            <textarea :class="[errors.indexOf('authorError') ? errorClass:'', normClassArea]"  name="review" id="review" v-model="text">
-                Он подходит именно для питья, для утоления жажды. Этот квас сильногазированный. После вскрытия бутылки газ сохраняется в ней в течении суток. Квас сладкий, послевкусие придаёт небольшую кислинку. Квас тёмного цвета.
-            </textarea>
-            <Button :method="checkForm" value="Отправить отзыв"/>
-<!--            <button  @click="checkForm" class="form_review_btn">Отправить отзыв</button>-->
-        </div>
+        <FormReview v-if="activeLink=='form_review'"
+         :author="author" :text="text" :errors="errors" :mark="mark" :onStepUpdate="onStepUpdate" :checkForm="checkForm"/>
 
     </div>
 </template>
 
 <script>
-    import StarRating from "./StarRating";
-    import ProductParametrs from "./ProductParametrs";
-    import ProductReviews from "./ProductReviews";
-    import Button from "./Button/Button";
+    import ProductParametrs from "../ProductParametrs/ProductParametrs";
+    import ProductReviews from "../ProductReviews/ProductReviews";
+    import LinkInModal from "../LinkInModal/LinkInModal";
+    import FormReview from "../FormReview/FormReview";
     export default {
         name: "ProductDescription",
         props:['product'],
-        components: {Button, ProductReviews, ProductParametrs, StarRating},
+        components: {FormReview, LinkInModal, ProductReviews, ProductParametrs},
         data(){
             return {
                 isAdded:false,//добавлен ли товар
                 activeLink:'description',
-                activeClass:'activeLinkInDescription',
-                otherClass:'modal_product_links_item',
                 description:'',//описание товара
                 width:'',//параметр ширина
                 valueWidth:'',//значение ширины
@@ -135,22 +99,21 @@
             } else {
                 this.isAdded = false;
             }
-            //Запрос к API для получения информации о товаре
-                fetch(`http://test1.web-gu.ru/?action=show_product&id=${this.product.id}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        this.description = data.descr;
-                        this.width = data.props.width.caption;
-                        this.valueWidth = data.props.width.value;
-                        this.measureWidth = data.props.width.measure;
-                        this.height = data.props.height.caption;
-                        this.valueHeight = data.props.height.value;
-                        this.measureHeight = data.props.height.measure;
-                        this.length = data.props.length.caption;
-                        this.valueLength = data.props.length.value;
-                        this.measureLength = data.props.length.measure;
-                        this.reviews = data.reviews
-                    });
+
+            // поиск элемента в базе данных и необходимых свойств
+            let element = this.$store.getters.getDescription.find((el) => el.id === this.product.id)
+            console.log('ELEMENT:',this.$store.getters.getDescription)
+            this.description = element.descr;
+            this.width = element.props.width.caption;
+            this.valueWidth = element.props.width.value;
+            this.measureWidth = element.props.width.measure;
+            this.height = element.props.height.caption;
+            this.valueHeight = element.props.height.value;
+            this.measureHeight = element.props.height.measure;
+            this.length = element.props.length.caption;
+            this.valueLength = element.props.length.value;
+            this.measureLength = element.props.length.measure;
+            this.reviews = element.reviews
          },
         methods:{
             //добавить в корзину
@@ -202,7 +165,9 @@
                 this.mark = newData;
             },
             //проверить форму на ошибки
-            checkForm:function() {
+            checkForm:function(e) {
+                e.preventDefault();
+                this.errors=[]
                 //Если нет имени, то выйдет ошибка
                 if(!this.author) this.errors.push("authorError");
                 if(!this.text) this.errors.push("textError");
@@ -220,10 +185,13 @@
             basket(){
                 return this.$store.getters.getCart
             },
+            link(){
+                return this.activeLink
+            }
         },
     }
 </script>
 
-<style scoped>
-
+<style lang="scss" module>
+    @import "ProductDescription.module";
 </style>
