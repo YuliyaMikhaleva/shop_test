@@ -13,7 +13,6 @@
         props:['isLoading', 'method','type','value'],
         computed:{
             text(){
-                console.log(this.value)
                 if (this.value){
                     return this.value
                 } else if (this.isLoading === false){

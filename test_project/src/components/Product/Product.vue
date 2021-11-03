@@ -65,7 +65,6 @@
                 return this.$store.getters.getCart
             },
             isLoading(){
-                console.log(this.isAdded)
                 return this.isAdded
             },
         }

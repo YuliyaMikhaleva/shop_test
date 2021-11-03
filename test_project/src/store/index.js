@@ -163,8 +163,6 @@ export default new Vuex.Store({
       //загрузить корзину
     loadToCart({commit}, product) {
           commit('addToCart', product)//передаем в коммит good.id, чтобы вызвать мутацию addToCart
-          console.log(product);
-          console.log('state.basket= ',this.state.basket )
       },
       //get запрос при заказе товара с удачным результатом
     loadOrder({commit}){
@@ -189,7 +187,6 @@ export default new Vuex.Store({
                       data: element.props,
                       reviews:element.reviews
                   }))
-                  console.log(newArray)//11 товаров, у которых есть reviews
                   return newArray
               })
               .then((newArray) => {
@@ -199,11 +196,8 @@ export default new Vuex.Store({
                           .then(response => response.json())
                           .then(async (data) => {
                               await arrayDescription.push(data)
-                              await console.log('arrayDescription=', arrayDescription)
-                              // await commit('setDescription', arrayDescription)
                           })
                     })
-                    console.log("!!!!!!!!",arrayDescription)
                     commit('setDescription', arrayDescription)
               })
       },
