@@ -19,6 +19,10 @@ body{
   background-color: #F8F8F8;
 }
 
+.activeCategory{
+  color: $redColor;
+}
+
 .header{
   //height: 60px;
   //display: flex;
@@ -216,13 +220,13 @@ body{
   }
 }
 .menu{
-  width: 100%;
-  max-width: 325px;
-  box-shadow: 0 0px 10px 0px rgba(221, 221, 221, 1);
-  position: relative;
-  z-index: 1;
-  margin-top: 60px;
-  background-color: white;
+  //width: 100%;
+  //max-width: 325px;
+  //box-shadow: 0 0px 10px 0px rgba(221, 221, 221, 1);
+  //position: relative;
+  //z-index: 1;
+  //margin-top: 60px;
+  //background-color: white;
   &_item{
     background-color: white;
     display: block;
@@ -242,6 +246,13 @@ body{
 .main{
   display: flex;
   height: 100vh;
+  &__menu{
+    width: 100%;
+    max-width: 325px;
+    position: relative;
+    z-index: 1;
+    margin-top: 60px;
+  }
 }
 .catalog_card{
   //width: 353px;
@@ -317,9 +328,7 @@ body{
   border-bottom: 4px solid $redColor;
   box-sizing: border-box;
 }
-.activeCategory{
-  color: $redColor;
-}
+
 .basketItems:last-child{
   color: red;
 }
@@ -563,18 +572,18 @@ body{
 }
 
   //Индикатор загрузки
-.preloader{
-  background: white;
-  opacity: 50%;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+//.preloader{
+//  background: white;
+//  opacity: 50%;
+//  width: 100%;
+//  height: 100%;
+//  z-index: 9999;
+//  position: absolute;
+//  display: flex;
+//  flex-direction: column;
+//  align-items: center;
+//  justify-content: center;
+//}
 
 
 //Стили для мобильных устройств

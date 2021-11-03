@@ -3,7 +3,7 @@
         <Preloader v-if="$store.state.showloader"/>
         <Header/>
         <div class="main">
-            <Menu/>
+            <Menu class="main__menu"/>
             <router-view style="width: 100%" class="router-view"/>
         </div>
     </div>
@@ -11,8 +11,8 @@
 
 <script>
     import Header from "./components/Header/Header";
-    import Menu from "./components/Menu";
-    import Preloader from "./components/Preloader";
+    import Menu from "./components/Menu/Menu";
+    import Preloader from "./components/Preloader/Preloader";
     export default {
         components:{
             Preloader,

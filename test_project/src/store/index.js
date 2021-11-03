@@ -66,6 +66,12 @@ export default new Vuex.Store({
     },
     getDescription(state){
         return state.description
+    },
+    getActiveCategoryMebel(state){
+        return state.activeCategoryMebel
+    },
+    getActiveCategoryElectro(state){
+        return state.activeCategoryElectro
     }
   },
   mutations: {
@@ -105,6 +111,12 @@ export default new Vuex.Store({
     },
     setDescription(state, payload){
         state.description = [...state.description, ...payload]
+    },
+    changeActiveCategoryMebel(state,payload){
+        state.activeCategoryMebel = payload
+    },
+    changeActiveCategoryElectro(state, payload){
+        state.activeCategoryElectro = payload
     }
   },
   actions: {
