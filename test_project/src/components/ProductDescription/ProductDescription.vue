@@ -86,14 +86,11 @@
                 author: '',
                 text:'',
                 errors:[],
-                errorClass:'errorClass',
-                normClass:'form_review_input',
-                normClassArea:'form_review_textarea'
             }
         },
         //с этого метода программа начинает работать
         mounted() {
-            let find = this.$store.state.basket.find((element) => element.id === this.product.id);
+            let find = this.$store.getters.getBasket.find((element) => element.id === this.product.id);
             if (find){
                 this.isAdded = true;
             } else {
@@ -151,14 +148,13 @@
                     avatar: 'https://ob-kassa.ru/content/front/buhoskol_tmp1/images/reviews-icon.jpg',
                     text: this.text
                 })
-                this.$store.state.showloader = true
+                this.$store.commit('turnOnShowloader');
                 this.author = '';
                 this.text = '';
                 setTimeout(() => {
-                    this.$store.state.showloader = false;
+                    this.$store.commit('turnOfShowloader');
                     this.reviews.push(element);
                 },1000)
-                console.log(this.reviews)
             },
             //для передачи из дочернего компонента в родительский
             onStepUpdate(newData){
@@ -172,11 +168,10 @@
                 if(!this.author) this.errors.push("authorError");
                 if(!this.text) this.errors.push("textError");
                 if(!this.errors.length){
-                    console.log(this.errors)
-                    this.$store.state.showloader=true;
+                    this.$store.commit('turnOnShowloader');
                     setTimeout(()=>{
                         this.addNewReview()
-                        this.$store.state.showloader=false;
+                        this.$store.commit('turnOfShowloader');
                     },1000)
                 }
             },

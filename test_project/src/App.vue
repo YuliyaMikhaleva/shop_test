@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Preloader v-if="$store.state.showloader"/>
+        <Preloader v-if="$store.getters.getShowloader"/>
         <Header/>
         <div class="main">
             <Menu class="main__menu"/>
@@ -23,21 +23,19 @@
             this.showToggle()
             this.$store.dispatch('loadProducts');
             this.$store.dispatch('loadDescription')
-            // this.$store.dispatch('loadToCart');
-            // this.$store.dispatch('loadInfoAboutProduct');
         },
         methods:{
             showToggle(){
                 setTimeout(()=>{
-                    this.$store.state.showloader=false
+                    this.$store.commit('turnOfShowloader');
                 },1000)
             }
         },
         watch: {
             $route() {
-                this.$store.state.showloader = true;
+                this.$store.commit('turnOnShowloader');
                 setTimeout(() => {
-                    this.$store.state.showloader = false;
+                    this.$store.commit('turnOfShowloader');
                 }, 1000);
             },
         },

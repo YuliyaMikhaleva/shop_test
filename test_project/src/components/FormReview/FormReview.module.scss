@@ -18,7 +18,6 @@
     height: 174px;
     margin-bottom: 26px;
     border-radius: 10px;
-
   }
   &__error{
     width: 100%;
@@ -28,6 +27,7 @@
     height: 174px;
     border-radius: 10px;
     border: 1px solid $redColor;
+    margin-bottom: 26px;
   }
   &__errorTextarea{
     margin-bottom: 26px;

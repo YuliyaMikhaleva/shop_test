@@ -103,7 +103,7 @@ export default new Vuex.Store({
         state.showloader = true;
     },
       //выключить шоулоадре
-    turnOfShowLoader(state){
+    turnOfShowloader(state){
         state.showloader = false
     },
     changeActiveLink(state, payload){
