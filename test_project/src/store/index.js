@@ -4,6 +4,7 @@ import createPersistedState from 'vuex-persistedstate';
 import {productsModule} from "./modules/productsModule";
 import {basketModule} from "./modules/basketModule";
 import {infoModule} from "./modules/infoModule";
+import {showloaderModule} from "./modules/showloaderModule";
 
 Vue.use(Vuex)
 
@@ -12,12 +13,8 @@ export default new Vuex.Store({
     activeLink:'Электроприборы',
     activeCategoryMebel:'Стулья',
     activeCategoryElectro:'Светильники',
-    showloader:true,
   },
   getters:{
-    getShowloader(state){
-        return state.showloader
-    },
     getActiveLink(state){
         return state.activeLink
     },
@@ -29,14 +26,6 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-      //включить шоулоадер
-    turnOnShowloader(state){
-        state.showloader = true;
-    },
-      //выключить шоулоадре
-    turnOfShowloader(state){
-        state.showloader = false
-    },
     changeActiveLink(state, payload){
         state.activeLink = payload
     },
@@ -47,16 +36,15 @@ export default new Vuex.Store({
         state.activeCategoryElectro = payload
     }
   },
-  actions: {
-
-  },
-  //плагин для сохранения состояния конкретных ключей (у нас нет бэка, поэтому нужен плагин)
+  actions: {  },
   modules:{
       productsModule,
       basketModule,
-      infoModule
+      infoModule,
+      showloaderModule
   },
-  plugins: [
+    //плагин для сохранения состояния конкретных ключей (у нас нет бэка, поэтому нужен плагин)
+    plugins: [
         createPersistedState({
             paths:['basket']
         }),

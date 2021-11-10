@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Preloader v-if="$store.getters.getShowloader"/>
+        <Preloader v-if="$store.getters['showloaderModule/getShowloader']"/>
         <Header/>
         <div class="main">
             <Menu class="main__menu"/>
@@ -27,15 +27,15 @@
         methods:{
             showToggle(){
                 setTimeout(()=>{
-                    this.$store.commit('turnOfShowloader');
+                    this.$store.commit('showloaderModule/turnOfShowloader');
                 },1000)
             }
         },
         watch: {
             $route() {
-                this.$store.commit('turnOnShowloader');
+                this.$store.commit('showloaderModule/turnOnShowloader');
                 setTimeout(() => {
-                    this.$store.commit('turnOfShowloader');
+                    this.$store.commit('showloaderModule/turnOfShowloader');
                 }, 1000);
             },
         },

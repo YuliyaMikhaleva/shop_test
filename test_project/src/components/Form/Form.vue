@@ -39,10 +39,10 @@
                 }
                 e.preventDefault();
                 if(!this.errors.length){
-                    this.$store.commit('turnOnShowloader');
+                    this.$store.commit('showloaderModule/turnOnShowloader');
                     setTimeout(()=>{
                         this.doOrder();
-                        this.$store.commit('turnOfShowLoader');
+                        this.$store.commit('showloaderModule/turnOfShowLoader');
                     },2000)
                 }
             },

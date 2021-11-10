@@ -148,11 +148,11 @@
                     avatar: 'https://ob-kassa.ru/content/front/buhoskol_tmp1/images/reviews-icon.jpg',
                     text: this.text
                 })
-                this.$store.commit('turnOnShowloader');
+                this.$store.commit('showloaderModule/turnOnShowloader');
                 this.author = '';
                 this.text = '';
                 setTimeout(() => {
-                    this.$store.commit('turnOfShowloader');
+                    this.$store.commit('showloaderModule/turnOfShowloader');
                     this.reviews.push(element);
                 },1000)
             },
@@ -168,10 +168,10 @@
                 if(!this.author) this.errors.push("authorError");
                 if(!this.text) this.errors.push("textError");
                 if(!this.errors.length){
-                    this.$store.commit('turnOnShowloader');
+                    this.$store.commit('showloaderModule/turnOnShowloader');
                     setTimeout(()=>{
                         this.addNewReview()
-                        this.$store.commit('turnOfShowloader');
+                        this.$store.commit('showloaderModule/turnOfShowloader');
                     },1000)
                 }
             },
