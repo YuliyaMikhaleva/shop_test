@@ -110,7 +110,7 @@ export default new Vuex.Store({
         state.activeLink = payload
     },
     setDescription(state, payload){
-        state.description = [...state.description, ...payload]
+        state.description = [...payload]
     },
     changeActiveCategoryMebel(state,payload){
         state.activeCategoryMebel = payload
@@ -187,18 +187,22 @@ export default new Vuex.Store({
                       data: element.props,
                       reviews:element.reviews
                   }))
+                  console.log('NewArray:', newArray)
                   return newArray
               })
-              .then((newArray) => {
-                    let arrayDescription = [];
-                    newArray.map(async (element) => {
+              .then( async function(newArray) {
+                  let arrayDescription = [];
+                  await newArray.map((element) => {
                       fetch(`http://test1.web-gu.ru/?action=show_product&id=${element.id}`)
-                          .then(response => response.json())
-                          .then(async (data) => {
-                              await arrayDescription.push(data)
+                          .then(response => {
+                                  return response.json()
+                              }
+                          )
+                          .then((data) => {
+                              arrayDescription.push(data)
+                              commit('setDescription', arrayDescription)
                           })
-                    })
-                    commit('setDescription', arrayDescription)
+                  });
               })
       },
   },
