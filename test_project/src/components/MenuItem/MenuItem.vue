@@ -22,22 +22,22 @@
         methods: {
             //изменение активной ссылки, соответственно будут меняться стили "кнопки"
             changeActiveLinkMebel(){
-                this.$store.commit('changeActiveCategoryMebel', this.category.name);
+                this.$store.commit('linksModule/changeActiveCategoryMebel', this.category.name);
             },
             changeActiveLinkElectro(){
-                this.$store.commit('changeActiveCategoryElectro', this.category.name);
+                this.$store.commit('linksModule/changeActiveCategoryElectro', this.category.name);
             }
         },
         computed:{
             categoryName(){
-                if (this.$store.getters.getActiveLink === 'Мебель'){
-                    return this.$store.getters.getActiveCategoryMebel
+                if (this.$store.getters['linksModule/getActiveLink'] === 'Мебель'){
+                    return this.$store.getters['linksModule/getActiveCategoryMebel']
                 } else {
-                    return this.$store.getters.getActiveCategoryElectro
+                    return this.$store.getters['linksModule/getActiveCategoryElectro']
                 }
             },
             functionName(){
-                if (this.$store.getters.getActiveLink === 'Мебель'){
+                if (this.$store.getters['linksModule/getActiveLink'] === 'Мебель'){
                     return this.changeActiveLinkMebel
                 } else {
                     return this.changeActiveLinkElectro

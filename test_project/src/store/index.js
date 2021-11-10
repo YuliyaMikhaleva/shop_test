@@ -5,43 +5,21 @@ import {productsModule} from "./modules/productsModule";
 import {basketModule} from "./modules/basketModule";
 import {infoModule} from "./modules/infoModule";
 import {showloaderModule} from "./modules/showloaderModule";
+import {linksModule} from "./modules/linksModule";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    activeLink:'Электроприборы',
-    activeCategoryMebel:'Стулья',
-    activeCategoryElectro:'Светильники',
-  },
-  getters:{
-    getActiveLink(state){
-        return state.activeLink
-    },
-    getActiveCategoryMebel(state){
-        return state.activeCategoryMebel
-    },
-    getActiveCategoryElectro(state){
-        return state.activeCategoryElectro
-    }
-  },
-  mutations: {
-    changeActiveLink(state, payload){
-        state.activeLink = payload
-    },
-    changeActiveCategoryMebel(state,payload){
-        state.activeCategoryMebel = payload
-    },
-    changeActiveCategoryElectro(state, payload){
-        state.activeCategoryElectro = payload
-    }
-  },
+  state: {  },
+  getters:{  },
+  mutations: {  },
   actions: {  },
   modules:{
       productsModule,
       basketModule,
       infoModule,
-      showloaderModule
+      showloaderModule,
+      linksModule
   },
     //плагин для сохранения состояния конкретных ключей (у нас нет бэка, поэтому нужен плагин)
     plugins: [

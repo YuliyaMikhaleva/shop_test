@@ -1,6 +1,6 @@
 <!--1 элемент навигации в шапке сайта(сверху)-->
 <template>
-    <div v-bind:class="[this.$store.getters.getActiveLink===group.name ? $style['item__active'] : $style['item']]"
+    <div v-bind:class="[this.$store.getters['linksModule/getActiveLink']===group.name ? $style['item__active'] : $style['item']]"
          @click="changeActiveLink">
         <router-link :to="group.name" style="text-decoration: none; color: inherit;"
         >{{ group.name }}</router-link>
@@ -15,7 +15,7 @@
         methods: {
             //изменение активной ссылки, соответственно будут меняться стили "кнопки"
             changeActiveLink(){
-                this.$store.commit('changeActiveLink', this.group.name);
+                this.$store.commit('linksModule/changeActiveLink', this.group.name);
             }
         }
     }

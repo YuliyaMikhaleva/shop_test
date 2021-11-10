@@ -13,7 +13,7 @@
         components: {MenuItem},
         computed: {//вычисляемое свойство
             catalog(){
-                if (this.$store.getters.getActiveLink === 'Электроприборы'){
+                if (this.$store.getters['linksModule/getActiveLink'] === 'Электроприборы'){
                     return this.$store.getters['productsModule/getMenuItemsElectro']
                 } else {
                     return this.$store.getters['productsModule/getMenuItemsMebel']
