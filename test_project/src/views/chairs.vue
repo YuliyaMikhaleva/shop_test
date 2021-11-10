@@ -11,7 +11,7 @@
         components: {Catalog},
         computed:{
             chairs(){
-                return this.$store.getters.getCatalogChairs
+                return this.$store.getters['productsModule/getCatalogChairs']
             },
         }
     }

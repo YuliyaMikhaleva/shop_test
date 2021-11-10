@@ -14,7 +14,7 @@
         components: {HeaderItem},
         computed: {//вычисляемое свойство
             products(){
-                return this.$store.getters.getHeaderItems
+                return this.$store.getters['productsModule/getHeaderItems']
             }
         },
     }

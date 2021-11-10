@@ -11,7 +11,7 @@
         components: {Catalog},
         computed:{
             ventilators(){
-                return this.$store.getters.getCatalogVentilators
+                return this.$store.getters['productsModule/getCatalogVentilators']
             },
         }
     }

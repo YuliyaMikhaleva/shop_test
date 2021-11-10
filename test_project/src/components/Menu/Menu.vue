@@ -14,9 +14,9 @@
         computed: {//вычисляемое свойство
             catalog(){
                 if (this.$store.getters.getActiveLink === 'Электроприборы'){
-                    return this.$store.getters.getMenuItemsElectro
+                    return this.$store.getters['productsModule/getMenuItemsElectro']
                 } else {
-                    return this.$store.getters.getMenuItemsMebel
+                    return this.$store.getters['productsModule/getMenuItemsMebel']
                 }
             }
         },

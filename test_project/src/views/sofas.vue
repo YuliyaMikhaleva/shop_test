@@ -11,7 +11,7 @@
         components: {Catalog},
         computed:{
             sofas(){
-                return this.$store.getters.getCatalogSofas
+                return this.$store.getters['productsModule/getCatalogSofas']
             },
         }
     }

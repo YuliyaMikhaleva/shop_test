@@ -21,7 +21,7 @@
         },
         mounted() {
             this.showToggle()
-            this.$store.dispatch('loadProducts');
+            this.$store.dispatch('productsModule/loadProducts');
             this.$store.dispatch('loadDescription')
         },
         methods:{

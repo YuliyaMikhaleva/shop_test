@@ -11,7 +11,7 @@
         components: {Catalog},
         computed:{
             tables(){
-                return this.$store.getters.getCatalogTables
+                return this.$store.getters['productsModule/getCatalogTables']
             },
         }
     }
