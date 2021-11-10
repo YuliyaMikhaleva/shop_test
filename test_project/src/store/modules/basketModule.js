@@ -4,17 +4,11 @@ export const basketModule = {
         basket:[],
     },
     getters:{
-        //получить содержимое корзны
-        getCart(state){
-            return state.basket//эта функция возвращает корзину из хранилища
-        },
         getBasket(state){
             return state.basket
         },
     },
     mutations:{
-        setBasket(state,payload){ state.basket = [...state.basket, ...payload]},
-        //добавить в корзину
         addToCart(state, product) {
             const element = Object.assign(product);
             state.basket.push(element);
