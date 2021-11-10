@@ -42,7 +42,7 @@
                     this.$store.commit('showloaderModule/turnOnShowloader');
                     setTimeout(()=>{
                         this.doOrder();
-                        this.$store.commit('showloaderModule/turnOfShowLoader');
+                        this.$store.commit('showloaderModule/turnOfShowloader');
                     },2000)
                 }
             },

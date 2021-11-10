@@ -99,7 +99,6 @@
 
             // поиск элемента в базе данных и необходимых свойств
             let element = this.$store.getters['infoModule/getDescription'].find((el) => el.id === this.product.id)
-            console.log('ArrayDescription:', this.$store.getters['infoModule/getDescription'])
             this.description = element.descr;
             this.width = element.props.width.caption;
             this.valueWidth = element.props.width.value;

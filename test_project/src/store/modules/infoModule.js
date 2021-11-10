@@ -23,13 +23,11 @@ export const infoModule = {
                     let array = data.filter((el) => {
                         return el.reviews
                     })
-                    console.log(array)
                     let newArray = array.map((element) => Object.assign({
                         id: element.id,
                         data: element.props,
                         reviews:element.reviews
                     }))
-                    console.log('NewArray:', newArray)
                     return newArray
                 })
                 .then( async function(newArray) {

@@ -46,7 +46,6 @@ export const productsModule = {
                 .then(response => response.json())
                 .then(result => JSON.parse(JSON.stringify(result)))
                 .then(data => {//data - наш изначальный массив
-                    console.log(data)
                     let categories = [...data.filter((e) => e.parent_id === -1)];//выведутся: электрориборы и мебель
                     let subcategoriesMebel = [...data.filter((e) => e.parent_id === 100)];//выведутся: диваны, столы, стулья
                     //меняем местами, чтобы получилось: стулья, диваны, столы
@@ -76,7 +75,6 @@ export const productsModule = {
                     products[1].value[1].value = sofas;//диваны
                     products[1].value[2].value = tables;//столы
                     products[1].value[0].value = chairs;//стулья
-                    console.log('Группы товаров:', products)//Массив групп товаров (электроприборы/мебель)
                     commit('setProducts',JSON.parse(JSON.stringify(products)));
                 })
         },
