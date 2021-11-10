@@ -17,7 +17,7 @@
         methods:{
             // удаление товара из корзины
             deleteFromBasket(){
-                this.$store.commit('deleteProduct', this.cartItem);
+                this.$store.commit('basketModule/deleteProduct', this.cartItem);
             }
         }
     }

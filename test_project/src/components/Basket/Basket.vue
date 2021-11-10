@@ -13,7 +13,7 @@
         components: {BasketItem},
         computed:{
             basket(){
-                return this.$store.getters.getCart
+                return this.$store.getters['basketModule/getBasket']
             }
         }
 

@@ -22,6 +22,7 @@
         mounted() {
             this.showToggle()
             this.$store.dispatch('productsModule/loadProducts');
+            this.$store.commit('basketModule/setBasket');
             this.$store.dispatch('loadDescription')
         },
         methods:{

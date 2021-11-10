@@ -90,7 +90,7 @@
         },
         //с этого метода программа начинает работать
         mounted() {
-            let find = this.$store.getters.getBasket.find((element) => element.id === this.product.id);
+            let find = this.$store.getters['basketModule/getBasket'].find((element) => element.id === this.product.id);
             if (find){
                 this.isAdded = true;
             } else {
@@ -115,12 +115,12 @@
         methods:{
             //добавить в корзину
             addToCart(){
-                this.$store.dispatch('loadToCart', this.product);
+                this.$store.dispatch('basketModule/loadToCart', this.product);
                 this.isAdded = true;
             },
             //удалить из корзины
             deleteFromBasket(){
-                this.$store.commit('deleteProduct', this.product);
+                this.$store.commit('basketModule/deleteProduct', this.product);
                 this.isAdded = false;
             },
             //перейти на вкладку "описание"
@@ -178,7 +178,7 @@
         },
         computed:{
             basket(){
-                return this.$store.getters.getCart
+                return this.$store.getters['basketModule/getBasket']
             },
             link(){
                 return this.activeLink

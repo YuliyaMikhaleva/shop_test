@@ -45,7 +45,7 @@
         computed: {//вычисляемое свойство
             //возвращает всегда актуальное количество товаров в корзине
             counter(){
-                return this.$store.getters.getBasket.length
+                return this.$store.getters['basketModule/getBasket'].length
             }
         },
     }

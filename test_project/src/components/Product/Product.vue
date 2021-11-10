@@ -31,7 +31,7 @@
             }
         },
         mounted() {
-            let find = this.$store.getters.getBasket.find((element) => element.id === this.product.id);
+            let find = this.$store.getters['basketModule/getBasket'].find((element) => element.id === this.product.id);
             if (find){
                 this.isAdded = true;
             } else {
@@ -43,7 +43,7 @@
             addToCart(){
                 console.log('FALSE')
                 if (this.isLoading === false){
-                    this.$store.dispatch('loadToCart', this.product);
+                    this.$store.dispatch('basketModule/loadToCart', this.product);
                     this.isAdded = 'pending';
                     setTimeout(() => {
                         this.isAdded = true;
@@ -54,7 +54,7 @@
             },
             //удалить из корзины
             deleteFromBasket(){
-                this.$store.commit('deleteProduct', this.product);
+                this.$store.commit('basketModule/deleteProduct', this.product);
                 this.isAdded = false;
             }
         },
@@ -62,7 +62,7 @@
         computed:{
             //будет считать корзину в настоящий момент и постоянно обновлять
             basket(){
-                return this.$store.getters.getCart
+                return this.$store.getters['basketModule/getBasket']
             },
             isLoading(){
                 return this.isAdded

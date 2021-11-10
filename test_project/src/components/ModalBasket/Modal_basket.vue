@@ -7,7 +7,7 @@
 
                     <HeaderModal :class="$style.basket__header" title="Оформить заказ"/>
 
-                    <section  v-if="this.$store.getters.getBasket.length>0" >
+                    <section  v-if="this.$store.getters['basketModule/getBasket'].length>0" >
                         <span :class="$style.basket__text">В корзине:</span>
 <!--                        здесь будет корзина с товарами-->
                         <Basket/>
@@ -36,7 +36,7 @@
         },
         computed:{
             title(){
-                if (this.$store.getters.getBasket.length<=0 && !this.showResultOrder){
+                if (this.$store.getters['basketModule/getBasket'].length<=0 && !this.showResultOrder){
                     return "В корзине ничего нет"
                 } else if (this.showResultOrder){
                     return "Заказ успешно создан"

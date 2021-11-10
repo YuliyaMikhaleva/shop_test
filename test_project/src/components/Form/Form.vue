@@ -53,7 +53,7 @@
             doOrder: function () {
                 this.$parent.showParametrs = false;
                 this.$parent.showResultOrder = true;
-                this.$store.dispatch('loadOrder');
+                this.$store.dispatch('basketModule/loadOrder');
                 setTimeout(() => {
                     this.$parent.showResultOrder = false;
                 }, 2000)
