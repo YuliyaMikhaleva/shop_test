@@ -15,37 +15,37 @@ const routes = [
     component: lamps
   },
   {
-    path: '/Стулья',
+    path: '/chairs',
     name: 'Chairs',
     component: chairs
   },
   {
-    path: '/Мебель',
-    name: 'Chairs',
+    path: '/mebel',
+    name: 'Mebel',
     component: chairs
   },
   {
-    path: '/Столы',
+    path: '/tables',
     name: 'Tables',
     component: tables
   },
   {
-    path: '/Диваны',
+    path: '/sofas',
     name: 'Sofas',
     component: sofas
   },
   {
-    path: '/Электроприборы',
+    path: '/electro',
+    name: 'Electro',
+    component: lamps
+  },
+  {
+    path: '/lamps',
     name: 'Lamps',
     component: lamps
   },
   {
-    path: '/Светильники',
-    name: 'Lamps',
-    component: lamps
-  },
-  {
-    path: '/Вентиляторы',
+    path: '/ventilators',
     name: 'Ventilators',
     component: ventilators
   },

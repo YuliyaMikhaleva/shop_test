@@ -3,7 +3,7 @@
     <div>
         <div v-bind:class="[categoryName === category.name ? activeClass: '', otherClass]"
              @click="functionName">
-            <router-link :to="category.name" style="text-decoration: none; color: inherit;"><span class="category">{{ category.name }}</span></router-link>
+            <router-link :to="link" style="text-decoration: none; color: inherit;"><span class="category">{{ category.name }}</span></router-link>
         </div>
     </div>
 </template>
@@ -41,6 +41,19 @@
                     return this.changeActiveLinkMebel
                 } else {
                     return this.changeActiveLinkElectro
+                }
+            },
+            link(){
+                if (this.category.name === 'Стулья'){
+                    return "chairs"
+                } else if (this.category.name === 'Столы'){
+                    return "tables"
+                } else if (this.category.name === 'Диваны'){
+                    return "sofas"
+                } else if (this.category.name === 'Светильники'){
+                    return "lamps"
+                } else {
+                    return "ventilators"
                 }
             }
         }
