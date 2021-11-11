@@ -2,7 +2,7 @@
 <template>
     <section>
         <article :class="$style.review" v-bind:key="review.author" v-for="review of reviews" v-bind:review="review">
-            <img :class="$style.review__photo" :src="review.avatar" alt="avatar" width="50" height="50">
+            <img :class="$style.review__photo" :src="review.avatar" alt="avatar">
             <div :class="$style.review__block">
                 <div :class="$style.review__header">
                     <span :class="$style.review__name">{{review.author}}</span>

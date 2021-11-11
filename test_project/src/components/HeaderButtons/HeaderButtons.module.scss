@@ -3,3 +3,10 @@
     margin: 0 22px 0 22px;
   }
 }
+
+@media(max-width:500px) {
+  .header-buttons__item {
+    font-size: 14px;
+    margin: 4px;
+  }
+}

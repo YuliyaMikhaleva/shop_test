@@ -11,3 +11,18 @@
   width: 100%;
   max-width:1595px ;
 }
+
+@media(max-width:500px) {
+  .catalog__product {
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    margin: 15px 15px;
+    & img{
+      width: 260px;
+    }
+    & a{
+      width: 100%;
+    }
+  }
+}

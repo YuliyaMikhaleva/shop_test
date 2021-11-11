@@ -10,3 +10,14 @@
     margin-top: 26px;
   }
 }
+
+@media(max-width:500px) {
+  .zero-page{
+    &__svg{
+      width: 50px;
+    }
+    &__txt{
+      font-size: 15px;
+    }
+  }
+}

@@ -76,4 +76,14 @@
         color: #FF6969;
         cursor: pointer;
     }
+
+    @media (max-width: 500px) {
+        .category{
+            font-size: 14px;
+            padding-left: 15px;
+            padding-right: 15px;
+            box-sizing: border-box;
+        }
+    }
+
 </style>
