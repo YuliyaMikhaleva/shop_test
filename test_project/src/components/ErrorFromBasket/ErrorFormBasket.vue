@@ -1,7 +1,7 @@
 <!--Ошибка в форме корзины-->
 <template>
     <div v-if="errors.length">
-               <span v-if="error == 'nameError' || error == 'addressError'"  class="error">
+               <span v-if="!element"  class="error">
                     Поле не должно быть пустым
                </span>
     </div>
@@ -10,7 +10,7 @@
 <script>
     export default {
         name: "ErrorFormBasket",
-        props:['errors','error']
+        props:['errors','error','element']
     }
 </script>
 
