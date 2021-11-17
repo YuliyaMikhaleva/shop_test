@@ -1,54 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import lamps from "../views/lamps";
-import chairs from "../views/chairs";
-import sofas from "../views/sofas";
-import tables from "../views/tables";
-import ventilators from "../views/ventilators";
+import elements from "../views/elements";
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'lamps',
-    component: lamps
+    redirect:'/14/15'
   },
   {
-    path: '/chairs',
-    name: 'Chairs',
-    component: chairs
-  },
-  {
-    path: '/mebel',
-    name: 'Mebel',
-    component: chairs
-  },
-  {
-    path: '/tables',
-    name: 'Tables',
-    component: tables
-  },
-  {
-    path: '/sofas',
-    name: 'Sofas',
-    component: sofas
-  },
-  {
-    path: '/electro',
-    name: 'Electro',
-    component: lamps
-  },
-  {
-    path: '/lamps',
-    name: 'Lamps',
-    component: lamps
-  },
-  {
-    path: '/ventilators',
-    name: 'Ventilators',
-    component: ventilators
-  },
+    path: '/:category/:subcategory',
+    name: 'elements',
+    component: elements
+  }
 ]
 
 const router = new VueRouter({

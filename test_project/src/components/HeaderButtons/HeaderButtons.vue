@@ -14,8 +14,8 @@
         components: {HeaderItem},
         computed: {//вычисляемое свойство
             products(){
-                return this.$store.getters['productsModule/getHeaderItems']
-            }
+                return this.$store.getters['productsModule/getChilds'](-1)//Вывод:электроприборы,мебель
+        }
         },
     }
 </script>

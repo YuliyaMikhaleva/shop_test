@@ -14,9 +14,9 @@
         computed: {//вычисляемое свойство
             catalog(){
                 if (this.$store.getters['linksModule/getActiveLink'] === 'Электроприборы'){
-                    return this.$store.getters['productsModule/getMenuItemsElectro']
+                    return this.$store.getters['productsModule/getChilds'](14)//вывод: светильники и вентиляторы
                 } else {
-                    return this.$store.getters['productsModule/getMenuItemsMebel']
+                    return this.$store.getters['productsModule/getChilds'](100)//вывод: стулья, диваны, столы
                 }
             }
         },

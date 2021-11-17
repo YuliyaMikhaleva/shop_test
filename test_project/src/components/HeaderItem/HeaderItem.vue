@@ -16,14 +16,14 @@
             //изменение активной ссылки, соответственно будут меняться стили "кнопки"
             changeActiveLink(){
                 this.$store.commit('linksModule/changeActiveLink', this.group.name);
-            }
+            },
         },
         computed:{
             link(){
-                if (this.group.name === 'Электроприборы'){
-                    return "electro"
+                if (this.group.name === 'Электроприборы') {
+                    return (`/${this.group.id}/15`)//Ссылка на модели светильников
                 } else {
-                    return "mebel"
+                    return (`/${this.group.id}/2`)//Ссылка на модели стульев (если group.name='Мебель')
                 }
             }
         }

@@ -4,36 +4,16 @@ export const productsModule = {
         products:[{name,value:[]}],//новый массив товаров со вложенностями
     },
     getters:{
-        //кнопки меню (слева)
-        getMenuItemsElectro(state){
-            return state.products[0].value
-        },
-        //кнопки меню (слева)
-        getMenuItemsMebel(state){
-            return state.products[1].value
-        },
-        //кнопки навигации (сверху)
-        getHeaderItems(state){
-            return state.products
-        },
-        getCatalogVentilators(state){
-            return state.products[0].value[1].value
-        },
-        //получение каталога стульев
-        getCatalogChairs(state){
-            return state.products[1].value[0].value
-        },
-        //получение каталога столов
-        getCatalogTables(state){
-            return state.products[1].value[2].value
-        },
-        //получить каталог диванов
-        getCatalogSofas(state){
-            return state.products[1].value[1].value
-        },
-        //получить каталог светильников
-        getCatalogLamps(state){
-            return state.products[0].value[0].value
+        getChilds: state => id => {
+            return state.products.filter((item) => item.parent_id === id)
+            // если передадим id = "-1", выйдут категории (электроприборы, мебель)
+            // если передадим id = "14", выйдут подкатегории (светильники, вентиляторы)
+            // если передадим id = "100", выйдут подкатегории (стулья, диваны, столы)
+            // если передадим id = "2", выйдут названия стульев
+            // если передадим id = "3", выйдут названия диванов
+            // если передадим id = "4", выйдут названия столов
+            // если передадим id = "15", выйдут названия светильников
+            // если передадим id = "16", выйдут названия вентиляторов
         },
     },
     mutations:{
@@ -44,38 +24,18 @@ export const productsModule = {
         loadProducts({commit}) {
             return fetch('http://test1.web-gu.ru/')
                 .then(response => response.json())
-                .then(result => JSON.parse(JSON.stringify(result)))
-                .then(data => {//data - наш изначальный массив
-                    let categories = [...data.filter((e) => e.parent_id === -1)];//выведутся: электрориборы и мебель
-                    let subcategoriesMebel = [...data.filter((e) => e.parent_id === 100)];//выведутся: диваны, столы, стулья
-                    //меняем местами, чтобы получилось: стулья, диваны, столы
-                    /*eslint no-self-assign: ["error", {"props": false}]*/
-                    [subcategoriesMebel[0],subcategoriesMebel[1],subcategoriesMebel[2]]=[subcategoriesMebel[2],subcategoriesMebel[0],subcategoriesMebel[1]];
-                    let subcategoriesElectro = [...data.filter((e) => e.parent_id === 14)];//выведутся: светильники, вентиляторы
-                    let chairs = [...data.filter((e) => e.parent_id === 2)];//названия стульев
-                    let sofas = [...data.filter((e) => e.parent_id === 3)];//названия диванов
-                    let tables = [...data.filter((e) => e.parent_id === 4)];//названия столов
-                    let lamps = [...data.filter((e) => e.parent_id === 15)];//названия светильников
-                    let ventilators = [...data.filter((e) => e.parent_id === 10)];//пустой массив вентиляторов
+                .then(result => {
+                    result.sort((prev,next) => prev.parent_id - next.parent_id)
+                    console.log('ВСЕ ТОВАРЫ БЕЗ ГРУППИРОВКИ:', result)//все товары (не структурированный массив)
+                    commit('setProducts',JSON.parse(JSON.stringify(result)));
 
-                    let products = [...categories.map((element) => Object.assign({
-                        name:element.name,
-                        value:[]
-                    }))]
-                    products[0].value = [...subcategoriesElectro.map((el) => Object.assign({
-                        name:el.name,
-                        value:[]
-                    }))]
-                    products[1].value = [...subcategoriesMebel.map((el) => Object.assign({
-                        name:el.name,
-                        value:[]
-                    }))]
-                    products[0].value[0].value = lamps;//светильники
-                    products[0].value[1].value = ventilators;//вентиляторы
-                    products[1].value[1].value = sofas;//диваны
-                    products[1].value[2].value = tables;//столы
-                    products[1].value[0].value = chairs;//стулья
-                    commit('setProducts',JSON.parse(JSON.stringify(products)));
+                    //Возможно, стоит сделать такой массив, чтобы понимать, какие parent_id у нас есть
+                    const result2 = [...result.reduce((hash, {parent_id, id,img,name,price,props,reviews}) => {
+                        const current = hash.get(parent_id) || {parent_id, products:[]}
+                        current.products.push({id,img,name,price,props,reviews});
+                        return hash.set(parent_id,current)
+                    },new Map).values()];
+                    console.log('ТОВАРЫ СГРУППИРОВАННЫЕ ПО parent_id:', result2)//сгруппированный массив по parent_id
                 })
         },
     }

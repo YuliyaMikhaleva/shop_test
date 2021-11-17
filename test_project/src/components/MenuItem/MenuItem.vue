@@ -2,7 +2,7 @@
 <template>
     <div>
         <div v-bind:class="[categoryName === category.name ? activeClass: '', otherClass]"
-             @click="functionName">
+             @click="changeNameLink">
             <router-link :to="link" style="text-decoration: none; color: inherit;"><span class="category">{{ category.name }}</span></router-link>
         </div>
     </div>
@@ -26,7 +26,7 @@
             },
             changeActiveLinkElectro(){
                 this.$store.commit('linksModule/changeActiveCategoryElectro', this.category.name);
-            }
+            },
         },
         computed:{
             categoryName(){
@@ -36,7 +36,7 @@
                     return this.$store.getters['linksModule/getActiveCategoryElectro']
                 }
             },
-            functionName(){
+            changeNameLink(){
                 if (this.$store.getters['linksModule/getActiveLink'] === 'Мебель'){
                     return this.changeActiveLinkMebel
                 } else {
@@ -44,18 +44,8 @@
                 }
             },
             link(){
-                if (this.category.name === 'Стулья'){
-                    return "chairs"
-                } else if (this.category.name === 'Столы'){
-                    return "tables"
-                } else if (this.category.name === 'Диваны'){
-                    return "sofas"
-                } else if (this.category.name === 'Светильники'){
-                    return "lamps"
-                } else {
-                    return "ventilators"
-                }
-            }
+                return (`/${this.category.parent_id}/${this.category.id}`)
+            },
         }
     }
 </script>
