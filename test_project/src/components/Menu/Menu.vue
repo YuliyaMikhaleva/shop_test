@@ -13,11 +13,8 @@
         components: {MenuItem},
         computed: {//вычисляемое свойство
             catalog(){
-                if (this.$store.getters['linksModule/getActiveLink'] === 'Электроприборы'){
-                    return this.$store.getters['productsModule/getChilds'](14)//вывод: светильники и вентиляторы
-                } else {
-                    return this.$store.getters['productsModule/getChilds'](100)//вывод: стулья, диваны, столы
-                }
+                const categoryId = this.$route.params.category;
+                return this.$store.getters['productsModule/getChilds'](Number(categoryId))
             }
         },
     }

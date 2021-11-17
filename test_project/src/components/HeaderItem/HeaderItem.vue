@@ -20,11 +20,10 @@
         },
         computed:{
             link(){
-                if (this.group.name === 'Электроприборы') {
-                    return (`/${this.group.id}/15`)//Ссылка на модели светильников
-                } else {
-                    return (`/${this.group.id}/2`)//Ссылка на модели стульев (если group.name='Мебель')
-                }
+                const linkId = this.$store.getters['productsModule/getChilds'](this.group.id).filter((item) =>
+                    item.parent_id === this.group.id
+                )[0].id
+                return (`/${this.group.id}/${linkId}`)
             }
         }
     }
