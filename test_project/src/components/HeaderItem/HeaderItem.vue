@@ -1,8 +1,10 @@
 <!--1 элемент навигации в шапке сайта(сверху)-->
 <template>
-    <div v-bind:class="[this.$store.getters['linksModule/getActiveLink']===group.name ? $style['item__active'] : $style['item']]"
-         @click="changeActiveLink">
-        <router-link :to="link" style="text-decoration: none; color: inherit;"
+    <div @click="changeActiveLink">
+        <router-link :to="link"
+                     tag="div"
+                     :class="$style['item']"
+                     :active-class="$style['activeClass']"
         >{{ group.name }}</router-link>
     </div>
 
@@ -16,13 +18,16 @@
             //изменение активной ссылки, соответственно будут меняться стили "кнопки"
             changeActiveLink(){
                 this.$store.commit('linksModule/changeActiveLink', this.group.name);
+                const newName = this.$store.getters['productsModule/getChilds'](this.group.id).filter((item) =>
+                item.parent_id === this.group.id)[0].name
+                this.$store.commit('linksModule/changeActiveSubcategory', newName);
             },
         },
         computed:{
             link(){
                 const linkId = this.$store.getters['productsModule/getChilds'](this.group.id).filter((item) =>
                     item.parent_id === this.group.id
-                )[0].id
+                )[0].id;
                 return (`/${this.group.id}/${linkId}`)
             }
         }

@@ -1,5 +1,6 @@
 .item{
   font-family: "Roboto_regular";
+  height: 100%;
   &:hover{
     border-bottom: 4px solid #ff9c9c;
     box-sizing: border-box;
@@ -19,5 +20,15 @@
     border-bottom: 4px solid $redColor;
     box-sizing: border-box;
     font-weight: normal;
+  }
+}
+.activeClass{
+  text-decoration: none;
+  border-bottom: 4px solid #FF6969;
+  box-sizing: border-box;
+  font-weight: normal;
+  height: 100%;
+  &:hover{
+    border-bottom: 4px solid #FF6969 !important;
   }
 }

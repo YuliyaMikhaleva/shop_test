@@ -2,29 +2,15 @@ export const linksModule = {
     namespaced:true,
     state:{
         activeLink:'Электроприборы',
-        activeCategoryMebel:'Стулья',
-        activeCategoryElectro:'Светильники',
+        activeSubcategory:'Светильники',
     },
-    getters:{
-        getActiveLink(state){
-            return state.activeLink
-        },
-        getActiveCategoryMebel(state){
-            return state.activeCategoryMebel
-        },
-        getActiveCategoryElectro(state){
-            return state.activeCategoryElectro
-        }
-    },
+    getters:{ },
     mutations:{
         changeActiveLink(state, payload){
             state.activeLink = payload
         },
-        changeActiveCategoryMebel(state,payload){
-            state.activeCategoryMebel = payload
-        },
-        changeActiveCategoryElectro(state, payload){
-            state.activeCategoryElectro = payload
+        changeActiveSubcategory(state, payload){
+            state.activeSubcategory = payload
         }
     }
 
