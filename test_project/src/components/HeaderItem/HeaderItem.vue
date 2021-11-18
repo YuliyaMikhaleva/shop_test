@@ -11,6 +11,13 @@
 </template>
 
 <script>
+
+    /**
+     * @ревью 
+     * если присмотреться, то можно увидеть повторяющийся паттерн в виде получения объекта,
+     * поэтому стоит сделать геттер для получения этого объекта.
+     */
+
     export default {
         name: "HeaderItem",
         props:['group'],
@@ -18,6 +25,7 @@
             //изменение активной ссылки, соответственно будут меняться стили "кнопки"
             changeActiveLink(){
                 this.$store.commit('linksModule/changeActiveLink', this.group.name);
+
                 const newName = this.$store.getters['productsModule/getChilds'](this.group.id).filter((item) =>
                 item.parent_id === this.group.id)[0].name
                 this.$store.commit('linksModule/changeActiveSubcategory', newName);

@@ -8,12 +8,26 @@
 </template>
 
 <script>
+    /**
+     * @ревью 
+     * Используем ползовательские события вместо пропа method
+     * 
+     * @see https://ru.vuejs.org/v2/guide/components-custom-events.html
+     * 
+     */  
     export default {
         name: "Button",
         props:['isLoading', 'method','type','value'],
         computed:{
-            text(){
-                if (this.value){
+            text(){ 
+                /**
+                 * @ревью копмонент пока не универсален
+                 * - Не учтена возможность добавить другой другой текст
+                 * - На практике часто в один компонент приходится вставлять другой компонент, рекомендую присмотреться к слотам во вью
+                 * 
+                 * @see https://ru.vuejs.org/v2/guide/components-slots.html#ad
+                 */
+                if (this.value) {
                     return this.value
                 } else if (this.isLoading === false){
                     return "Добавить в корзину"

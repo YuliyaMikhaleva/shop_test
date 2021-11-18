@@ -11,6 +11,13 @@
 <script>
     export default {
         name: "MenuItem",
+
+        /**
+         * @ревью
+         * 
+         * Пропсы принято описывать подробно
+         * @see https://ru.vuejs.org/v2/guide/components-props.html#Указание-типа-входных-параметров
+         */
         props:['category'],
         methods: {
             changeActiveSubcategory(){
@@ -26,6 +33,7 @@
 </script>
 
 <style scoped>
+    /* Стили надо будет отделить */
     .category{
         background-color: white;
         display: block;

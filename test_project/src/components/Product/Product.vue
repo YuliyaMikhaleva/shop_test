@@ -4,15 +4,14 @@
         <a :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" data-bs-target="#productsTransition">
             <img  :class="$style['catalog-card__img']" :src="product.img" width="353" height="246" alt="photo" />
         </a>
-        <a :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" data-bs-target="#productsTransition">
+        <a :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" data-bs-target="#productsTransition" >
             <h3 :class="$style['catalog-card__title']" >{{ product.name }}</h3>
         </a>
-        <span :class="$style['catalog-card__price']" ><span> {{ product.price }}</span> ₽</span>
+        <span :class="$style['catalog-card__price']"  ><span> {{ product.price }}</span> ₽</span>
 
         <Button :class="$style['catalog-card__button']" type="button" :method="addToCart" :isLoading="isLoading" />
 
         <div class="modal fade" id="productsTransition" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="productsTransitionLabel" aria-hidden="true">
-
             <ModalDescription :class="$style.modal" :product="product"/>
         </div>
     </article>
@@ -31,12 +30,22 @@
             }
         },
         mounted() {
+            /**
+             * @ревью 
+             * Принято использовать mapActions и mapGetters для получения экшенов и геттеров из стора
+             * 
+             * @see https://vuex.vuejs.org/ru/guide/actions.html#диспетчеризация-деиствии-в-компонентах
+             * @see https://vuex.vuejs.org/ru/guide/getters.html#вспомогательная-функция-mapgetters
+             */
             let find = this.$store.getters['basketModule/getBasket'].find((element) => element.id === this.product.id);
-            if (find){
-                this.isAdded = true;
-            } else {
-                this.isAdded = false;
-            }
+        
+            // а можно так 
+            this.isAdded = !!find;
+            // if (find){
+            //     this.isAdded = true;
+            // } else {
+            //     this.isAdded = false;
+            // }
         },
         methods:{
             //добавить в корзину

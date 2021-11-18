@@ -59,20 +59,32 @@
 </template>
 
 <script>
+    /**
+     * @ревью почему-то не корректно работает открытие описания товара
+     */
+
     import ProductParametrs from "../ProductParametrs/ProductParametrs";
     import ProductReviews from "../ProductReviews/ProductReviews";
     import LinkInModal from "../LinkInModal/LinkInModal";
     import FormReview from "../FormReview/FormReview";
-    export default {
+    export default {     
         name: "ProductDescription",
         props:['product'],
-        components: {FormReview, LinkInModal, ProductReviews, ProductParametrs},
+        components: {FormReview, LinkInModal, ProductReviews, ProductParametrs}, 
         data(){
+            /**
+             * @ревью 
+             * занимает много места, думаю, что может решиться после добавления геттера
+             */
             return {
                 isAdded:false,//добавлен ли товар
                 activeLink:'description',
                 description:'',//описание товара
                 width:'',//параметр ширина
+                /**
+                 * @ревью 
+                 * характиристику можно универсализировать, давай представим, что характеристики могут появляться новые
+                 */
                 valueWidth:'',//значение ширины
                 measureWidth:'',//единицы измерения
                 height:'',//параметр высота
@@ -98,7 +110,16 @@
             }
 
             // поиск элемента в базе данных и необходимых свойств
-            let element = this.$store.getters['infoModule/getDescription'].find((el) => el.id === this.product.id)
+            /**
+             * @ревью
+             * Поиск выделить в геттер и все аналогичные вещи, которые вызывают или могут вызывать дублирование кода
+             */
+            let element = this.$store.getters['infoModule/getDescription'].find((el) => el.id === this.product.id) 
+
+            /**
+             * @ревью
+             * тоже занимает много места в коде
+             */
             this.description = element.descr;
             this.width = element.props.width.caption;
             this.valueWidth = element.props.width.value;
@@ -110,7 +131,8 @@
             this.valueLength = element.props.length.value;
             this.measureLength = element.props.length.measure;
             this.reviews = element.reviews
-         },
+        },
+
         methods:{
             //добавить в корзину
             addToCart(){
@@ -141,6 +163,10 @@
             },
             //добавить новый отзыв
             addNewReview(){
+                /**
+                 * @ревью 
+                 * assing тут избыточен
+                 */
                 const element = Object.assign({
                     author: this.author,
                     rate: this.mark,

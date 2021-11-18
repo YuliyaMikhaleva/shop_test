@@ -1,7 +1,24 @@
 export const productsModule = {
     namespaced: true,
     state:{
-        products:[{name,value:[]}],//новый массив товаров со вложенностями
+        /**
+         * @ревью 
+         * Если надо описать ключи объктов в массиве, то можно воспользоватся JSDoc 
+         * @see https://jsdoc.app/ - ссылка на документацию
+         * 
+         * Пример:
+         */
+
+        /**
+         * @typedef Product
+         * @type {object}
+         * @property {string} name - название товара.
+         * @property {Product[]} value - дочерние продукты.
+         * 
+         * @type {Product[]} products
+         */
+        products:[],//новый массив товаров со вложенностями
+        // products:[{name,value:[]}],//новый массив товаров со вложенностями
     },
     getters:{
         getChilds: state => id => {
@@ -18,9 +35,24 @@ export const productsModule = {
                 .then(response => response.json())
                 .then(result => {
                     result.sort((prev,next) => prev.id - next.id)
+                    /**
+                     * @ревью 
+                     * Не нужные логи не забываем убирать
+                     */
                     console.log('ВСЕ ТОВАРЫ БЕЗ ГРУППИРОВКИ:', result)//все товары (не структурированный массив)
-                    commit('setProducts',JSON.parse(JSON.stringify(result)));
+                    /**
+                     * @ревью 
+                     * Избыточное преобразование 
+                     */
+                    commit('setProducts', JSON.parse(JSON.stringify(result)));
                 })
         },
     }
 }
+
+// /**
+//  * @type Product
+//  */
+// const product = {};
+
+// product.value
