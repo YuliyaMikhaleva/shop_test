@@ -1,3 +1,4 @@
+import store from '@/store'
 export const infoModule = {
     namespaced:true,
     state:{
@@ -16,6 +17,7 @@ export const infoModule = {
     actions:{
         //загрузить описание к товарам
         loadDescription({commit}){
+            store.commit('showloaderModule/turnOnShowloader');
             return fetch('http://test1.web-gu.ru')
                 .then(response => response.json())
                 .then(data => {
@@ -40,8 +42,8 @@ export const infoModule = {
                             )
                             .then((data) => {
                                 arrayDescription.push(data);
-                                // console.log('Этот массив:', arrayDescription);
                                 commit('setDescription', arrayDescription)
+                                store.commit('showloaderModule/turnOfShowloader')
                             })
                     });
                 })

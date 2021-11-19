@@ -147,11 +147,9 @@
                     avatar: 'https://ob-kassa.ru/content/front/buhoskol_tmp1/images/reviews-icon.jpg',
                     text: this.text
                 })
-                this.$store.commit('showloaderModule/turnOnShowloader');
                 this.author = '';
                 this.text = '';
                 setTimeout(() => {
-                    this.$store.commit('showloaderModule/turnOfShowloader');
                     this.reviews.push(element);
                 },1000)
             },

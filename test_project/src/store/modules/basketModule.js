@@ -1,3 +1,4 @@
+import store from '@/store'
 export const basketModule = {
     namespaced: true,
     state:{
@@ -33,10 +34,13 @@ export const basketModule = {
         },
         //get запрос при заказе товара с удачным результатом
         loadOrder({commit}){
+            store.commit('showloaderModule/turnOnShowloader');
+            console.log('начало загрузки товара')
+
             return fetch('http://test1.web-gu.ru/?action=send_form')
                 .then(response => response.json())
-                .then(data => {
-                    console.log('data=', data);
+                .then(() => {
+                    store.commit('showloaderModule/turnOfShowloader')
                     commit('clearBasket')
                 });
         },

@@ -20,24 +20,8 @@
             Menu
         },
         mounted() {
-            this.showToggle()
             this.$store.dispatch('productsModule/loadProducts');
             this.$store.dispatch('infoModule/loadDescription')
-        },
-        methods:{
-            showToggle(){
-                setTimeout(()=>{
-                    this.$store.commit('showloaderModule/turnOfShowloader');
-                },1000)
-            }
-        },
-        watch: {
-            $route() {
-                this.$store.commit('showloaderModule/turnOnShowloader');
-                setTimeout(() => {
-                    this.$store.commit('showloaderModule/turnOfShowloader');
-                }, 1000);
-            },
         },
         created () {// Считываем информацию о статусе в localStorage, когда страница загружается
             localStorage.getItem("userMsg") && this.$store.replaceState(Object.assign(this.$store.state,JSON.parse(localStorage.getItem("userMsg"))));

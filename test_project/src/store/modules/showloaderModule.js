@@ -1,7 +1,7 @@
 export const showloaderModule = {
     namespaced:true,
     state:{
-        showloader:true,
+        showloader:false,
     },
     getters:{
         getShowloader(state){

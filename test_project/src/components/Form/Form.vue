@@ -39,11 +39,7 @@
                 }
                 e.preventDefault();
                 if(!this.errors.length){
-                    this.$store.commit('showloaderModule/turnOnShowloader');
-                    setTimeout(()=>{
-                        this.doOrder();
-                        this.$store.commit('showloaderModule/turnOfShowloader');
-                    },2000)
+                    this.doOrder();
                 }
             },
             validPhone:function(phone) {
