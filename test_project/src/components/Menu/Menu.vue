@@ -1,7 +1,6 @@
 <!--Боковое меню сайта-->
 <template>
     <nav class="menu">
-        <!-- eslint-disable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
         <MenuItem v-bind:key="group.id" v-bind:category="group" v-for="group of catalog" />
     </nav>
 </template>
