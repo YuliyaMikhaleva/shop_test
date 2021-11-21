@@ -9,7 +9,7 @@
         </a>
         <span :class="$style['catalog-card__price']" ><span> {{ product.price }}</span> ₽</span>
 
-        <Button :class="$style['catalog-card__button']" type="button" :method="addToCart" :isLoading="isLoading" />
+        <Button :class="$style['catalog-card__button']" type="button" @on-click="addToCart" :isLoading="isLoading" >{{text}}</Button>
 
         <div class="modal fade" id="productsTransition" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="productsTransitionLabel" aria-hidden="true">
 
@@ -67,6 +67,15 @@
             isLoading(){
                 return this.isAdded
             },
+            text(){
+                if (this.isLoading === false){
+                    return "Добавить в корзину"
+                } else if (this.isLoading === 'pending'){
+                    return "..."
+                } else {
+                    return "В корзине"
+                }
+            }
         }
     }
 </script>
