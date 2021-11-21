@@ -5,7 +5,7 @@
             <Input :class="$style.form__block" label="Телефон" :errors="errors" :element="phone" error="phoneError" v-model="phone"/>
         </div>
         <Input :class="$style.form__block" label="Полный адрес" :errors="errors" :element="address" error="addressError" v-model="address"/>
-        <Button :class="$style.form__button" type="submit" value="Заказать"  :method="checkForm"/>
+        <Button :class="$style.form__button" type="submit" @on-click="checkForm">Заказать</Button>
     </form>
 
 </template>

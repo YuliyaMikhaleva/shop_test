@@ -12,7 +12,7 @@
             </textarea>
         <ErrorFormBasket v-if="$parent.text==''" :errors="errors" error="nameError" :class="$style['form-review__errorTextarea']" />
 
-        <Button type="submit" :method="checkForm" value="Отправить отзыв"/>
+        <Button type="submit" @on-click="checkForm">Отправить отзыв</Button>
     </form>
 </template>
 
