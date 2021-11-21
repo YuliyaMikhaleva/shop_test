@@ -26,10 +26,10 @@
         </div>
 
         <div :class="$style['modal-product__links']">
-            <LinkInModal :method="goToDescription" title="Описание" block="description" :activeLink="link" />
-            <LinkInModal :method="goToParametrs" title="Характеристики" block="parametrs" :activeLink="link" />
-            <LinkInModal :method="goToReviews" title="Отзывы" block="reviews" :activeLink="link" />
-            <LinkInModal :method="goToFormReview" title="Оставить отзыв" block="form_review" :activeLink="link" />
+            <LinkInModal @on-click="goToDescription" title="Описание" block="description" :activeLink="link" />
+            <LinkInModal @on-click="goToParametrs" title="Характеристики" block="parametrs" :activeLink="link" />
+            <LinkInModal @on-click="goToReviews" title="Отзывы" block="reviews" :activeLink="link" />
+            <LinkInModal @on-click="goToFormReview" title="Оставить отзыв" block="form_review" :activeLink="link" />
         </div>
 
         <section v-if="activeLink=='description'" v-html="description">
@@ -125,7 +125,6 @@
             //перейти на вкладку "описание"
             goToDescription(){
                 this.activeLink='description';
-                console.log(this.activeLink)
             },
             //перейти на вкладку "параметры"
             goToParametrs(){

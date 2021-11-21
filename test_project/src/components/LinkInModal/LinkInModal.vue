@@ -1,11 +1,11 @@
 <template>
-    <a @click="method" :class="[activeLink === block ? $style['link-active'] : $style['link-item'] ]">{{ title }}</a>
+    <a @click="$emit('on-click')" :class="[activeLink === block ? $style['link-active'] : $style['link-item'] ]">{{ title }}</a>
 </template>
 
 <script>
     export default {
         name: "LinkInModal",
-        props:['method', 'title', 'activeLink','block']
+        props:['title', 'activeLink','block']
     }
 </script>
 
