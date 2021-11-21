@@ -18,17 +18,16 @@
             //изменение активной ссылки, соответственно будут меняться стили "кнопки"
             changeActiveLink(){
                 this.$store.commit('linksModule/changeActiveLink', this.group.name);
-                const newName = this.$store.getters['productsModule/getChilds'](this.group.id).filter((item) =>
-                item.parent_id === this.group.id)[0].name
-                this.$store.commit('linksModule/changeActiveSubcategory', newName);
+                this.$store.commit('linksModule/changeActiveSubcategory', this.firstEl.name);
             },
         },
         computed:{
+            firstEl(){
+                return this.$store.getters['productsModule/getChilds'](this.group.id).filter((item) =>
+                    item.parent_id === this.group.id)[0]
+            },
             link(){
-                const linkId = this.$store.getters['productsModule/getChilds'](this.group.id).filter((item) =>
-                    item.parent_id === this.group.id
-                )[0].id;
-                return (`/${this.group.id}/${linkId}`)
+                return (`/${this.group.id}/${this.firstEl.id}`)
             }
         }
     }
