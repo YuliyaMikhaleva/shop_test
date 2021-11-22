@@ -63,7 +63,7 @@
     import ProductReviews from "../ProductReviews/ProductReviews";
     import LinkInModal from "../LinkInModal/LinkInModal";
     import FormReview from "../FormReview/FormReview";
-    import {mapGetters} from "vuex"
+    import {mapGetters, mapActions} from "vuex"
     export default {
         name: "ProductDescription",
         props:{
@@ -120,7 +120,7 @@
         methods:{
             //добавить в корзину
             addToCart(){
-                this.$store.dispatch('basketModule/loadToCart', this.product);
+                this.loadToCart(this.product);
                 this.isAdded = true;
             },
             //удалить из корзины
@@ -181,6 +181,7 @@
         computed:{
             ...mapGetters('basketModule', ["getBasket"]),
             ...mapGetters('infoModule',['getDescription']),
+            ...mapActions('basketModule',['loadToCart']),
             link(){
                 return this.activeLink
             }

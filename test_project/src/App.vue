@@ -13,7 +13,7 @@
     import Header from "./components/Header/Header";
     import Menu from "./components/Menu/Menu";
     import Preloader from "./components/Preloader/Preloader";
-    import {mapGetters} from "vuex"
+    import {mapGetters, mapActions} from "vuex"
     export default {
         components:{
             Preloader,
@@ -21,11 +21,13 @@
             Menu
         },
         mounted() {
-            this.$store.dispatch('productsModule/loadProducts');
-            this.$store.dispatch('infoModule/loadDescription')
+            this.loadProducts;
+            this.loadDescription
         },
         computed:{
-          ...mapGetters('showloaderModule',['getShowloader'])
+          ...mapGetters('showloaderModule',['getShowloader']),
+          ...mapActions('productsModule',['loadProducts']),
+          ...mapActions('infoModule',['loadDescription'])
         },
         created () {// Считываем информацию о статусе в localStorage, когда страница загружается
             localStorage.getItem("userMsg") && this.$store.replaceState(Object.assign(this.$store.state,JSON.parse(localStorage.getItem("userMsg"))));

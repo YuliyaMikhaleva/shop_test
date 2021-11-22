@@ -21,7 +21,7 @@
 <script>
     import Button from "../Button/Button";
     import ModalDescription from "../ModalDescription/ModalDescription"
-    import {mapGetters} from "vuex"
+    import {mapGetters, mapActions} from "vuex"
 
     export default {
         name: "Product",
@@ -50,7 +50,7 @@
             addToCart(){
                 console.log('FALSE')
                 if (this.isLoading === false){
-                    this.$store.dispatch('basketModule/loadToCart', this.product);
+                    this.loadToCart(this.product)
                     this.isAdded = 'pending';
                     setTimeout(() => {
                         this.isAdded = true;
@@ -68,10 +68,7 @@
         //вычисляемое свойство
         computed:{
             ...mapGetters('basketModule',['getBasket']),
-            // //будет считать корзину в настоящий момент и постоянно обновлять
-            // basket(){
-            //     return this.getBasket
-            // },
+            ...mapActions('basketModule',['loadToCart']),
             isLoading(){
                 return this.isAdded
             },

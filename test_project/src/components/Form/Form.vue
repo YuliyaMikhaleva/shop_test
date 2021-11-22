@@ -13,6 +13,7 @@
 <script>
     import Button from "../Button/Button";
     import Input from "../Input/Input";
+    import {mapActions} from "vuex"
     export default {
         name: "Form",
         components:{Button,Input},
@@ -49,12 +50,15 @@
             doOrder: function () {
                 this.$parent.showParametrs = false;
                 this.$parent.showResultOrder = true;
-                this.$store.dispatch('basketModule/loadOrder');
+                this.loadOrder;
                 setTimeout(() => {
                     this.$parent.showResultOrder = false;
                 }, 2000)
             },
         },
+        computed:{
+            ...mapActions('basketModule',['loadOrder'])
+        }
     }
 </script>
 
