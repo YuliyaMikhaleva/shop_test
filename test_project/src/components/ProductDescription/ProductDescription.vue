@@ -63,6 +63,7 @@
     import ProductReviews from "../ProductReviews/ProductReviews";
     import LinkInModal from "../LinkInModal/LinkInModal";
     import FormReview from "../FormReview/FormReview";
+    import {mapGetters} from "vuex"
     export default {
         name: "ProductDescription",
         props:{
@@ -95,7 +96,7 @@
         },
         //с этого метода программа начинает работать
         mounted() {
-            let find = this.$store.getters['basketModule/getBasket'].find((element) => element.id === this.product.id);
+            let find = this.getBasket.find((element) => element.id === this.product.id);
             if (find){
                 this.isAdded = true;
             } else {
@@ -103,7 +104,7 @@
             }
 
             // поиск элемента в базе данных и необходимых свойств
-            let element = this.$store.getters['infoModule/getDescription'].find((el) => el.id === this.product.id)
+            let element = this.getDescription.find((el) => el.id === this.product.id)
             this.description = element.descr;
             this.width = element.props.width.caption;
             this.valueWidth = element.props.width.value;
@@ -178,9 +179,8 @@
             },
         },
         computed:{
-            basket(){
-                return this.$store.getters['basketModule/getBasket']
-            },
+            ...mapGetters('basketModule', ["getBasket"]),
+            ...mapGetters('infoModule',['getDescription']),
             link(){
                 return this.activeLink
             }

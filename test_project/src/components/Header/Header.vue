@@ -39,13 +39,15 @@
 <script>
     import Modal_basket from "../ModalBasket/Modal_basket";
     import HeaderButtons from "../HeaderButtons/HeaderButtons";
+    import {mapGetters} from "vuex"
     export default {
         name: "Header",
         components: {HeaderButtons, Modal_basket},
         computed: {//вычисляемое свойство
+            ...mapGetters('basketModule',['getBasket']),
             //возвращает всегда актуальное количество товаров в корзине
             counter(){
-                return this.$store.getters['basketModule/getBasket'].length
+                return this.getBasket.length
             }
         },
     }

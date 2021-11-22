@@ -7,13 +7,15 @@
 </template>
 
 <script>
-    import BasketItem from "../BasketItem/BasketItem";
+    import BasketItem from "../BasketItem/BasketItem"
+    import {mapGetters} from "vuex"
     export default {
         name: "Basket",
         components: {BasketItem},
         computed:{
+            ...mapGetters('basketModule',['getBasket']),
             basket(){
-                return this.$store.getters['basketModule/getBasket']
+                return this.getBasket
             }
         }
 

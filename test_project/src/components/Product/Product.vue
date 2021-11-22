@@ -21,6 +21,7 @@
 <script>
     import Button from "../Button/Button";
     import ModalDescription from "../ModalDescription/ModalDescription"
+    import {mapGetters} from "vuex"
 
     export default {
         name: "Product",
@@ -37,7 +38,7 @@
             }
         },
         mounted() {
-            let find = this.$store.getters['basketModule/getBasket'].find((element) => element.id === this.product.id);
+            let find = this.getBasket.find((element) => element.id === this.product.id);
             if (find){
                 this.isAdded = true;
             } else {
@@ -66,10 +67,11 @@
         },
         //вычисляемое свойство
         computed:{
-            //будет считать корзину в настоящий момент и постоянно обновлять
-            basket(){
-                return this.$store.getters['basketModule/getBasket']
-            },
+            ...mapGetters('basketModule',['getBasket']),
+            // //будет считать корзину в настоящий момент и постоянно обновлять
+            // basket(){
+            //     return this.getBasket
+            // },
             isLoading(){
                 return this.isAdded
             },

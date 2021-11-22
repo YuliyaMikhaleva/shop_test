@@ -7,7 +7,7 @@
 
                     <HeaderModal :class="$style.basket__header" title="Оформить заказ"/>
 
-                    <section  v-if="this.$store.getters['basketModule/getBasket'].length>0" >
+                    <section  v-if="getBasket.length>0" >
                         <span :class="$style.basket__text">В корзине:</span>
 <!--                        здесь будет корзина с товарами-->
                         <Basket/>
@@ -25,6 +25,7 @@
     import Form from "../Form/Form";
     import ModalText from "../ModalText/ModalText";
     import HeaderModal from "../HeaderModal/HeaderModal";
+    import {mapGetters} from "vuex"
     export default {
         name: "Modal_basket",
         components: {HeaderModal, ModalText, Form, Basket},
@@ -35,8 +36,9 @@
             }
         },
         computed:{
+            ...mapGetters('basketModule',['getBasket']),
             title(){
-                if (this.$store.getters['basketModule/getBasket'].length<=0 && !this.showResultOrder){
+                if (this.getBasket.length<=0 && !this.showResultOrder){
                     return "В корзине ничего нет"
                 } else if (this.showResultOrder){
                     return "Заказ успешно создан"

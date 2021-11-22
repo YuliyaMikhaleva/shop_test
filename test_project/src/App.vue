@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Preloader v-if="$store.getters['showloaderModule/getShowloader']"/>
+        <Preloader v-if="getShowloader"/>
         <Header/>
         <div class="main">
             <Menu class="main__menu"/>
@@ -13,6 +13,7 @@
     import Header from "./components/Header/Header";
     import Menu from "./components/Menu/Menu";
     import Preloader from "./components/Preloader/Preloader";
+    import {mapGetters} from "vuex"
     export default {
         components:{
             Preloader,
@@ -22,6 +23,9 @@
         mounted() {
             this.$store.dispatch('productsModule/loadProducts');
             this.$store.dispatch('infoModule/loadDescription')
+        },
+        computed:{
+          ...mapGetters('showloaderModule',['getShowloader'])
         },
         created () {// Считываем информацию о статусе в localStorage, когда страница загружается
             localStorage.getItem("userMsg") && this.$store.replaceState(Object.assign(this.$store.state,JSON.parse(localStorage.getItem("userMsg"))));

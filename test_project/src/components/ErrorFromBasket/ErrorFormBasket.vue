@@ -24,7 +24,6 @@
             },
             element:{
                 type:String,
-                required:true
             }
         }
     }

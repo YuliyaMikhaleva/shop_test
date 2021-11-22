@@ -6,15 +6,17 @@
 
 <script>
     import Catalog from "../components/Catalog/Catalog";
+    import {mapGetters} from "vuex"
     export default {
         name: "elements",
         components: {Catalog},
         computed:{
+            ...mapGetters('productsModule',['getChilds']),
             subcategory(){
                 return parseInt(this.$route.params.subcategory)
             },
             products:function(){
-                return this.$store.getters['productsModule/getChilds'](this.subcategory)
+                return this.getChilds(this.subcategory)
             },
         }
     }

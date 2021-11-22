@@ -16,9 +16,6 @@
                 default:function () {
                     return 'link'
                 },
-                validator:function (value) {
-                    return value == 'link'
-                }
             },
             block:{
                 type:String,

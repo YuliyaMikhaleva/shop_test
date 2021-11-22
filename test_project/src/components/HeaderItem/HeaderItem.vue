@@ -11,6 +11,7 @@
 </template>
 
 <script>
+    import {mapGetters} from "vuex"
     export default {
         name: "HeaderItem",
         props:{
@@ -30,8 +31,9 @@
             },
         },
         computed:{
+            ...mapGetters('productsModule',['getChilds']),
             firstEl(){
-                return this.$store.getters['productsModule/getChilds'](this.group.id).filter((item) =>
+                return this.getChilds(this.group.id).filter((item) =>
                     item.parent_id === this.group.id)[0]
             },
             link(){

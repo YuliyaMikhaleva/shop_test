@@ -7,13 +7,15 @@
 
 <script>
     import MenuItem from "../MenuItem/MenuItem";
+    import {mapGetters} from "vuex"
     export default {
         name: "Menu",
         components: {MenuItem},
         computed: {//вычисляемое свойство
+            ...mapGetters('productsModule', ["getChilds"]),
             catalog(){
                 const categoryId = this.$route.params.category;
-                return this.$store.getters['productsModule/getChilds'](Number(categoryId))
+                return this.getChilds(Number(categoryId))
             }
         },
     }
