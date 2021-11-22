@@ -13,7 +13,12 @@
 <script>
     export default {
         name: "HeaderModal",
-        props:['title']
+        props:{
+            title:{
+                type: String,
+                required: true,
+            }
+        },
     }
 </script>
 

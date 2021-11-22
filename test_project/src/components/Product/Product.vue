@@ -20,11 +20,17 @@
 
 <script>
     import Button from "../Button/Button";
-    import ModalDescription from "../ModalDescription/ModalDescription";
+    import ModalDescription from "../ModalDescription/ModalDescription"
+
     export default {
         name: "Product",
         components: {ModalDescription, Button},
-        props:['product'],
+        props:{
+            product:{
+                type:Object,
+                required:true,
+            }
+        },
         data(){
             return {
                 isAdded:false//добавлен ли товар

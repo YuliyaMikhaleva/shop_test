@@ -11,7 +11,15 @@
 <script>
     export default {
         name: "MenuItem",
-        props:['category'],
+        props:{
+            category:{
+                type: Object,
+                required:true,
+                validator:function (obj) {
+                    return Object.keys(obj).indexOf('name') !== -1
+                }
+            }
+        },
         methods: {
             changeActiveSubcategory(){
                 this.$store.commit('linksModule/changeActiveSubcategory', this.category.name);

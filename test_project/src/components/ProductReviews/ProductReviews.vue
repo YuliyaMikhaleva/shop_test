@@ -28,7 +28,15 @@
 <script>
     export default {
         name: "ProductReviews",
-        props:['reviews']
+        props:{
+            reviews:{
+                type: Array,
+                required: true,
+                default: function () {
+                    return []
+                }
+            }
+        }
     }
 </script>
 

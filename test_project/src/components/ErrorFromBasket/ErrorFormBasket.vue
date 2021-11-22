@@ -10,7 +10,23 @@
 <script>
     export default {
         name: "ErrorFormBasket",
-        props:['errors','error','element']
+        props:{
+            errors:{
+                type: Array,
+                required:true,
+                default:function () {
+                    return []
+                },
+            },
+            error:{
+                type: String,
+                required: true,
+            },
+            element:{
+                type:String,
+                required:true
+            }
+        }
     }
 </script>
 

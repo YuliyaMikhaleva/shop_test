@@ -21,7 +21,12 @@
     export default {
         name: "ModalDescription",
         components: {HeaderModal, ProductDescription},
-        props:['product']
+        props:{
+            product:{
+                type:Object,
+                required:true,
+            }
+        }
     }
 </script>
 

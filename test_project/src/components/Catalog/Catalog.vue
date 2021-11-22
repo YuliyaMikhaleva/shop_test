@@ -10,7 +10,15 @@
     import ZeroComponent from "../ZeroComponent/ZeroComponent";
     export default {
         name: "Catalog",
-        props:['goods'],
+        props:{
+            goods:{
+                type: Array,
+                required:true,
+                default:function () {
+                    return []
+                },              
+            }
+        },
         components: {ZeroComponent, Product},
     }
 </script>

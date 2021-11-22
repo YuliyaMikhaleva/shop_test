@@ -5,7 +5,26 @@
 <script>
     export default {
         name: "LinkInModal",
-        props:['title', 'activeLink','block']
+        props:{
+            title:{
+                type:String,
+                required:true,
+            },
+            activeLink:{
+                type:String,
+                required:true,
+                default:function () {
+                    return 'link'
+                },
+                validator:function (value) {
+                    return value == 'link'
+                }
+            },
+            block:{
+                type:String,
+                required:true,
+            }
+        }
     }
 </script>
 

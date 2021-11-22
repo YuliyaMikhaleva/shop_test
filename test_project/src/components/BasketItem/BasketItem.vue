@@ -13,14 +13,19 @@
 <script>
     export default {
         name: "BasketItem",
-        props: ['cartItem'],
-        methods:{
-            // удаление товара из корзины
-            deleteFromBasket(){
-                this.$store.commit('basketModule/deleteProduct', this.cartItem);
+        props: {
+            cartItem: {
+                type: Object,
+                required:true,
+            }
+        },
+        methods: {
+                // удаление товара из корзины
+                deleteFromBasket() {
+                    this.$store.commit('basketModule/deleteProduct', this.cartItem);
+                }
             }
         }
-    }
 </script>
 
 <style lang="scss" module>

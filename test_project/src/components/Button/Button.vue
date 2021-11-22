@@ -10,10 +10,24 @@
 <script>
     export default {
         name: "Button",
-        props:[
-            'isLoading',
-            'type',
-        ],
+        props:{
+            isLoading: {
+                type:[Boolean,String],
+                required: false,
+                default:false,
+                validator:function (value) {
+                    return [true, false,'pending'].indexOf(value) !==-1
+                }
+            },
+            type: {
+                type:String,
+                required: true,
+                default:'button',
+                validator:function (value) {
+                    return ['button','submit','reset'].indexOf(value) !==-1
+                }
+            }
+        }
     }
 </script>
 

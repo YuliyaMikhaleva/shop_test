@@ -13,7 +13,7 @@
                         <Basket/>
                         <Form/>
                     </section>
-                    <ModalText :class="$style.basket__modaltext" :text="title"/>
+                    <ModalText :class="$style.basket__modaltext">{{title}}</ModalText>
                 </div>
             </div>
         </div>

@@ -65,7 +65,12 @@
     import FormReview from "../FormReview/FormReview";
     export default {
         name: "ProductDescription",
-        props:['product'],
+        props:{
+            product:{
+                type:Object,
+                required:true,
+            }
+        },
         components: {FormReview, LinkInModal, ProductReviews, ProductParametrs},
         data(){
             return {

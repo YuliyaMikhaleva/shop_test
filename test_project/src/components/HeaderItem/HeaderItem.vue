@@ -13,7 +13,15 @@
 <script>
     export default {
         name: "HeaderItem",
-        props:['group'],
+        props:{
+            group:{
+                type: Object,
+                required:true,
+                validator:function (obj) {
+                    return Object.keys(obj).indexOf('name') !== -1
+                }
+            }
+        },
         methods: {
             //изменение активной ссылки, соответственно будут меняться стили "кнопки"
             changeActiveLink(){

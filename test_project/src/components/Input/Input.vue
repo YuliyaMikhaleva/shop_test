@@ -19,7 +19,27 @@
     export default {
         name: "Input",
         components: {ErrorFormBasket},
-        props:['label','errors','element','error'],
+        props:{
+            label:{
+                type:String,
+                required:true,
+            },
+            errors:{
+                type:Array,
+                required: true,
+                default: function () {
+                    return []
+                },
+            },
+            element:{
+                type:String,
+                required:true
+            },
+            error:{
+                type:String,
+                required:true,
+            }
+        }
 }
 </script>
 
