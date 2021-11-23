@@ -14,11 +14,14 @@
         components: {BasketItem},
         computed:{
             ...mapGetters('basketModule',['getBasket']),
+            /**
+             * Получение содержимого корзины
+             * @return {string}
+             */
             basket(){
                 return this.getBasket
             }
         }
-
     }
 </script>
 

@@ -26,13 +26,14 @@
             }
         },
         methods:{
-            //проверить форму на ошибки
+            /**
+             * Проверить форму на ошибки
+             * @param e - event
+             */
             checkForm:function(e) {
                 this.errors = [];
-                //Если нет имени, то выйдет ошибка
                 if(!this.name) this.errors.push("nameError");
                 if(!this.address) this.errors.push("addressError");
-                //Если нет телефона, то выйдет ошибка
                 if(!this.phone) {
                     this.errors.push("phoneError");
                 } else if(!this.validPhone(this.phone)) {
@@ -43,10 +44,18 @@
                     this.doOrder();
                 }
             },
+            /**
+             * Проверка правильности ввода номера телефона телефона
+             * @param phone - номер телефона типа +7(950)45-84-345
+             * @returns {boolean}
+             */
             validPhone:function(phone) {
                 var re = /^\+7\(\d{3}\)\d{2}-\d{2}-\d{3}$/;
                 return re.test(phone);
             },
+            /**
+             * Создание заказа
+             */
             doOrder: function () {
                 this.$parent.showParametrs = false;
                 this.$parent.showResultOrder = true;

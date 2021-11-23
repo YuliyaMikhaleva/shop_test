@@ -20,8 +20,10 @@
             }
         },
         methods: {
-                // удаление товара из корзины
-                deleteFromBasket() {
+            /**
+             * Удаление товара из корзины по клику
+             */
+            deleteFromBasket() {
                     this.$store.commit('basketModule/deleteProduct', this.cartItem);
                 }
             }

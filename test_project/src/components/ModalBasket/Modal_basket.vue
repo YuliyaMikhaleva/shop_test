@@ -37,6 +37,10 @@
         },
         computed:{
             ...mapGetters('basketModule',['getBasket']),
+            /**
+             * Заголовок в модальном окне
+             * @returns {string}
+             */
             title(){
                 if (this.getBasket.length<=0 && !this.showResultOrder){
                     return "В корзине ничего нет"

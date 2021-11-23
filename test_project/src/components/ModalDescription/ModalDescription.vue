@@ -27,9 +27,6 @@
                 required:true,
             }
         },
-        mounted() {
-            console.log(this.product)
-        }
     }
 </script>
 

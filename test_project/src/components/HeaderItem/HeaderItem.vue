@@ -24,7 +24,9 @@
             }
         },
         methods: {
-            //изменение активной ссылки, соответственно будут меняться стили "кнопки"
+            /**
+             * Изменение активной ссылки категории и подкатегории
+             */
             changeActiveLink(){
                 this.$store.commit('linksModule/changeActiveLink', this.group.name);
                 this.$store.commit('linksModule/changeActiveSubcategory', this.firstEl.name);
@@ -32,10 +34,18 @@
         },
         computed:{
             ...mapGetters('productsModule',['getChilds']),
+            /**
+             * Получение первого элемента сфильтрованного по необходимогу id
+             * @returns {Object}
+             */
             firstEl(){
                 return this.getChilds(this.group.id).filter((item) =>
                     item.parent_id === this.group.id)[0]
             },
+            /**
+             * Ссылка на первую подкатегорию
+             * @returns {string}
+             */
             link(){
                 return (`/${this.group.id}/${this.firstEl.id}`)
             }

@@ -43,9 +43,12 @@
     export default {
         name: "Header",
         components: {HeaderButtons, Modal_basket},
-        computed: {//вычисляемое свойство
+        computed: {
             ...mapGetters('basketModule',['getBasket']),
-            //возвращает всегда актуальное количество товаров в корзине
+            /**
+             * Всегда актуальное количество товаров в корзине
+             * @returns {number}
+             */
             counter(){
                 return this.getBasket.length
             }

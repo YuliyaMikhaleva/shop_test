@@ -77,7 +77,6 @@
                 errors:[],
             }
         },
-        //с этого метода программа начинает работать
         mounted() {
             // поиск элемента в базе данных и необходимых свойств
             let element = this.getDescription.find((el) => el.id === this.product.id)
@@ -86,30 +85,40 @@
             this.reviews = element.reviews
          },
         methods:{
-            //перейти на вкладку "описание"
+            /**
+             * Перейти на вкладку "описание"
+             */
             goToDescription(){
                 this.activeLink='description';
             },
-            //перейти на вкладку "параметры"
+            /**
+             * перейти на вкладку "параметры"
+             */
             goToParametrs(){
                 this.activeLink='parametrs';
             },
-            //перейти на вкладку "отзывы"
+            /**
+             * перейти на вкладку "отзывы"
+             */
             goToReviews(){
                 this.activeLink='reviews';
             },
-            //перейти на вкладку "добавить отзывы"
+            /**
+             * перейти на вкладку "добавить отзывы"
+             */
             goToFormReview(){
                 this.activeLink='form_review';
             },
-            //добавить новый отзыв
+            /**
+             * Добавить новый отзыв
+             */
             addNewReview(){
-                const element = Object.assign({
+                const element = {
                     author: this.author,
                     rate: this.mark,
                     avatar: 'https://ob-kassa.ru/content/front/buhoskol_tmp1/images/reviews-icon.jpg',
                     text: this.text
-                })
+                };
                 this.author = '';
                 this.text = '';
                 setTimeout(() => {
@@ -120,11 +129,13 @@
             onStepUpdate(newData){
                 this.mark = newData;
             },
-            //проверить форму на ошибки
+            /**
+             * Проверить форму на ошибки
+             * @param e
+             */
             checkForm:function(e) {
                 e.preventDefault();
                 this.errors=[]
-                //Если нет имени, то выйдет ошибка
                 if(!this.author) this.errors.push("authorError");
                 if(!this.text) this.errors.push("textError");
                 if(!this.errors.length){
@@ -140,10 +151,10 @@
             ...mapGetters('basketModule', ["getBasket"]),
             ...mapGetters('infoModule',['getDescription']),
             ...mapActions('basketModule',['loadToCart']),
-            item(){
-                console.log(this.product)
-                return this.product
-            },
+            /**
+             * Активная ссылка
+             * @return {string}
+             */
             link(){
                 return this.activeLink
             }

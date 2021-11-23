@@ -46,7 +46,9 @@
         },
         methods:{
             ...mapActions('basketModule',['loadToCart']),
-            //добавить в корзину
+            /**
+             * Добавление товара в корзину по клику
+             */
             addToCart(){
                 if (this.isLoading === false){
                     this.loadToCart(this.product)
@@ -58,18 +60,27 @@
                     this.deleteFromBasket()
                 }
             },
-            //удалить из корзины
+            /**
+             * Удаление товара из корзины по клику
+             */
             deleteFromBasket(){
                 this.$store.commit('basketModule/deleteProduct', this.product);
                 this.isAdded = false;
             }
         },
-        //вычисляемое свойство
         computed:{
             ...mapGetters('basketModule',['getBasket']),
+            /**
+             * Статус товара: добавлен/не добавлен
+             * @returns {string}
+             */
             isLoading(){
                 return this.isAdded
             },
+            /**
+             * Текст кнопки при разных состояниях
+             * @returns {string}
+             */
             text(){
                 if (this.isLoading === false){
                     return "Добавить в корзину"

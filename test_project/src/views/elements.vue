@@ -12,9 +12,17 @@
         components: {Catalog},
         computed:{
             ...mapGetters('productsModule',['getChilds']),
+            /**
+             * Подкатегория
+             * @return {number} номер id подкатегории из ссылки
+             */
             subcategory(){
                 return parseInt(this.$route.params.subcategory)
             },
+            /**
+             * Фильтрация каталога по id необходимой подкатегории
+             * @return {Array}
+             */
             products:function(){
                 return this.getChilds(this.subcategory)
             },

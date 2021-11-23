@@ -11,8 +11,12 @@
     export default {
         name: "Menu",
         components: {MenuItem},
-        computed: {//вычисляемое свойство
+        computed: {
             ...mapGetters('productsModule', ["getChilds"]),
+            /**
+             * Показать подкатегории меню в зависимости от того, на какой вкладке категории мы находимся
+             * @returns {Array}
+             */
             catalog(){
                 const categoryId = this.$route.params.category;
                 return this.getChilds(Number(categoryId))

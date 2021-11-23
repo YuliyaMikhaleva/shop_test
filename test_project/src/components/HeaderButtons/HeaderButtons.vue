@@ -13,10 +13,14 @@
     export default {
         name: "HeaderButtons",
         components: {HeaderItem},
-        computed: {//вычисляемое свойство
+        computed: {
             ...mapGetters('productsModule',['getChilds']),
+            /**
+             * Вывод самых крупных категорий товаров магазины (например, Электроприборы и Мебель)
+             * @returns {Array}
+             */
             products(){
-                return this.getChilds(-1)//Вывод:электроприборы,мебель
+                return this.getChilds(-1)
         }
         },
     }

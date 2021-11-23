@@ -21,11 +21,18 @@
             }
         },
         methods: {
+            /**
+             * Изменить активную подкатегорию
+             */
             changeActiveSubcategory(){
                 this.$store.commit('linksModule/changeActiveSubcategory', this.category.name);
             }
         },
         computed:{
+            /**
+             * Ссылка на подкатегорию
+             * @returns {string}
+             */
             link(){
                 return (`/${this.category.parent_id}/${this.category.id}`)
             },
