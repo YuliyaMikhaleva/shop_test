@@ -19,7 +19,6 @@ export const basketModule = {
             let find = state.basket.find((element) => element.id === product.id);//находим необходимый продукт
             //удаляем из корзины товаров 1 товар с порядкового номера това с выбранным id
             state.basket.splice(state.basket.indexOf(find),1)//удаляем из массива корзины 1 товар начиная с индекса выбранного товара
-            console.log(state.basket);
         },
         //очистить корзину
         clearBasket(state){
@@ -34,8 +33,6 @@ export const basketModule = {
         //get запрос при заказе товара с удачным результатом
         loadOrder({commit}){
             store.commit('showloaderModule/turnOnShowloader');
-            console.log('начало загрузки товара')
-
             return fetch('http://test1.web-gu.ru/?action=send_form')
                 .then(response => response.json())
                 .then(() => {

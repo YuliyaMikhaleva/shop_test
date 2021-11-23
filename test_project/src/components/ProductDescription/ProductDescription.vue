@@ -37,17 +37,8 @@
         </section>
 
 <!--    Блок с параметрами товара       -->
-        <ProductParametrs :class="$style['modal-product__parametrs']" v-if="activeLink=='parametrs'"
-                :height="height"
-                :valueHeight="valueHeight"
-                :measureHeight="measureHeight"
-                :width="width"
-                :valueWidth="valueWidth"
-                :measureWidth="measureWidth"
-                :length="length"
-                :valueLength="valueLength"
-                :measureLength="measureLength"
-        />
+        <ProductParametrs :class="$style['modal-product__parametrs']" v-if="activeLink=='parametrs'" :params="params"/>
+
 <!--    Блок с отзывами о товаре       -->
         <ProductReviews v-if="activeLink=='reviews'" :reviews="reviews"/>
 
@@ -78,15 +69,7 @@
                 isAdded:false,//добавлен ли товар
                 activeLink:'description',
                 description:'',//описание товара
-                width:'',//параметр ширина
-                valueWidth:'',//значение ширины
-                measureWidth:'',//единицы измерения
-                height:'',//параметр высота
-                valueHeight:'',//значение высоты
-                measureHeight:'',//единицы измерения
-                length:'',//параметр глубина
-                valueLength:'',//значение глубины
-                measureLength:'',//единицы измерения
+                params:{},//характеристики товаров
                 reviews:[],//массив отзывов
                 mark:5,
                 author: '',
@@ -96,38 +79,13 @@
         },
         //с этого метода программа начинает работать
         mounted() {
-            let find = this.getBasket.find((element) => element.id === this.product.id);
-            if (find){
-                this.isAdded = true;
-            } else {
-                this.isAdded = false;
-            }
-
             // поиск элемента в базе данных и необходимых свойств
             let element = this.getDescription.find((el) => el.id === this.product.id)
             this.description = element.descr;
-            this.width = element.props.width.caption;
-            this.valueWidth = element.props.width.value;
-            this.measureWidth = element.props.width.measure;
-            this.height = element.props.height.caption;
-            this.valueHeight = element.props.height.value;
-            this.measureHeight = element.props.height.measure;
-            this.length = element.props.length.caption;
-            this.valueLength = element.props.length.value;
-            this.measureLength = element.props.length.measure;
+            this.params = element.props;
             this.reviews = element.reviews
          },
         methods:{
-            //добавить в корзину
-            addToCart(){
-                this.loadToCart(this.product);
-                this.isAdded = true;
-            },
-            //удалить из корзины
-            deleteFromBasket(){
-                this.$store.commit('basketModule/deleteProduct', this.product);
-                this.isAdded = false;
-            },
             //перейти на вкладку "описание"
             goToDescription(){
                 this.activeLink='description';
@@ -182,6 +140,10 @@
             ...mapGetters('basketModule', ["getBasket"]),
             ...mapGetters('infoModule',['getDescription']),
             ...mapActions('basketModule',['loadToCart']),
+            item(){
+                console.log(this.product)
+                return this.product
+            },
             link(){
                 return this.activeLink
             }

@@ -2,24 +2,24 @@
 <template>
     <section :class="$style.parametrs">
         <div :class="$style.parametrs__line">
-            <span>{{height}}</span>
+            <span>{{params.height.caption}}</span>
             <div>
-                <span :class="$style.parametrs__value">{{valueHeight}}</span>
-                <span>{{measureHeight}}</span>
+                <span :class="$style.parametrs__value">{{params.height.value}}</span>
+                <span>{{params.height.measure}}</span>
             </div>
         </div>
         <div :class="$style.parametrs__line">
-            <span>{{width}}</span>
+            <span>{{params.width.caption}}</span>
             <div>
-                <span :class="$style.parametrs__value">{{valueWidth}}</span>
-                <span>{{measureWidth}}</span>
+                <span :class="$style.parametrs__value">{{params.width.value}}</span>
+                <span>{{params.width.measure}}</span>
             </div>
         </div>
         <div :class="$style.parametrs__line">
-            <span>{{length}}</span>
+            <span>{{params.length.caption}}</span>
             <div>
-                <span :class="$style.parametrs__value">{{valueLength}}</span>
-                <span>{{measureLength}}</span>
+                <span :class="$style.parametrs__value">{{params.length.value}}</span>
+                <span>{{params.length.measure}}</span>
             </div>
         </div>
     </section>
@@ -28,11 +28,12 @@
 <script>
     export default {
         name: "ProductParametrs",
-        props:[
-            'height','valueHeight', 'measureHeight',
-            'width','valueWidth', 'measureWidth',
-            'length','valueLength', 'measureLength',
-        ]
+        props:{
+            params:{
+                type:Object,
+                required:true,
+            }
+        },
     }
 </script>
 
