@@ -13,7 +13,6 @@ export const basketModule = {
         addToCart(state, product) {
             const element = Object.assign(product);
             state.basket.push(element);
-            console.log("state.basket=", state.basket)
         },
         //Удалить из корзины
         deleteProduct(state, product){

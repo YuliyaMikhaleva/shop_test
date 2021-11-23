@@ -46,9 +46,9 @@
             }
         },
         methods:{
+            ...mapActions('basketModule',['loadToCart']),
             //добавить в корзину
             addToCart(){
-                console.log('FALSE')
                 if (this.isLoading === false){
                     this.loadToCart(this.product)
                     this.isAdded = 'pending';
@@ -68,7 +68,6 @@
         //вычисляемое свойство
         computed:{
             ...mapGetters('basketModule',['getBasket']),
-            ...mapActions('basketModule',['loadToCart']),
             isLoading(){
                 return this.isAdded
             },
