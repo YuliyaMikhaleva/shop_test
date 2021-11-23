@@ -2,9 +2,18 @@ import store from '@/store'
 export const infoModule = {
     namespaced:true,
     state:{
-        description:[]  //массив описаний товаров по id товара
+        /**
+         * Описания товаров
+         * @type {Array}
+         */
+        description:[]
     },
     getters:{
+        /**
+         * Получение описания товаров
+         * @param state - общее хранилище модуля
+         * @returns {Array} - массив описаний
+         */
         getDescription(state){
             return state.description
         },
@@ -15,13 +24,19 @@ export const infoModule = {
         },
     },
     actions:{
-        //загрузить описание к товарам
+        /**
+         * Загрузить описание к товарам
+         * @param commit
+         * @returns вызов мутации записи описания в общее хранилище модуля
+         */
         loadDescription({commit}){
             store.commit('showloaderModule/turnOnShowloader');
             return fetch('http://test1.web-gu.ru')
                 .then(response => response.json())
                 .then(data => {
-                    //массив объектов с отзывами
+                    /**
+                     * Массив объектов с откзывами
+                     */
                     let array = data.filter((el) => {
                         return el.reviews
                     })

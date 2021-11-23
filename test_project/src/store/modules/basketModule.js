@@ -5,32 +5,57 @@ export const basketModule = {
         basket:[],
     },
     getters:{
+        /**
+         * Получение корзины товаров
+         * @param {Object} state - общее хранилище модуля
+         * @returns {Array} - массив корзины
+         */
         getBasket(state){
             return state.basket
         },
     },
     mutations:{
+        /**
+         * Добавление товара в корзину
+         * @param state - хранилище модуля
+         * @param product - товар с конкретным id
+         */
         addToCart(state, product) {
             const element = Object.assign(product);
             state.basket.push(element);
         },
-        //Удалить из корзины
+        /**
+         * Удаление товара из корзины
+         * @param state - хранилище модуля
+         * @param product - товар с конкретным id
+         */
         deleteProduct(state, product){
-            let find = state.basket.find((element) => element.id === product.id);//находим необходимый продукт
-            //удаляем из корзины товаров 1 товар с порядкового номера това с выбранным id
-            state.basket.splice(state.basket.indexOf(find),1)//удаляем из массива корзины 1 товар начиная с индекса выбранного товара
+            let find = state.basket.find((element) => element.id === product.id);
+            state.basket.splice(state.basket.indexOf(find),1)
         },
-        //очистить корзину
+        /**
+         * Очистка корзины
+         * @param state - хранилище модуля
+         */
         clearBasket(state){
             state.basket = []
         },
     },
     actions:{
-        //загрузить корзину
+        /**
+         * Загрузить товар в корзину
+         * @param commit
+         * @param product - товар с выбранным id
+         * @returns вызывает мутацию добавления товара в корзину
+         */
         loadToCart({commit}, product) {
-            commit('addToCart', product)//передаем в коммит good.id, чтобы вызвать мутацию addToCart
+            commit('addToCart', product)
         },
-        //get запрос при заказе товара с удачным результатом
+        /**
+         * Заказать товар (get-запрос)
+         * @param commit
+         * @returns вызывает мутацию очистки корзины
+         */
         loadOrder({commit}){
             store.commit('showloaderModule/turnOnShowloader');
             return fetch('http://test1.web-gu.ru/?action=send_form')

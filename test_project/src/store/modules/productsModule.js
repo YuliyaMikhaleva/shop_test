@@ -3,18 +3,31 @@ import router from "../../router";
 export const productsModule = {
     namespaced: true,
     state:{
-        products:[],//новый массив товаров со вложенностями
+        products:[],
     },
     getters:{
+        /**
+         * Получить каталог товаров, где parent_id = id полезной нагрузки
+         * @param state
+         * @param id - id товара, по которому фильтруется каталог
+         * @returns {Array} отфильтрованный массив         *
+         */
         getChilds: state => id => {
             return state.products.filter((item) => item.parent_id === id)
         },
     },
     mutations:{
-        setProducts(state, payload){state.products = [ ...payload]},//добавляем продукты в стейт
+        /**
+         * Добавление продуктов в общее хранилище
+         * @param state
+         * @param payload
+         */
+        setProducts(state, payload){state.products = [ ...payload]},
     },
     actions:{
-        //загрузка товаров с API
+        /**
+         * Загрузка товаров с API
+         */
         loadProducts({commit}) {
             store.commit('showloaderModule/turnOnShowloader');
             return fetch('http://test1.web-gu.ru/')
@@ -25,7 +38,6 @@ export const productsModule = {
                 })
                 .then(() => {
                     store.commit('showloaderModule/turnOfShowloader');
-
                 })
                 .then(async () => {
                     let category = await this.getters['productsModule/getChilds'](-1)[0];

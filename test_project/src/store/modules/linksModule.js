@@ -6,9 +6,19 @@ export const linksModule = {
     },
     getters:{ },
     mutations:{
+        /**
+         * Изменить активную категорию
+         * @param state
+         * @param payload - на какую категорию
+         */
         changeActiveLink(state, payload){
             state.activeLink = payload
         },
+        /**
+         * Изменить активную подкатегорию
+         * @param state
+         * @param payload - на какую сабкатегорию
+         */
         changeActiveSubcategory(state, payload){
             state.activeSubcategory = payload
         }

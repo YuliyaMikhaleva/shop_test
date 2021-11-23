@@ -4,16 +4,27 @@ export const showloaderModule = {
         showloader:false,
     },
     getters:{
+        /**
+         * Получение состояния шоу-лоадера из хранилища
+         * @param state
+         * @returns {boolean}
+         */
         getShowloader(state){
             return state.showloader
         },
     },
     mutations:{
-        //включить шоулоадер
+        /**
+         * Включить шоу-лоадер
+         * @param state
+         */
         turnOnShowloader(state){
             state.showloader = true;
         },
-        //выключить шоулоадре
+        /**
+         * Выключить шоу-лоадер
+         * @param state
+         */
         turnOfShowloader(state){
             state.showloader = false
         },
