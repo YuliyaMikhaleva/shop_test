@@ -1,8 +1,9 @@
 import store from '@/store'
+import router from "../../router";
 export const productsModule = {
     namespaced: true,
     state:{
-        products:[{name,value:[]}],//новый массив товаров со вложенностями
+        products:[],//новый массив товаров со вложенностями
     },
     getters:{
         getChilds: state => id => {
@@ -20,10 +21,16 @@ export const productsModule = {
                 .then(response => response.json())
                 .then(result => {
                     result.sort((prev,next) => prev.id - next.id)
-                    commit('setProducts',JSON.parse(JSON.stringify(result)));
+                    commit('setProducts',result);
                 })
                 .then(() => {
-                    store.commit('showloaderModule/turnOfShowloader')
+                    store.commit('showloaderModule/turnOfShowloader');
+
+                })
+                .then(async () => {
+                    let category = await this.getters['productsModule/getChilds'](-1)[0];
+                    let subCategory = await this.getters['productsModule/getChilds'](category.id)[0].id;
+                    router.push({path: `/${category.id}/${subCategory}`}).catch((err) => console.log(err))
                 })
         },
     }
