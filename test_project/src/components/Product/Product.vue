@@ -1,18 +1,17 @@
 <!--Карточка товара в каталоге-->
 <template>
     <article :class="$style['catalog-card']" >
-        <a :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" data-bs-target="#productsTransition">
+        <a :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
             <img  :class="$style['catalog-card__img']" :src="product.img" width="353" height="246" alt="photo" />
         </a>
-        <a :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" data-bs-target="#productsTransition">
+        <a :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
             <h3 :class="$style['catalog-card__title']" >{{ product.name }}</h3>
         </a>
         <span :class="$style['catalog-card__price']" ><span> {{ product.price }}</span> ₽</span>
 
         <Button :class="$style['catalog-card__button']" type="button" @on-click="addToCart" :isLoading="isLoading" >{{text}}</Button>
 
-        <div class="modal fade" id="productsTransition" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="productsTransitionLabel" aria-hidden="true">
-
+        <div class="modal fade" :id="'N'+product.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="'N'+product.id+'Label'" aria-hidden="true">
             <ModalDescription :class="$style.modal" :product="product"/>
         </div>
     </article>
