@@ -27,6 +27,11 @@
             /**
              * Изменение активной ссылки категории и подкатегории
              */
+
+            /**
+             * @review
+             * Опять же момент, что лучше использовать mapGetter, mapMutations и тп
+             */
             changeActiveLink(){
                 this.$store.commit('linksModule/changeActiveLink', this.group.name);
                 this.$store.commit('linksModule/changeActiveSubcategory', this.firstEl.name);

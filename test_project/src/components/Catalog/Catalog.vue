@@ -14,9 +14,25 @@
             goods:{
                 type: Array,
                 required:true,
+                /**
+                 * @review
+                 * Тут не жесткое правило, а просто совет:
+                 * можно писать вместо
+                 * default:function () {
+                 *   return []
+                 * },
+                 *
+                 * default: () => []
+                 *
+                 * Так получается просто более короткая и быстрая запись.
+                 * Но тут решения остается за вами, это не обязательно.
+                 *
+                 * Можно почитать, если не вникали в тему стрелочных функций:
+                 * https://learn.javascript.ru/arrow-functions-basics
+                 */
                 default:function () {
                     return []
-                },              
+                },
             }
         },
         components: {ZeroComponent, Product},
