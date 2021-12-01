@@ -28,6 +28,14 @@ export const showloaderModule = {
         turnOfShowloader(state){
             state.showloader = false
         },
+    },
+    actions:{
+        addShowloader({commit}){
+            commit('turnOnShowloader')
+        },
+        deleteShowloader({commit}){
+            commit('turnOfShowloader')
+        },
     }
 
 }

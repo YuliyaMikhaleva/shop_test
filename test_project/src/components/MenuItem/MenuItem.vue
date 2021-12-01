@@ -1,7 +1,7 @@
 <!--1 элемент левого меню-->
 <template>
     <div>
-        <div @click="changeActiveSubcategory">
+        <div @click="changeSubcategory(category.name)">
             <router-link :to="link" tag="div" active-class="activeCategory"><span class="category">{{ category.name }}</span></router-link>
         </div>
     </div>
@@ -9,6 +9,8 @@
 
 
 <script>
+    import {mapActions} from "vuex";
+
     export default {
         name: "MenuItem",
         props:{
@@ -21,12 +23,7 @@
             }
         },
         methods: {
-            /**
-             * Изменить активную подкатегорию
-             */
-            changeActiveSubcategory(){
-                this.$store.commit('linksModule/changeActiveSubcategory', this.category.name);
-            }
+            ...mapActions('linksModule',['changeSubcategory']),
         },
         computed:{
             /**

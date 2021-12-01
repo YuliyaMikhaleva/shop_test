@@ -22,6 +22,14 @@ export const linksModule = {
         changeActiveSubcategory(state, payload){
             state.activeSubcategory = payload
         }
+    },
+    actions:{
+        changeCategory({commit},category){
+            commit('changeActiveLink', category)
+        },
+        changeSubcategory({commit},subcategory){
+            commit('changeActiveSubcategory', subcategory)
+        },
     }
 
 }

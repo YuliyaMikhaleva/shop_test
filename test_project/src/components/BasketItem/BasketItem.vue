@@ -5,12 +5,14 @@
                 <div :class="$style['basket-item__txt']">
                     <h3 :class="$style['basket-item__title']">{{  cartItem.name }}</h3>
                     <span :class="$style['basket-item__price']"><span> {{ cartItem.price }} </span> ₽</span>
-                    <button :class="$style['basket-item__button']" @click="deleteFromBasket" >Убрать из корзины</button>
+                    <button :class="$style['basket-item__button']" @click="deleteFromCart(cartItem)" >Убрать из корзины</button>
                 </div>
          </article>
 </template>
 
 <script>
+    import {mapActions} from "vuex";
+
     export default {
         name: "BasketItem",
         props: {
@@ -20,12 +22,7 @@
             }
         },
         methods: {
-            /**
-             * Удаление товара из корзины по клику
-             */
-            deleteFromBasket() {
-                    this.$store.commit('basketModule/deleteProduct', this.cartItem);
-                }
+            ...mapActions('basketModule',['deleteFromCart']),
             }
         }
 </script>

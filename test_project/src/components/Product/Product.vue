@@ -45,7 +45,7 @@
             }
         },
         methods:{
-            ...mapActions('basketModule',['loadToCart']),
+            ...mapActions('basketModule',['loadToCart', 'deleteFromCart']),
             /**
              * Добавление товара в корзину по клику
              */
@@ -64,7 +64,7 @@
              * Удаление товара из корзины по клику
              */
             deleteFromBasket(){
-                this.$store.commit('basketModule/deleteProduct', this.product);
+                this.deleteFromCart(this.product)
                 this.isAdded = false;
             }
         },
