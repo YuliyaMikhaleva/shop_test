@@ -1,10 +1,10 @@
 <!--Карточка товара в каталоге-->
 <template>
     <article :class="$style['catalog-card']" >
-        <a :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
+        <a href="#" :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
             <img  :class="$style['catalog-card__img']" :src="product.img" width="353" height="246" alt="photo" />
         </a>
-        <a :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
+        <a href="#" :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
             <h3 :class="$style['catalog-card__title']" >{{ product.name }}</h3>
         </a>
         <span :class="$style['catalog-card__price']" ><span> {{ product.price }}</span> ₽</span>
@@ -51,7 +51,7 @@
              */
             addToCart(){
                 if (this.isLoading === false){
-                    this.loadToCart(this.product)
+                    this.loadToCart     (this.product)
                     this.isAdded = 'pending';
                     setTimeout(() => {
                         this.isAdded = true;

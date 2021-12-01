@@ -1,13 +1,12 @@
 <!--1 элемент навигации в шапке сайта(сверху)-->
 <template>
-    <div @click="changeActiveLink">
         <router-link :to="link"
-                     tag="div"
                      :class="$style['item']"
-                     :active-class="$style['activeClass']"
-        >{{ group.name }}</router-link>
-    </div>
-
+                     :active-class="$style['activeClass']">
+            <span @click="changeActiveLink">
+                {{ group.name }}
+            </span>
+        </router-link>
 </template>
 
 <script>

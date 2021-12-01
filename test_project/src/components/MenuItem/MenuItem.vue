@@ -1,10 +1,10 @@
 <!--1 элемент левого меню-->
 <template>
-    <div>
-        <div @click="changeSubcategory(category.name)">
-            <router-link :to="link" tag="div" active-class="activeCategory"><span class="category">{{ category.name }}</span></router-link>
-        </div>
-    </div>
+            <router-link :to="link" active-class="activeCategory" class="link">
+                <span class="category" @click="changeSubcategory(category.name)">
+                    {{ category.name }}
+                </span>
+            </router-link>
 </template>
 
 
@@ -38,6 +38,10 @@
 </script>
 
 <style scoped>
+    .link{
+        text-decoration: none;
+        color: #424242;
+    }
     .category{
         background-color: white;
         display: block;

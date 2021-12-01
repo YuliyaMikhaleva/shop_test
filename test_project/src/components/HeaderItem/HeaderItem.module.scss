@@ -1,10 +1,13 @@
 .item{
   font-family: "Roboto_regular";
   height: 100%;
+  color: #424242;
+  text-decoration: none;
   &:hover{
     border-bottom: 4px solid #ff9c9c;
     box-sizing: border-box;
     cursor: pointer;
+    color: #424242;
   }
   &:active{
     border-bottom: 4px solid white;
@@ -12,7 +15,7 @@
     cursor: pointer;
   }
   &:focus{
-    border-bottom: 3px solid black;
+    border-bottom: 4px solid $redColor;
     box-sizing: border-box;
     cursor: pointer;
   }
