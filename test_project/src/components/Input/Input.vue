@@ -27,9 +27,7 @@
             errors:{
                 type:Array,
                 required: true,
-                default: function () {
-                    return []
-                },
+                default: () => [],
             },
             element:{
                 type:String,

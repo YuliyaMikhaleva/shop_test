@@ -13,9 +13,7 @@
             activeLink:{
                 type:String,
                 required:true,
-                default:function () {
-                    return 'link'
-                },
+                default:'link',
             },
             block:{
                 type:String,

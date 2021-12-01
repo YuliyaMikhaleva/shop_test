@@ -14,9 +14,7 @@
             goods:{
                 type: Array,
                 required:true,
-                default:function () {
-                    return []
-                },              
+                default:() => [],
             }
         },
         components: {ZeroComponent, Product},

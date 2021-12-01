@@ -28,9 +28,7 @@
             author:{
                 type:String,
                 required:true,
-                default:function () {
-                    return 'User'
-                },
+                default:'User',
             },
             text:{
                 type:String,
@@ -39,9 +37,7 @@
             errors:{
                 type: Array,
                 required:true,
-                default:function () {
-                    return []
-                },
+                default: () => [],
             },
             mark:{},
             onStepUpdate: {},

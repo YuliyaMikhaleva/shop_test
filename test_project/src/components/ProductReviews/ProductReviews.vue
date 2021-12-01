@@ -32,9 +32,7 @@
             reviews:{
                 type: Array,
                 required: true,
-                default: function () {
-                    return []
-                }
+                default: () => []
             }
         }
     }
