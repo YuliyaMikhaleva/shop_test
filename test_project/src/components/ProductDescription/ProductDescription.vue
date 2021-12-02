@@ -8,12 +8,12 @@
         <span :class="$style['modal-product__price']" ><span> {{ product.price }}</span> ₽</span>
         <div class="modal fade" :id="product.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="product.id+'N'+'Label'" aria-hidden="true">
             <div style="display: flex; justify-content: flex-end">
-                <div class="modal-dialog header_basket">
-                    <div class="modal-content ">
-                        <div class="header_basket_content">
-                            <div class="header_basket_content_top">
-                                <h5 class="header_basket_content_top_title">Информация</h5>
-                                <button class="header_basket_content_top_btn" type="button" data-bs-dismiss="modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div>
+                            <div>
+                                <h5>Информация</h5>
+                                <button type="button" data-bs-dismiss="modal">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M20 2.01429L17.9857 0L10 7.98571L2.01429 0L0 2.01429L7.98571 10L0 17.9857L2.01429 20L10 12.0143L17.9857 20L20 17.9857L12.0143 10L20 2.01429Z" fill="black"/>
                                     </svg>

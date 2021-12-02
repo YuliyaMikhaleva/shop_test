@@ -1,7 +1,7 @@
 <!--Всплывающее окно корзины-->
 <template>
     <div :class="$style.modal">
-        <div :class="$style.modal__dialog" class="modal-dialog header_basket">
+        <div :class="$style.modal__dialog" class="modal-dialog">
             <div :class="$style.modal__content" class="modal-content ">
                 <div :class="$style.basket">
 

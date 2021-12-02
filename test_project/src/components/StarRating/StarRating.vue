@@ -38,6 +38,6 @@
     }
 </script>
 
-<style lang="scss" module>
-
+<style lang="scss">
+    @import "StarRating.module";
 </style>

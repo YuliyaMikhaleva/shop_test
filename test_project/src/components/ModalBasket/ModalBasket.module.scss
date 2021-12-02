@@ -30,3 +30,9 @@
     margin-top: 183px;
   }
 }
+
+@media (min-width: 576px)  {
+  .modal__dialog{
+    max-width: 100%;
+  }
+}
