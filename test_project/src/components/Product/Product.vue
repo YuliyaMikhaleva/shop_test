@@ -1,12 +1,12 @@
 <!--Карточка товара в каталоге-->
 <template>
     <article :class="$style['catalog-card']" >
-        <a href="#" :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
+        <button :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
             <img  :class="$style['catalog-card__img']" :src="product.img" width="353" height="246" alt="photo" />
-        </a>
-        <a href="#" :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
+        </button>
+        <button :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
             <h3 :class="$style['catalog-card__title']" >{{ product.name }}</h3>
-        </a>
+        </button>
         <span :class="$style['catalog-card__price']" ><span> {{ product.price }}</span> ₽</span>
 
         <Button :class="$style['catalog-card__button']" type="button" @on-click="addToCart" :isLoading="isLoading" >{{text}}</Button>

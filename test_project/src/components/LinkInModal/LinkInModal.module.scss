@@ -1,11 +1,17 @@
 .link-active{
+  border: 0;
+  background-color: transparent;
   border-bottom: 3px solid $redColor;
   box-sizing: border-box;
   text-decoration: none;
   color: inherit;
   margin-right: 19px;
+  line-height: 25px;
+  padding: 0;
 }
 .link-item{
+  border: 0;
+  background-color: transparent;
   line-height: 25px;
   margin-right: 19px;
   border-bottom: 3px solid #E4E2E2;
@@ -14,6 +20,7 @@
   cursor: pointer;
   text-decoration: none;
   color: inherit;
+  padding: 0;
   &:hover {
     color: inherit;
     border-bottom: 3px solid $redColor;

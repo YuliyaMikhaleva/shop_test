@@ -1,5 +1,5 @@
 <template>
-    <a href="#" @click="$emit('on-click')" :class="[activeLink === block ? $style['link-active'] : $style['link-item'] ]">{{ title }}</a>
+    <button @click="$emit('on-click')" :class="[activeLink === block ? $style['link-active'] : $style['link-item'] ]">{{ title }}</button>
 </template>
 
 <script>

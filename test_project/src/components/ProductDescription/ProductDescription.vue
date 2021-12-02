@@ -1,9 +1,9 @@
 <!--Всплывающее окно с описанием товара (само содержимое)-->
 <template>
     <div :class="$style['modal-product']" >
-        <a type="button" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
+        <button style="background-color: transparent; border: none; padding: 0" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
             <img :class="$style['modal-product__img']" :src="product.img" width="565" height="341" alt="photo" />
-        </a>
+        </button>
         <h3 :class="$style['modal-product__name']" >{{ product.name }}</h3>
         <span :class="$style['modal-product__price']" ><span> {{ product.price }}</span> ₽</span>
         <div class="modal fade" :id="product.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="product.id+'N'+'Label'" aria-hidden="true">
