@@ -7,7 +7,7 @@
         <div v-if="errors.length && label==='Телефон'">
             <span v-for="error in errors" v-bind:key="error">
                 <span v-if="error == 'phoneError'"  :class="$style['input-block__errorText']">
-                    Номер телефона должен быть указан в следующей форме: +7(950)45-84-345
+                    Номер телефона должен быть указан в следующей форме: 89504584345
                 </span>
             </span>
         </div>
@@ -27,9 +27,7 @@
             errors:{
                 type:Array,
                 required: true,
-                default: function () {
-                    return []
-                },
+                default: () => [],
             },
             element:{
                 type:String,

@@ -65,5 +65,13 @@ export const basketModule = {
                     commit('clearBasket')
                 });
         },
+        /**
+         * Удалить товар из корзины
+         * @param commit
+         * @param product
+         */
+        deleteFromCart({commit}, product){
+            commit('deleteProduct', product)
+        }
     }
 }

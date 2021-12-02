@@ -1,5 +1,5 @@
 <template>
-    <a @click="$emit('on-click')" :class="[activeLink === block ? $style['link-active'] : $style['link-item'] ]">{{ title }}</a>
+    <a href="#" @click="$emit('on-click')" :class="[activeLink === block ? $style['link-active'] : $style['link-item'] ]">{{ title }}</a>
 </template>
 
 <script>
@@ -13,9 +13,7 @@
             activeLink:{
                 type:String,
                 required:true,
-                default:function () {
-                    return 'link'
-                },
+                default:'link',
             },
             block:{
                 type:String,

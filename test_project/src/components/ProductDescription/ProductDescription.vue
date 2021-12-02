@@ -85,6 +85,7 @@
             this.reviews = element.reviews
          },
         methods:{
+            ...mapActions('showloaderModule',['addShowloader', 'deleteShowloader']),
             /**
              * Перейти на вкладку "описание"
              */
@@ -139,10 +140,10 @@
                 if(!this.author) this.errors.push("authorError");
                 if(!this.text) this.errors.push("textError");
                 if(!this.errors.length){
-                    this.$store.commit('showloaderModule/turnOnShowloader');
+                    this.addShowloader();
                     setTimeout(()=>{
                         this.addNewReview()
-                        this.$store.commit('showloaderModule/turnOfShowloader');
+                        this.deleteShowloader();
                     },1000)
                 }
             },

@@ -28,15 +28,7 @@
             author:{
                 type:String,
                 required:true,
-                /**
-                 * @review
-                 * Для примитиных типов (string, number, boolean, null, undefined, symbol)
-                 * не обязательно писать значение в виде функции.
-                 * Можно просто написать default: 'User' и это будет корректно работать
-                 */
-                default:function () {
-                    return 'User'
-                },
+                default:'User',
             },
             text:{
                 type:String,
@@ -45,9 +37,7 @@
             errors:{
                 type: Array,
                 required:true,
-                default:function () {
-                    return []
-                },
+                default: () => [],
             },
             mark:{},
             onStepUpdate: {},

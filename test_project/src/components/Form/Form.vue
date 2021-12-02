@@ -58,7 +58,7 @@
              * @returns {boolean}
              */
             validPhone:function(phone) {
-                var re = /^\+7\(\d{3}\)\d{2}-\d{2}-\d{3}$/;
+                let re = /^\+?[78]\(?\d{3}\)?\d{2}-?\d{2}-?\d{3}$/;
                 return re.test(phone);
             },
             /**

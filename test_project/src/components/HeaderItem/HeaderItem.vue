@@ -1,17 +1,16 @@
 <!--1 элемент навигации в шапке сайта(сверху)-->
 <template>
-    <div @click="changeActiveLink">
         <router-link :to="link"
-                     tag="div"
                      :class="$style['item']"
-                     :active-class="$style['activeClass']"
-        >{{ group.name }}</router-link>
-    </div>
-
+                     :active-class="$style['activeClass']">
+            <span @click="changeActiveLink">
+                {{ group.name }}
+            </span>
+        </router-link>
 </template>
 
 <script>
-    import {mapGetters} from "vuex"
+    import {mapActions, mapGetters} from "vuex"
     export default {
         name: "HeaderItem",
         props:{
@@ -24,6 +23,7 @@
             }
         },
         methods: {
+            ...mapActions('linksModule',['changeCategory', 'changeSubcategory']),
             /**
              * Изменение активной ссылки категории и подкатегории
              */
@@ -33,8 +33,8 @@
              * Опять же момент, что лучше использовать mapGetter, mapMutations и тп
              */
             changeActiveLink(){
-                this.$store.commit('linksModule/changeActiveLink', this.group.name);
-                this.$store.commit('linksModule/changeActiveSubcategory', this.firstEl.name);
+                this.changeCategory(this.group.name);
+                this.changeSubcategory(this.firstEl.name)
             },
         },
         computed:{

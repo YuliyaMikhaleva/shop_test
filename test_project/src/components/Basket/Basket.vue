@@ -13,25 +13,11 @@
         name: "Basket",
         components: {BasketItem},
         computed:{
-            /**
-             * @review
-             * Вместо дублирования с помощью дополнительного computed свойства, лучше
-             * воспользоваться стандартным алиасом (псевдонимом свойства) от вью, либо пользоваться напрямую через имя геттера
-             * (вместо basket использоваться везде getBasket).
-             *
-             * Пример с алиасом:
-             * ...mapGetters('basketModule', { basket: 'getBasket' })
-             *
-             * https://vuex.vuejs.org/guide/getters.html#the-mapgetters-helper
-            */
-            ...mapGetters('basketModule', ['getBasket']),
+            ...mapGetters('basketModule',{ basket: 'getBasket'}),
             /**
              * Получение содержимого корзины
              * @return {string}
              */
-            basket(){
-                return this.getBasket
-            }
         }
     }
 </script>

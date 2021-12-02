@@ -3,12 +3,12 @@
   border-radius: 10px;
   font-family: Roboto_regular;
   background-color: white;
-
   &__link{
-    //width: 100%;
-  }
-  &__img{
-    //width: 260px;
+    color: #424242;
+    text-decoration: none;
+    &:hover{
+      color: #424242;;
+    }
   }
   &__title{
     margin: 20px 0 10px 30px;
