@@ -32,7 +32,6 @@
                 x = [...x, i]
             }
             this.array = x.reverse()
-            console.log(this.array)
         }
 
     }

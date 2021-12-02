@@ -26,21 +26,25 @@
         </div>
 
         <div :class="$style['modal-product__links']">
-            <LinkInModal @on-click="goToDescription" title="Описание" block="description" :activeLink="link" />
-            <LinkInModal @on-click="goToParametrs" title="Характеристики" block="parametrs" :activeLink="link" />
-            <LinkInModal @on-click="goToReviews" title="Отзывы" block="reviews" :activeLink="link" />
-            <LinkInModal @on-click="goToFormReview" title="Оставить отзыв" block="form_review" :activeLink="link" />
+            <template v-for="item of Object.keys(info)">
+                    <LinkInModal
+                            :key="item"
+                            @on-click="goToBlock(item)"
+                            :title="(item=='description')?'Описание':((item == 'parametrs')?'Характеристики':((item == 'reviews')?'Отзывы':'Добавить отзывы'))"
+                            :block="item" :activeLink="link"
+                    />
+            </template>
         </div>
 
-        <section v-if="activeLink=='description'" v-html="description">
+        <section v-if="activeLink=='description'" v-html="info.description">
 <!--            здесь вставится html-код с описанием товара-->
         </section>
 
 <!--    Блок с параметрами товара       -->
-        <ProductParametrs :class="$style['modal-product__parametrs']" v-if="activeLink=='parametrs'" :params="params"/>
+        <ProductParametrs :class="$style['modal-product__parametrs']" v-if="activeLink=='parametrs'" :params="info.parametrs"/>
 
 <!--    Блок с отзывами о товаре       -->
-        <ProductReviews v-if="activeLink=='reviews'" :reviews="reviews"/>
+        <ProductReviews v-if="activeLink=='reviews'" :reviews="info.reviews"/>
 
 <!--    Блок с формой для добавления отзывов о товаре       -->
         <FormReview v-if="activeLink=='form_review'"
@@ -67,10 +71,14 @@
         data(){
             return {
                 isAdded:false,//добавлен ли товар
-                activeLink:'description',
-                description:'',//описание товара
-                params:{},//характеристики товаров
-                reviews:[],//массив отзывов
+                activeLink:'',
+                info:{
+                    description:"",
+                    parametrs:{},
+                    reviews:[],
+                    form_review:""
+                },
+                headers:['Описание', 'Характеристики', 'Отзывы', 'Добавить отзывы'],
                 mark:5,
                 author: '',
                 text:'',
@@ -80,35 +88,18 @@
         mounted() {
             // поиск элемента в базе данных и необходимых свойств
             let element = this.getDescription.find((el) => el.id === this.product.id)
-            this.description = element.descr;
-            this.params = element.props;
-            this.reviews = element.reviews
+            this.info.description = element.descr;
+            this.info.parametrs = element.props;
+            this.info.reviews = element.reviews;
+            this.activeLink = Object.keys(this.info)[0];
          },
         methods:{
             ...mapActions('showloaderModule',['addShowloader', 'deleteShowloader']),
             /**
-             * Перейти на вкладку "описание"
+             * Перейти на какую-либо вкладку описания товара
              */
-            goToDescription(){
-                this.activeLink='description';
-            },
-            /**
-             * перейти на вкладку "параметры"
-             */
-            goToParametrs(){
-                this.activeLink='parametrs';
-            },
-            /**
-             * перейти на вкладку "отзывы"
-             */
-            goToReviews(){
-                this.activeLink='reviews';
-            },
-            /**
-             * перейти на вкладку "добавить отзывы"
-             */
-            goToFormReview(){
-                this.activeLink='form_review';
+            goToBlock(tab){
+                  this.activeLink=tab;
             },
             /**
              * Добавить новый отзыв
@@ -158,7 +149,7 @@
              */
             link(){
                 return this.activeLink
-            }
+            },
         },
     }
 </script>
