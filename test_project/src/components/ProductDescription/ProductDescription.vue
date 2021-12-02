@@ -8,6 +8,10 @@
         <span :class="$style['modal-product__price']" ><span> {{ product.price }}</span> ₽</span>
         <div class="modal fade" :id="product.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="product.id+'N'+'Label'" aria-hidden="true">
             <div style="display: flex; justify-content: flex-end">
+                <!--
+                    @review
+                    Классы пишем по БЕМу, видимо тут забыли заменить
+                -->
                 <div class="modal-dialog header_basket">
                     <div class="modal-content ">
                         <div class="header_basket_content">
@@ -86,6 +90,13 @@
          },
         methods:{
             ...mapActions('showloaderModule',['addShowloader', 'deleteShowloader']),
+            /**
+             * @review
+             * Тоже стоит сделать более универсальное решение, которое не потребует
+             * добавления кода в несколько мест просто для того, чтобы добавить еще одну вкладку.
+             * То есть у нас должен быть массив или объект, в котором хранится вся нужная информация,
+             * и исходя из этого массива мы уже выводим и табы и ссылки на них.
+             */
             /**
              * Перейти на вкладку "описание"
              */

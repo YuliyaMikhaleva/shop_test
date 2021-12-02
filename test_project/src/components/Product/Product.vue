@@ -1,6 +1,10 @@
 <!--Карточка товара в каталоге-->
 <template>
     <article :class="$style['catalog-card']" >
+        <!--
+            @review
+            Опять же, стоит использоваться кнопку, а не ссылку, которая никуда не ведет
+        -->
         <a href="#" :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
             <img  :class="$style['catalog-card__img']" :src="product.img" width="353" height="246" alt="photo" />
         </a>

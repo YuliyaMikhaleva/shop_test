@@ -32,6 +32,12 @@
              * @review
              * Опять же момент, что лучше использовать mapGetter, mapMutations и тп
              */
+
+            /**
+             * @review
+             * Не совсем понимаю, с какой целью отдельно от роутера
+             * еще храните в сторе информацию о ссылках?
+             */
             changeActiveLink(){
                 this.changeCategory(this.group.name);
                 this.changeSubcategory(this.firstEl.name)
