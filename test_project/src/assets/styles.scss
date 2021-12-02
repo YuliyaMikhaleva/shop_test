@@ -1,4 +1,10 @@
 @import "./variables.scss";
+// @review
+// При подключении шрифтов используется один font-family для одного шрифта
+// А жирность задается уже с помощью font-weight
+// Можно использовать например такой миксин, для упрощения подключения шрифтов.
+// Тк часто нужно подключать не один формат, а несколько для разных браузеров, он значительно упрощает жизнь
+// https://gist.github.com/jonathantneal/d0460e5c2d5d7f9bc5e6
 @font-face {
   font-family: Roboto_bold;
   src: url("~@/assets/fonts/roboto-bold.ttf");
@@ -12,6 +18,8 @@
   src: url("~@/assets/fonts/roboto/roboto-medium-500.ttf");
 }
 
+// @review
+// Для сброса стандартных стилей на проектах обычно подключается normalize.css или reset.css
 body{
   margin: 0;
   padding: 0;
@@ -46,6 +54,8 @@ body{
 
 
 //Звёздный рейтинг
+// @review
+// Стили компонентов нужно выносить в его файл стилей, а не оставлять в общем файле
 .star-rating{
   font-size: 0;
   &__wrap{
@@ -96,4 +106,3 @@ body{
     max-width: 100%;
   }
 }
-
