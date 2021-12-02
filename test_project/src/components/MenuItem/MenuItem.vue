@@ -1,16 +1,13 @@
 <!--1 элемент левого меню-->
 <template>
             <router-link :to="link" active-class="activeCategory" class="link">
-                <span class="category" @click="changeSubcategory(category.name)">
+                <span class="category">
                     {{ category.name }}
                 </span>
             </router-link>
 </template>
 
-
 <script>
-    import {mapActions} from "vuex";
-
     export default {
         name: "MenuItem",
         props:{
@@ -21,9 +18,6 @@
                     return Object.keys(obj).indexOf('name') !== -1
                 }
             }
-        },
-        methods: {
-            ...mapActions('linksModule',['changeSubcategory']),
         },
         computed:{
             /**

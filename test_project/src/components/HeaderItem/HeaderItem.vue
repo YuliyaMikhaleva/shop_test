@@ -3,14 +3,12 @@
         <router-link :to="link"
                      :class="$style['item']"
                      :active-class="$style['activeClass']">
-            <span @click="changeActiveLink">
                 {{ group.name }}
-            </span>
         </router-link>
 </template>
 
 <script>
-    import {mapActions, mapGetters} from "vuex"
+    import {mapGetters} from "vuex"
     export default {
         name: "HeaderItem",
         props:{
@@ -21,16 +19,6 @@
                     return Object.keys(obj).indexOf('name') !== -1
                 }
             }
-        },
-        methods: {
-            ...mapActions('linksModule',['changeCategory', 'changeSubcategory']),
-            /**
-             * Изменение активной ссылки категории и подкатегории
-             */
-            changeActiveLink(){
-                this.changeCategory(this.group.name);
-                this.changeSubcategory(this.firstEl.name)
-            },
         },
         computed:{
             ...mapGetters('productsModule',['getChilds']),

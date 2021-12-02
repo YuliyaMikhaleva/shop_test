@@ -5,7 +5,6 @@ import {productsModule} from "./modules/productsModule";
 import {basketModule} from "./modules/basketModule";
 import {infoModule} from "./modules/infoModule";
 import {showloaderModule} from "./modules/showloaderModule";
-import {linksModule} from "./modules/linksModule";
 
 Vue.use(Vuex)
 
@@ -19,7 +18,6 @@ export default new Vuex.Store({
       basketModule,
       infoModule,
       showloaderModule,
-      linksModule
   },
     //плагин для сохранения состояния конкретных ключей (у нас нет бэка, поэтому нужен плагин)
     plugins: [
