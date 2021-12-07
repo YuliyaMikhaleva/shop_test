@@ -1,0 +1,21 @@
+.button {
+  background-color: $redColor;
+  color: white;
+  border: 0;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 18px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 18px;
+  &:hover{
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  &:active{
+    opacity: 1;
+  }
+  &__svg{
+    margin-left:14px ;
+  }
+}

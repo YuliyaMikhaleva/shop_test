@@ -1,18 +1,19 @@
 <template>
     <div id="app">
-        <Preloader v-if="$store.state.showloader"/>
+        <Preloader v-if="getShowloader"/>
         <Header/>
         <div class="main">
-            <Menu/>
-            <router-view style="width: 100%" class="router-view"/>
+            <Menu class="main__menu"/>
+            <router-view  class="router-view"/>
         </div>
     </div>
 </template>
 
 <script>
-    import Header from "./components/Header";
-    import Menu from "./components/Menu";
-    import Preloader from "./components/Preloader";
+    import Header from "./components/Header/Header";
+    import Menu from "./components/Menu/Menu";
+    import Preloader from "./components/Preloader/Preloader";
+    import {mapGetters, mapActions} from "vuex"
     export default {
         components:{
             Preloader,
@@ -20,32 +21,23 @@
             Menu
         },
         mounted() {
-            this.showToggle()
-            this.$store.dispatch('loadCatalogChairs');
-            this.$store.dispatch('loadCatalogTables');
-            this.$store.dispatch('loadCatalogSofas');
-            this.$store.dispatch('loadCatalogLamps');
-            this.$store.dispatch('loadCatalogGroups');
-            this.$store.dispatch('loadCatalogCategoriesMebel');
-            this.$store.dispatch('loadCatalogCategoriesElectro');
-            this.$store.dispatch('loadToCart');
-            this.$store.dispatch('loadInfoAboutProduct');
+            this.loadProducts;
+            this.loadDescription
         },
-        methods:{
-            showToggle(){
-                setTimeout(()=>{
-                    this.$store.state.showloader=false
-                },1000)
-            }
+        computed:{
+          ...mapGetters('showloaderModule',['getShowloader']),
+          ...mapActions('productsModule',['loadProducts']),
+          ...mapActions('infoModule',['loadDescription'])
         },
-        watch: {
-            $route() {
-                this.$store.state.showloader = true;
-                setTimeout(() => {
-                    this.$store.state.showloader = false;
-                }, 1000);
-            },
+        created () {// Считываем информацию о статусе в localStorage, когда страница загружается
+            localStorage.getItem("userMsg") && this.$store.replaceState(Object.assign(this.$store.state,JSON.parse(localStorage.getItem("userMsg"))));
+
+            // Сохраняем информацию в vuex в localStorage при обновлении страницы
+            window.addEventListener("beforeunload",()=>{
+                localStorage.setItem("userMsg",JSON.stringify(this.$store.state))
+            })
         },
+
     }
 </script>
 

@@ -1,50 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Products from "../views/Products";
+import elements from "../views/elements";
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Products',
-    component: Products
-  },
-  {
-    path: '/Стулья',
-    name: 'Chairs',
-    component: Products
-  },
-  {
-    path: '/Мебель',
-    name: 'Chairs',
-    component: Products
-  },
-  {
-    path: '/Столы',
-    name: 'Tables',
-    component: Products
-  },
-  {
-    path: '/Диваны',
-    name: 'Sofas',
-    component: Products
-  },
-  {
-    path: '/Электроприборы',
-    name: 'Lamps',
-    component: Products
-  },
-  {
-    path: '/Светильники',
-    name: 'Lamps',
-    component: Products
-  },
-  {
-    path: '/Вентиляторы',
-    name: 'Lamps',
-    component: Products
-  },
+    path: '/:category/:subcategory',
+    name: 'elements',
+    component: elements
+  }
 ]
 
 const router = new VueRouter({

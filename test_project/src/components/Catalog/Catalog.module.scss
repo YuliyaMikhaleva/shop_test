@@ -1,0 +1,37 @@
+.catalog{
+  padding: 53px 37px 0 35px;
+  box-sizing: border-box;
+
+  /*
+   @ревью
+   тут вижу проблему в сетке, на некоторых разрешениях элементы странно раздвигаются
+   + карточки совсем не резинятся
+
+   Давай попробуем для начала сделать flexbox сетку, где элемент имеет процентную циширну и отступ между элементами равен 30px
+  */
+}
+.catalog__product{
+  width: 353px;
+  height: 418px;
+  margin: 0 0 38px 0;
+}
+.catalog__zeropage{
+  width: 100%;
+  max-width:1595px ;
+}
+
+@media(max-width:500px) {
+  .catalog__product {
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    margin: 15px 15px;
+
+    & img{
+      width: 260px;
+    }
+    & a{
+      width: 100%;
+    }
+  }
+}

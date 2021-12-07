@@ -1,25 +1,27 @@
 <!--Корзина со всеми выбранными товарами-->
 <template>
-    <div class="basket">
-        <BasketItem v-bind:key="good.id" v-for="good of basket"
+    <div :class="$style.basket">
+        <BasketItem :class="$style.basket__item" v-bind:key="good.id" v-for="good of basket"
                     v-bind:cartItem="good" />
     </div>
 </template>
 
 <script>
-    import BasketItem from "./BasketItem";
+    import BasketItem from "../BasketItem/BasketItem"
+    import {mapGetters} from "vuex"
     export default {
         name: "Basket",
         components: {BasketItem},
         computed:{
-            basket(){
-                return this.$store.getters.getCart
-            }
+            ...mapGetters('basketModule',{ basket: 'getBasket'}),
+            /**
+             * Получение содержимого корзины
+             * @return {string}
+             */
         }
-
     }
 </script>
 
-<style scoped>
-
+<style lang="scss" module>
+@import "Basket.module";
 </style>

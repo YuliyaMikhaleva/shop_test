@@ -1,0 +1,63 @@
+<!--1 элемент навигации в шапке сайта(сверху)-->
+<template>
+        <router-link :to="link"
+                     :class="[$style['item'], { [$style['activeClass']]: isActive }]"
+                     >
+                {{ group.name }}
+        </router-link>
+</template>
+
+<script>
+    import {mapGetters} from "vuex"
+    export default {
+        name: "HeaderItem",
+        props:{
+            group:{
+                type: Object,
+                required:true,
+
+							/**
+							 * @ревью
+							 *
+							 * Предпочтительно не использользовать в пропсах объекты,
+							 * в данном случае лучше разбить объект на три пропса: id, name, parent_id.
+							 *
+							 * Что мы с этого получаем:
+							 * 	🐸 в компоненте сразу видно и понятно, с какими входными параметрами мы работаем,
+							 * 		 таким образом документируем частично наш компонент (главное преимущество)
+							 *
+							 * 	🐸 начинают работать подсказки редактора
+							 */
+                validator:function (obj) {
+                    return Object.keys(obj).indexOf('name') !== -1
+                }
+            }
+        },
+        computed:{
+            ...mapGetters('productsModule',['getChilds']),
+            /**
+             * Получение первого элемента сфильтрованного по необходимогу id
+             * @returns {Object}
+             */
+            firstEl(){
+                return this.getChilds(this.group.id).filter((item) =>
+                    item.parent_id === this.group.id)[0]
+            },
+            /**
+             * Ссылка на первую подкатегорию
+             * @returns {string}
+             */
+            link(){
+                return (`/${this.group.id}/${this.firstEl.id}`)
+            },
+
+						isActive() {
+							return this.$route.params.category == this.group.id;
+						}
+        }
+    }
+</script>
+
+<style lang="scss" module>
+    @import "HeaderItem.module";
+</style>
