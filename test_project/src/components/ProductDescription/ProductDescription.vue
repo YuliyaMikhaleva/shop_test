@@ -114,7 +114,7 @@
                 this.author = '';
                 this.text = '';
                 setTimeout(() => {
-                    this.reviews.push(element);
+                    this.info.reviews.push(element);
                 },1000)
             },
             //для передачи из дочернего компонента в родительский
