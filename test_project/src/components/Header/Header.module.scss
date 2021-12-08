@@ -5,13 +5,7 @@
     position: fixed;
     width: 100%;
     z-index: 2;
-
-    /*
-      @ревью
-      Всегда лучше понять, почему стили не применяются, чем вешать !important,
-      таким образом мы заботимся о будущем нашего проекта))
-    */
-    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1) !important;
+    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
     background-color: white;
   }
   &__block{
@@ -50,7 +44,7 @@
   }
 
   /*
-    @ревью
+    @ревью - ок
     В веб сообществе не принято использовать в классах camelCase, в следующий раз пиши "&__button-basket"
    */
   &__buttonBasket{

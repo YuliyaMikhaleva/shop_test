@@ -31,7 +31,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .link{
         text-decoration: none;
         color: #424242;

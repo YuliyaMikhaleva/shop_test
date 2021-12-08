@@ -1,4 +1,8 @@
 .header{
+  &__title{
+    font-family: Roboto;
+    font-weight: 700;
+  }
   &__btn{
     border: 0;
     background-color: transparent;
