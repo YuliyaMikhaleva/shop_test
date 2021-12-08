@@ -27,30 +27,11 @@
   &__button{
     margin: 0 0 26px 30px;
     height: 40px;
-    min-width: 169px;
+    min-width: 25%;
   }
 }
 
 .modal{
   display: flex;
   justify-content: flex-end;
-}
-
-@media(max-width:500px) {
-  .catalog-card{
-    &__title{
-      margin: 20px 10px 10px 10px;
-      text-align: center;
-    }
-    &__button{
-      margin: 0 15px 26px 15px;
-    }
-    &__price{
-      margin: 0 0 34px 0;
-      text-align: center;
-    }
-    &__img{
-      width: 260px;
-    }
-  }
 }

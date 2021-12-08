@@ -11,11 +11,15 @@
   */
 }
 .catalog__product{
-  width: 37%;
+  width: 25%;
+  max-width: 353px;
+  min-width: 250px;
   height: 418px;
-  margin: 0 30px 38px 0;
-  &:last-child{
-    margin: 0 0 38px 0;
+  margin-right: 37px;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+  &:nth-child(4n){
+    margin-right: 0;
   }
 }
 .catalog__zeropage{
@@ -23,15 +27,3 @@
   max-width:1595px ;
 }
 
-@media(max-width:500px) {
-  .catalog__product {
-    width: 260px;
-    display: flex;
-    flex-direction: column;
-    margin: 15px 15px;
-
-    & a{
-      width: 100%;
-    }
-  }
-}

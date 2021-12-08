@@ -54,7 +54,7 @@
         cursor: pointer;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 540px) {
         .category{
             font-size: 14px;
             padding-left: 15px;
