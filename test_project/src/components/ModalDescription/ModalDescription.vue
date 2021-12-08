@@ -6,7 +6,11 @@
                             <div>
                                 <HeaderModal :class="$style.modal__header" title="Информация"/>
 
-                                <ProductDescription :product="product"/>
+                                <ProductDescription
+                                        :id="product.id"
+                                        :img="product.img"
+                                        :name="product.name"
+                                        :price="product.price"/>
 
                             </div>
                         </div>

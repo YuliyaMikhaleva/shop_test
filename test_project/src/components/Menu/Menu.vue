@@ -1,7 +1,11 @@
 <!--Боковое меню сайта-->
 <template>
     <nav class="menu">
-        <MenuItem v-bind:key="group.id" v-bind:category="group" v-for="group of catalog" />
+        <MenuItem v-bind:key="group.id"
+                  :id="group.id"
+                  :parent_id="group.parent_id"
+                  :name="group.name"
+                  v-for="group of catalog" />
     </nav>
 </template>
 

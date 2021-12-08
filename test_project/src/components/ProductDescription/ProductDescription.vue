@@ -1,12 +1,12 @@
 <!--Всплывающее окно с описанием товара (само содержимое)-->
 <template>
     <div :class="$style['modal-product']" >
-        <button style="background-color: transparent; border: none; padding: 0" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
-            <img :class="$style['modal-product__img']" :src="product.img" width="565" height="341" alt="photo" />
+        <button style="background-color: transparent; border: none; padding: 0" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + id">
+            <img :class="$style['modal-product__img']" :src="img" width="565" height="341" alt="photo" />
         </button>
-        <h3 :class="$style['modal-product__name']" >{{ product.name }}</h3>
-        <span :class="$style['modal-product__price']" ><span> {{ product.price }}</span> ₽</span>
-        <div class="modal fade" :id="product.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="product.id+'N'+'Label'" aria-hidden="true">
+        <h3 :class="$style['modal-product__name']" >{{ name }}</h3>
+        <span :class="$style['modal-product__price']" ><span> {{ price }}</span> ₽</span>
+        <div class="modal fade" :id="id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="id+'N'+'Label'" aria-hidden="true">
             <div style="display: flex; justify-content: flex-end">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -62,8 +62,20 @@
     export default {
         name: "ProductDescription",
         props:{
-            product:{
-                type:Object,
+            id:{
+                type:Number,
+                required:true,
+            },
+            img:{
+                type:String,
+                required:true,
+            },
+            name:{
+                type:String,
+                required:true,
+            },
+            price:{
+                type:Number,
                 required:true,
             }
         },
@@ -87,7 +99,7 @@
         },
         mounted() {
             // поиск элемента в базе данных и необходимых свойств
-            let element = this.getDescription.find((el) => el.id === this.product.id)
+            let element = this.getDescription.find((el) => el.id === this.id)
             this.info.description = element.descr;
             this.info.parametrs = element.props;
             this.info.reviews = element.reviews;

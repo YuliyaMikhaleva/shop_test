@@ -3,7 +3,8 @@
     <nav :class="$style['header-buttons']">
         <HeaderItem :class="$style['header-buttons__item']" v-bind:key="group.name"
                        v-for="group of products"
-                       v-bind:group="group"/>
+                       :id="group.id"
+                       :name="group.name"/>
     </nav>
 </template>
 

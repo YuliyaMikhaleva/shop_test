@@ -2,7 +2,7 @@
 <template>
             <router-link :to="link" active-class="activeCategory" class="link">
                 <span class="category">
-                    {{ category.name }}
+                    {{ name }}
                 </span>
             </router-link>
 </template>
@@ -11,12 +11,17 @@
     export default {
         name: "MenuItem",
         props:{
-            category:{
-                type: Object,
+            id:{
+                type: Number,
                 required:true,
-                validator:function (obj) {
-                    return Object.keys(obj).indexOf('name') !== -1
-                }
+            },
+            parent_id:{
+                type: Number,
+                required:true,
+            },
+            name:{
+                type: String,
+                required:true,
             }
         },
         computed:{
@@ -25,7 +30,7 @@
              * @returns {string}
              */
             link(){
-                return (`/${this.category.parent_id}/${this.category.id}`)
+                return (`/${this.parent_id}/${this.id}`)
             },
         }
     }
