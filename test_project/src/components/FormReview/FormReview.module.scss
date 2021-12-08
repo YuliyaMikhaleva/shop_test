@@ -2,13 +2,15 @@
   //width: 100%;
   &__mark{
     display: block;
-    margin-bottom:9px
+    margin-bottom:9px;
+    color: black;
   }
   &__input{
     margin-bottom: 22px;
   }
   &__label{
     margin-bottom: 9px;
+    color: black;
   }
   &__textarea{
     width: 100%;

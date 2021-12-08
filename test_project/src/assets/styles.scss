@@ -1,16 +1,6 @@
 @import "./variables.scss";
-@font-face {
-  font-family: Roboto_bold;
-  src: url("~@/assets/fonts/roboto-bold.ttf");
-}
-@font-face {
-  font-family: Roboto_regular;
-  src: url("~@/assets/fonts/roboto-regular.ttf");
-}
-@font-face {
-  font-family: Roboto_500;
-  src: url("~@/assets/fonts/roboto/roboto-medium-500.ttf");
-}
+@import "./_mixins.scss";
+@import "./_fonts.scss";
 
 body{
   color: $textColor;

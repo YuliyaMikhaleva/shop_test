@@ -42,7 +42,8 @@
         height: 54px;
         border-bottom: 1px solid #E4E4E4;
         box-sizing: border-box;
-        font-family: Roboto_regular;
+        font-family: Roboto;
+        font-weight: 400;
         line-height: 54px;
         padding-left: 30px;
         box-sizing: border-box;

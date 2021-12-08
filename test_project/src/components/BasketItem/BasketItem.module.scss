@@ -2,6 +2,8 @@
     border-bottom: 1px solid #E5E5E5;
     padding-bottom: 22px;
     box-sizing: border-box;
+    font-family: Roboto;
+    font-weight: 700;
     &__img{
       float: left;
       border: 1px solid #E5E5E5;
@@ -11,8 +13,6 @@
     }
     &__txt{
       font-size: 18px;
-      font-family: Roboto_regular;
-      font-weight: 500;
       line-height: 21px;
       color: $textColor;
       display: flex;
@@ -21,13 +21,12 @@
       height: 100%;
     }
     &__title{
+      font-weight: 500;
       display: block;
       font-size: 18px;
       margin-bottom: 7px;
       line-height: 21px;
-      font-family: Roboto_regular;
       display: block;
-      font-weight: bold;
     }
     &_price{
       display: block;
@@ -36,8 +35,6 @@
       font-size: 18px;
       margin-bottom: 7px;
       line-height: 21px;
-      font-family: Roboto_regular;
-      display: block;
     }
     &__button{
       color: $redColor;
