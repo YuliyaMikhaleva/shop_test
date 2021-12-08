@@ -1,27 +1,15 @@
 <!--Блок с параметрами товара-->
 <template>
     <section :class="$style.parametrs">
-        <div :class="$style.parametrs__line">
-            <span>{{params.height.caption}}</span>
-            <div>
-                <span :class="$style.parametrs__value">{{params.height.value}}</span>
-                <span :class="$style.parametrs__measure">{{params.height.measure}}</span>
+        <template v-for="param in params">
+            <div :key="param.caption" :class="$style.parametrs__line">
+                <span>{{param.caption}}</span>
+                <div>
+                    <span :class="$style.parametrs__value">{{param.value}}</span>
+                    <span :class="$style.parametrs__measure">{{param.measure}}</span>
+                </div>
             </div>
-        </div>
-        <div :class="$style.parametrs__line">
-            <span>{{params.width.caption}}</span>
-            <div>
-                <span :class="$style.parametrs__value">{{params.width.value}}</span>
-                <span :class="$style.parametrs__measure">{{params.width.measure}}</span>
-            </div>
-        </div>
-        <div :class="$style.parametrs__line">
-            <span>{{params.length.caption}}</span>
-            <div>
-                <span :class="$style.parametrs__value">{{params.length.value}}</span>
-                <span :class="$style.parametrs__measure">{{params.length.measure}}</span>
-            </div>
-        </div>
+        </template>
     </section>
 </template>
 
