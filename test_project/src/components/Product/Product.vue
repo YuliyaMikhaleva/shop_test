@@ -51,7 +51,7 @@
              */
             addToCart(){
                 if (this.isLoading === false){
-                    this.loadToCart     (this.product)
+                    this.loadToCart(this.product)
                     this.isAdded = 'pending';
                     setTimeout(() => {
                         this.isAdded = true;
