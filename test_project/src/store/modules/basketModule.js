@@ -3,6 +3,7 @@ export const basketModule = {
     namespaced: true,
     state:{
         basket:[],
+        pending:false,
     },
     getters:{
         /**
@@ -11,7 +12,13 @@ export const basketModule = {
          * @returns {Array} - массив корзины
          */
         getBasket(state){
-            return state.basket
+            return state.basket;
+        },
+        /**
+         * Указание cтатуса загрузки
+         */
+        getPending(state){
+            return state.pending;
         },
     },
     mutations:{
@@ -40,6 +47,9 @@ export const basketModule = {
         clearBasket(state){
             state.basket = []
         },
+        addPendingMutation(state, el){
+            state.pending= el
+        }
     },
     actions:{
         /**
@@ -72,6 +82,13 @@ export const basketModule = {
          */
         deleteFromCart({commit}, product){
             commit('deleteProduct', product)
+        },
+        /**
+         * Добавить статус загрузки
+         */
+        addPending({commit}, el){
+            commit('addPendingMutation', el)
         }
+
     }
 }

@@ -10,7 +10,7 @@
         </button>
         <span :class="$style['catalog-card__price']" ><span> {{ product.price }}</span> ₽</span>
 
-        <Button :class="$style['catalog-card__button']" type="button" @on-click="addToCart" :isLoading="isLoading" >{{text}}</Button>
+        <Button :class="$style['catalog-card__button']" type="button" @on-click="method(product)">{{text}}</Button>
 
         <div class="modal fade" :id="'N'+product.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="'N'+product.id+'Label'" aria-hidden="true">
             <ModalDescription :class="$style.modal" :product="product"/>
@@ -21,7 +21,6 @@
 <script>
     import Button from "../Button/Button";
     import ModalDescription from "../ModalDescription/ModalDescription"
-    import {mapGetters, mapActions} from "vuex"
 
     export default {
         name: "Product",
@@ -30,70 +29,18 @@
             product:{
                 type:Object,
                 required:true,
-            }
-        },
-        data(){
-            return {
-                isAdded:false//добавлен ли товар
-            }
-        },
-        mounted() {
-            let find = this.getBasket.find((element) => element.id === this.product.id);
-            if (find){
-                this.isAdded = true;
-            } else {
-                this.isAdded = false;
-            }
-        },
-        methods:{
-            ...mapActions('basketModule',['loadToCart', 'deleteFromCart']),
-            /**
-             * Добавление товара в корзину по клику
-             */
-            addToCart(){
-							/**
-							 * @Ревью
-							 * Нужно вынести работу с vuex из компонента, давай представим, что компонент может использоваться в другом
-							 * месте, но не всегда по клику на кнопку он будет работать со стором, к примеру
-							 */
-                if (this.isLoading === false){
-                    this.loadToCart(this.product)
-                    this.isAdded = 'pending';
-                    setTimeout(() => {
-                        this.isAdded = true;
-                    },1000)
-                } else {
-                    this.deleteFromBasket()
-                }
             },
-            /**
-             * Удаление товара из корзины по клику
-             */
-            deleteFromBasket(){
-                this.deleteFromCart(this.product)
-                this.isAdded = false;
-            }
+            method:{ },
+            pending:{}
         },
         computed:{
-            ...mapGetters('basketModule',['getBasket']),
-            /**
-             * Статус товара: добавлен/не добавлен
-             * @returns {string}
-             */
-            isLoading(){
-                return this.isAdded
-            },
-            /**
-             * Текст кнопки при разных состояниях
-             * @returns {string}
-             */
             text(){
-                if (this.isLoading === false){
-                    return "Добавить в корзину"
-                } else if (this.isLoading === 'pending'){
+                if (this.pending === `pending${this.product.id}`){
                     return "..."
-                } else {
+                } else if (this.pending === this.product.id) {
                     return "В корзине"
+                } else {
+                    return "Добавить в корзину"
                 }
             }
         }
