@@ -2,7 +2,7 @@
 <template>
     <article :class="$style['catalog-card']" >
         <button :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
-            <img  :class="$style['catalog-card__img']" :src="product.img" width="353" height="246" alt="photo" />
+            <img  :class="$style['catalog-card__img']" src="https://ilifes.ru/wp-content/uploads/2019/05/frog-face.jpg" width="353" height="246" alt="photo" />
         </button>
         <button :class="$style['catalog-card__link']"  type="button" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + product.id">
             <h3 :class="$style['catalog-card__title']" >{{ product.name }}</h3>
