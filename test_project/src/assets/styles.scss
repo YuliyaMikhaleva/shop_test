@@ -5,6 +5,7 @@
 body{
   color: $textColor;
   background-color: #F8F8F8;
+  min-width: 360px;
 }
 
 .activeCategory{
@@ -15,8 +16,7 @@ body{
   display: flex;
   min-height: 100vh;
   &__menu{
-    width: 100%;
-    max-width: 325px;
+    width: 20%;
     position: relative;
     z-index: 1;
     margin-top: 60px;
@@ -31,13 +31,28 @@ body{
   border-bottom: 4px solid $redColor;
   box-sizing: border-box;
 }
-
-//Стили для мобильных устройств
-@media(max-width:500px) {
-  .main{
-    height: 100%;
+@media (max-width:1024px) {
+  .main__menu{
+    width: 25%;
   }
 }
+
+@media (max-width: 768px) {
+  .main{
+    height: 100%;
+    width: 100vw;
+    flex-direction: column;
+  }
+  .main__menu{
+    display: flex;
+    max-width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+}
+
 //Рефакторинг стилей бутстрапа
 @media (min-width: 576px)  {
   .modal-dialog {

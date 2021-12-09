@@ -2,7 +2,6 @@
   background-color: $redColor;
   color: white;
   border: 0;
-  height: 40px;
   line-height: 40px;
   padding: 0 18px;
   box-sizing: border-box;
@@ -17,5 +16,11 @@
   }
   &__svg{
     margin-left:14px ;
+  }
+}
+
+@media (max-width: 1024px) {
+  .button{
+    font-size: 14px;
   }
 }

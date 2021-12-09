@@ -55,6 +55,7 @@
     box-sizing: border-box;
     background-color: transparent;
     padding: 0;
+    position: relative;
     &:hover{
       border-bottom: 4px solid $redColor;
       box-sizing: border-box;
@@ -64,7 +65,7 @@
   &__ellipseCounter{
     position: absolute;
     top: 13px;
-    right: 21px;
+    right: -9px;
   }
   &__counter{
     color: white;
@@ -74,10 +75,16 @@
     line-height: 13px;
     position: absolute;
     top: 16px;
-    right: 25px;
+    right: -4px;
   }
   &__buttonSvg{
     height: 100%;
     position: relative;
+  }
+}
+
+@media (max-width: 768px) {
+  .header__block:first-child{
+    padding: 0 10px;
   }
 }
