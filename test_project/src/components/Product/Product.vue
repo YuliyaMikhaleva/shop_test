@@ -10,7 +10,10 @@
         </button>
         <span :class="$style['catalog-card__price']" ><span> {{ product.price }}</span> ₽</span>
 
-        <Button :class="$style['catalog-card__button']" type="button" @on-click="method(product)">{{text}}</Button>
+        <Button :class="$style['catalog-card__button']"
+                type="button"
+                @on-click="$parent.addToCart(product)"
+                :inBasket="(nameButton==='В корзине' && true)">{{nameButton}}</Button>
 
         <div class="modal fade" :id="'N'+product.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="'N'+product.id+'Label'" aria-hidden="true">
             <ModalDescription :class="$style.modal" :product="product"/>
@@ -30,20 +33,15 @@
                 type:Object,
                 required:true,
             },
-            method:{ },
-            pending:{}
+            pending:{
+                type:[Boolean,Number],
+                required:true,
+            },
+            nameButton:{
+                type:String,
+                required:true,
+            },
         },
-        computed:{
-            text(){
-                if (this.pending === `pending${this.product.id}`){
-                    return "..."
-                } else if (this.pending === this.product.id) {
-                    return "В корзине"
-                } else {
-                    return "Добавить в корзину"
-                }
-            }
-        }
     }
 </script>
 

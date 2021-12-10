@@ -3,9 +3,9 @@
         <Product
                 :product="product"
                 :pending="pending"
-                :method="addToCart"
                 :class="$style.catalog__product"
                 :key="product.id"
+                :nameButton="nameButton(product.id)"
                 v-for="product of goods"/>
         <ZeroComponent :class="$style.catalog__zeropage" v-if="goods.length===0"/>
     </section>
@@ -32,14 +32,13 @@
              * Добавление товара в корзину по клику
              */
             addToCart(product){
-                let find = this.getBasket().find((element) => element.id === product.id)
-                if (!find){
+                if (!this.item(product.id)){
                     this.loadToCart(product);
-                    this.addPending('pending'+ product.id)
+                    this.addPending(product.id)
                     setTimeout(() => {
-                        this.addPending(product.id);
+                        this.addPending(false);
                     },1000)
-                } else  {
+                } else {
                     this.deleteFromBasket(product)
                 }
             },
@@ -53,15 +52,31 @@
         },
         computed:{
             ...mapGetters('basketModule',['getPending']),
+            ...mapGetters('basketModule',['getItemIds','getItemInBasket']),
             /**
              * Текст кнопки при разных состояниях
              * @returns {string}
              */
             pending(){
                 return this.getPending
-            }
+            },
+            /**
+             * Проверка по id наличия такого товара в корзине в корзине
+             * @param {id}
+             * @returns {Boolean}
+             */
+            item(){
+                return this.getItemInBasket
+            },
+            /**
+             * Проверка по id наличия такого id в корзине
+             * @param {id}
+             * @returns {String}: "...", "В корзине", "Добавить в корзину"
+             */
+            nameButton(){
+                return this.getItemIds
+            },
         }
-
     }
 </script>
 
