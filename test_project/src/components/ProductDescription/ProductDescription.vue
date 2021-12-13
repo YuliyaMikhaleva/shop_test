@@ -2,7 +2,7 @@
 <template>
     <div :class="$style['modal-product']" >
         <button style="background-color: transparent; border: none; padding: 0" data-bs-toggle="modal" :data-bs-target="'#' + 'N' + id">
-            <img :class="$style['modal-product__img']" :src="img" width="565" height="341" alt="photo" />
+            <img :class="$style['modal-product__img']" src="https://ilifes.ru/wp-content/uploads/2019/05/frog-face.jpg"  alt="photo" />
         </button>
         <h3 :class="$style['modal-product__name']" >{{ name }}</h3>
         <span :class="$style['modal-product__price']" ><span> {{ price }}</span> ₽</span>
