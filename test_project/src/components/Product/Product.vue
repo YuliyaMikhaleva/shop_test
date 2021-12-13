@@ -10,6 +10,7 @@
         </button>
         <span :class="$style['catalog-card__price']" ><span> {{ product.price }}</span> ₽</span>
 
+				<!-- Решение совсем не очевидное, можно так запутать себя в будущем и другого разработчика. Тут лучше вместо обращения к родителю так же сделать $emit -->
         <Button :class="$style['catalog-card__button']"
                 type="button"
                 @on-click="$parent.addToCart(product)"
@@ -22,6 +23,7 @@
 </template>
 
 <script>
+		// @баг детальная карточка сломалась
     import Button from "../Button/Button";
     import ModalDescription from "../ModalDescription/ModalDescription"
 

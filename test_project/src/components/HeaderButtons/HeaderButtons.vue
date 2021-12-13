@@ -22,7 +22,7 @@
              */
             products(){
                 return this.getChilds(-1)
-        }
+						}
         },
     }
 </script>
