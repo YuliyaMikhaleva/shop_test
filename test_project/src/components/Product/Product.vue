@@ -10,10 +10,9 @@
         </button>
         <span :class="$style['catalog-card__price']" ><span> {{ product.price }}</span> ₽</span>
 
-				<!-- Решение совсем не очевидное, можно так запутать себя в будущем и другого разработчика. Тут лучше вместо обращения к родителю так же сделать $emit -->
         <Button :class="$style['catalog-card__button']"
                 type="button"
-                @on-click="$parent.addToCart(product)"
+                @on-click="$emit('click')"
                 :inBasket="(nameButton==='В корзине' && true)">{{nameButton}}</Button>
 
         <div class="modal fade" :id="'N'+product.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="'N'+product.id+'Label'" aria-hidden="true">
@@ -41,7 +40,7 @@
             },
             nameButton:{
                 type:String,
-                required:true,
+                required:false,
             },
         },
     }

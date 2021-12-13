@@ -23,7 +23,7 @@
             },
             inBasket:{
                 type:Boolean,
-                required: true,
+                required: false,
             }
         },
         computed:{

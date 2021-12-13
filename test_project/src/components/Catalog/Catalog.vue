@@ -6,6 +6,7 @@
                 :class="$style.catalog__product"
                 :key="product.id"
                 :nameButton="nameButton(product.id)"
+                @click="addToCart(product)"
                 v-for="product of goods"/>
         <ZeroComponent :class="$style.catalog__zeropage" v-if="goods.length===0"/>
     </section>
